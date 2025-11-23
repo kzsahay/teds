@@ -2,7 +2,7 @@
 set separator none
 title API Application - Dynamic
 
-left to right direction
+top to bottom direction
 
 !include <C4/C4>
 !include <C4/C4_Context>
