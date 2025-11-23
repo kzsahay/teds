@@ -1,0 +1,107 @@
+@startuml
+set separator none
+title Containers
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+
+Person(Dealer, "Dealer", $descr="Performs manual data entry, manages tires & services, creates quotations", $tags="", $link="")
+Person(Administrator, "Administrator", $descr="Performs manual data entry, manages tires & services, creates quotations", $tags="", $link="")
+Person(Customer, "Customer", $descr="Receives NPS surveys, messages, quotations", $tags="", $link="")
+System(DCPMobileApplication, "DCP Mobile Application", $descr="Mobile login application", $tags="", $link="")
+System(ReferentialSystem, "Referential System", $descr="Wecare-like referential provider", $tags="", $link="")
+System(LoyaltyPrograms, "Loyalty Programs", $descr="Loyalty program adapter", $tags="", $link="")
+System(EOrdering, "E-Ordering", $descr="E-ordering adapter", $tags="", $link="")
+System(TaxationAdapter, "Taxation Adapter", $descr="Downstream tax processing & government linking", $tags="", $link="")
+System(TDataPlatform, "T+ Data Platform", $descr="Reporting data platform & CRM programs", $tags="", $link="")
+
+System_Boundary("TEDSCoreSystem_boundary", "TEDS Core System", $tags="") {
+  AddBoundaryTag("Backend", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="dashed")
+  Boundary(group_1, "Backend", $tags="Backend") {
+      AddBoundaryTag("Backend/Core-Services", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="dashed")
+      Boundary(group_2, "Core-Services", $tags="Backend/Core-Services") {
+        Container(TEDSCoreSystem.tedsserviceaftersales, "teds-service-aftersales", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+        Container(TEDSCoreSystem.tedsservicecustomer, "teds-service-customer", $techn="React + TypeScript", $descr="Provides all banking functionality in the browser", $tags="", $link="")
+        Container(TEDSCoreSystem.tedsservicefinance, "teds-service-finance", $techn="React + TypeScript", $descr="Provides all banking functionality in the browser", $tags="", $link="")
+        Container(TEDSCoreSystem.tedsservicesupplychain, "teds-service-supplychain", $techn="React + TypeScript", $descr="Provides all banking functionality in the browser", $tags="", $link="")
+        Container(TEDSCoreSystem.tedsservicesku, "teds-service-sku", $techn="React + TypeScript", $descr="Provides all banking functionality in the browser", $tags="", $link="")
+      }
+
+      AddBoundaryTag("Backend/Gateway", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="dashed")
+      Boundary(group_3, "Gateway", $tags="Backend/Gateway") {
+        Container(TEDSCoreSystem.systemfoundation, "systemfoundation", $techn="React + TypeScript", $descr="Provides all banking functionality in the browser", $tags="", $link="")
+        Container(TEDSCoreSystem.openapi, "openapi", $techn="React + TypeScript", $descr="Provides all banking functionality in the browser", $tags="", $link="")
+        Container(TEDSCoreSystem.tedsserviceweb, "teds-service-web", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+      }
+
+      AddBoundaryTag("Backend/non-core-services", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="dashed")
+      Boundary(group_4, "non-core-services", $tags="Backend/non-core-services") {
+        Container(TEDSCoreSystem.tedsservicereport, "teds-service-report", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+        Container(TEDSCoreSystem.tedsservicescheduler, "teds-service-scheduler", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+      }
+
+      AddBoundaryTag("Backend/search-acceleration", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="dashed")
+      Boundary(group_5, "search-acceleration", $tags="Backend/search-acceleration") {
+        Container(TEDSCoreSystem.tedsservicesearch, "teds-service-search", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+      }
+
+  }
+
+  AddBoundaryTag("Frontend", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="dashed")
+  Boundary(group_6, "Frontend", $tags="Frontend") {
+    Container(TEDSCoreSystem.tedsservicepc, "teds-service-pc", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+    Container(TEDSCoreSystem.tedsservicemobile, "teds-service-mobile", $techn="React + TypeScript", $descr="Provides all banking functionality in the browser", $tags="", $link="")
+  }
+
+  AddBoundaryTag("external-communication", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="dashed")
+  Boundary(group_7, "external-communication", $tags="external-communication") {
+    Container(TEDSCoreSystem.kafka, "kafka", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+    Container(TEDSCoreSystem.APIM, "APIM", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+  }
+
+  Container(TEDSCoreSystem.CDN, "CDN", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+  Container(TEDSCoreSystem.WebApplication, "Web Application", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+  Container(TEDSCoreSystem.SinglePageApplication, "Single-Page Application", $techn="React + TypeScript", $descr="Internet banking UI in the browser", $tags="", $link="")
+  Container(TEDSCoreSystem.MobileApp, "Mobile App", $techn="Flutter", $descr="Limited functionality on mobile devices", $tags="", $link="")
+  Container(TEDSCoreSystem.APIApplication, "API Application", $techn="Java + Spring Boot", $descr="Provides functionality via JSON/HTTPS API", $tags="", $link="")
+  ContainerDb(TEDSCoreSystem.sqlproxy, "sqlproxy", $techn="", $descr="medium performance database", $tags="", $link="")
+  ContainerDb(TEDSCoreSystem.reportingdatabase, "reporting-database", $techn="", $descr="medium performance database", $tags="", $link="")
+  ContainerDb(TEDSCoreSystem.coreatabase, "core-atabase", $techn="", $descr="high performance database", $tags="", $link="")
+}
+
+Rel(TEDSCoreSystem.WebApplication, TEDSCoreSystem.SinglePageApplication, "Delivers", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.SinglePageApplication, TEDSCoreSystem.APIApplication, "Calls", $techn="JSON/HTTPS", $tags="", $link="")
+Rel(TEDSCoreSystem.MobileApp, TEDSCoreSystem.APIApplication, "Calls", $techn="JSON/HTTPS", $tags="", $link="")
+Rel(TEDSCoreSystem.CDN, Dealer, "Gets frontend assets", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.CDN, Administrator, "Gets frontend assets", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.CDN, TEDSCoreSystem.tedsservicepc, "Gives frontend assets", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.CDN, TEDSCoreSystem.tedsservicemobile, "Gives frontend assets", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.tedsservicepc, TEDSCoreSystem.tedsserviceweb, "Uses", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.tedsservicemobile, TEDSCoreSystem.tedsserviceweb, "Uses", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.kafka, TEDSCoreSystem.openapi, "Uses", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.APIM, TEDSCoreSystem.openapi, "Uses", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.openapi, TEDSCoreSystem.tedsserviceaftersales, "Uses", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.openapi, TEDSCoreSystem.tedsservicecustomer, "Uses", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.openapi, TEDSCoreSystem.tedsservicefinance, "Uses", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.openapi, TEDSCoreSystem.tedsservicesupplychain, "Uses", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.openapi, TEDSCoreSystem.tedsservicesku, "Uses", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.openapi, TEDSCoreSystem.tedsservicesearch, "Uses", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.openapi, TEDSCoreSystem.tedsservicereport, "Uses", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.openapi, TEDSCoreSystem.tedsservicescheduler, "Uses", $techn="", $tags="", $link="")
+Rel(Customer, TEDSCoreSystem.WebApplication, "Uses", $techn="HTTPS", $tags="", $link="")
+Rel(Customer, TEDSCoreSystem.MobileApp, "Uses", $techn="", $tags="", $link="")
+Rel(Dealer, DCPMobileApplication, "Uses", $techn="", $tags="", $link="")
+Rel(DCPMobileApplication, TEDSCoreSystem.tedsservicemobile, "Authenticates & exchanges data", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.tedsservicemobile, DCPMobileApplication, "Authenticates & exchanges data", $techn="", $tags="", $link="")
+Rel(ReferentialSystem, TEDSCoreSystem.tedsservicesku, "Provides referential data", $techn="kafka", $tags="", $link="")
+Rel(LoyaltyPrograms, TEDSCoreSystem.tedsservicecustomer, "Provides available coupons", $techn="kafka", $tags="", $link="")
+Rel(EOrdering, TEDSCoreSystem.tedsservicesupplychain, "Sends purchase orders", $techn="kafka", $tags="", $link="")
+Rel(TEDSCoreSystem.tedsservicefinance, TaxationAdapter, "Sends tax data", $techn="kafka", $tags="", $link="")
+Rel(TaxationAdapter, TEDSCoreSystem.tedsservicefinance, "Provides government reference ID", $techn="kafka", $tags="", $link="")
+Rel(TEDSCoreSystem.tedsservicereport, TDataPlatform, "Sends reporting data", $techn="kafka", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml
