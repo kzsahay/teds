@@ -278,7 +278,7 @@ workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
         component api "Level3_Components" {
             title "API Application – Components"
             include *
-            autoLayout lr
+            # autoLayout lr
         }
 
         dynamic api "SignIn_Flow" "User signs in" {
@@ -286,7 +286,7 @@ workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
             signInController -> securityComponent "validate()"
             securityComponent -> signInController "JWT"
             signInController -> spa "200 OK + JWT"
-            autoLayout lr
+            # autoLayout lr
         }
 
         styles {
