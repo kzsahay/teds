@@ -11,6 +11,24 @@ views {
             # autoLayout lr
         }
 
+        component core-database "Level3_core_database_Components" {
+            title "Core Database – Components"
+            include *
+            # autoLayout lr
+        }
+
+        container dcpMobile "Level2_dcpmobile_Containers" {
+            title "Containers"
+            include *
+            # autoLayout lr
+        }
+
+        component teds-dcp-plate-scanner "Level2_dcpmobile_plate_scanner_Components" {
+            title "Containers"
+            include *
+            # autoLayout lr
+        }
+
         container referential-system "Level2_referential_Containers" {
             title "Containers"
             include *
@@ -56,20 +74,6 @@ views {
         component teds-taxation "Level3_taxation_Components" {
             title "Taxation System – Components"
             include *
-            # autoLayout lr
-        }
-
-        component api "Level3_Components" {
-            title "API Application – Components"
-            include *
-            # autoLayout lr
-        }
-
-        dynamic api "SignIn_Flow" "User signs in" {
-            spa -> signInController "POST /signin"
-            signInController -> securityComponent "validate()"
-            securityComponent -> signInController "JWT"
-            signInController -> spa "200 OK + JWT"
             # autoLayout lr
         }
 

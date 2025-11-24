@@ -28,7 +28,4 @@ referential-system = softwareSystem "Referential System" "Wecare-like referentia
             tags "Component"
         }
     }
-    referential-database = container "Michelin Tyre referential" "Michelin Tyre product referential" {
-        tags "Database"
-    }
 }

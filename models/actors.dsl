@@ -3,11 +3,11 @@ dealer = person "Dealer" "Performs manual data entry, manages tires & services, 
 }
 
 staff = person "Workshop Staff" "Performs manual data entry, manages tires & services, creates quotations" {
-    tags "dealer"
+    tags "staff"
 }
 
 administrator = person "Administrator" "Performs manual data entry, manages tires & services, creates quotations" {
-    tags "dealer"
+    tags "administrator"
 }
 
 customer = person "Customer" "Receives NPS surveys, messages, quotations" {

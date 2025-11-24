@@ -66,35 +66,6 @@ teds = softwareSystem "TEDS Core System" "DOS platform including microservices a
                     tags "Container"
                 }
             }
-            webApp = container "Web Application" "Serves static content and the SPA" "Java + Spring Boot" {
-                tags "Container"
-            }
-            spa = container "Single-Page Application" "Internet banking UI in the browser" "React + TypeScript" {
-                tags "Container"
-            }
-            mobileApp = container "Mobile App" "Limited functionality on mobile devices" "Flutter" {
-                tags "Container"
-            }
-            api = container "API Application" "Provides functionality via JSON/HTTPS API" "Java + Spring Boot" {
-                tags "Container"
-
-                // ==================== COMPONENTS (must be inside their container) ====================
-                signInController = component "Sign In Controller" "Allows users to sign in" "Spring MVC RestController" {
-                    tags "Component"
-                }
-                accountsController = component "Accounts Controller" "Account summary & history" "Spring MVC RestController" {
-                    tags "Component"
-                }
-                transferController = component "Transfer Controller" "Handles payments/transfers" "Spring MVC RestController" {
-                    tags "Component"
-                }
-                securityComponent = component "Security Component" "Authentication & authorization" "Spring Security" {
-                    tags "Component"
-                }
-                mainframeFacade = component "Mainframe Facade" "Adapter to legacy mainframe" "Java" {
-                    tags "Component"
-                }
-            }
             sqlproxy = container "sqlproxy" "medium performance database" {
                 tags "Container" "Database"
             }
@@ -103,5 +74,22 @@ teds = softwareSystem "TEDS Core System" "DOS platform including microservices a
             }
             core-database = container "core-database" "high performance database" {
                 tags "Container" "Database"
+
+                // ==================== COMPONENTS (must be inside their container) ====================
+                DCP-database = component "DCP Mobile Database" "Stores credentials for log in" "postgres" {
+                    tags "Component"
+                }
+                eOrdering-database = component "E-Ordering Database" "Stores E-Ordering data" "postgres" {
+                    tags "Component"
+                }
+                referential-database = component "Referential Database" "Stores referential data" "postgres" {
+                    tags "Component"
+                }
+                taxation-database = component "Taxation Database" "Stores taxation data" "postgres" {
+                    tags "Component"
+                }
+                loyalty-database = component "Loyalty Database" "Stores loyalty data" "postgres" {
+                    tags "Component"
+                }
             }
         }
