@@ -153,9 +153,19 @@ workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
         }
         
         referential-system = softwareSystem "Referential System" "Wecare-like referential provider" {
-            # tags "Container"
+            tags "Container"
 
             // ==================== CONTAINERS====================
+            teds-referential = container "TEDS Tyre referential" "TEDS product and services referential" {
+                tags "Container"
+                // ==================== COMPONENTS (must be inside their container) ====================
+                Kafka-producer-referential = component "Kafka producer for referential-system" {
+                    tags "Component"
+                }
+                Kafka-consumer-referential = component "Kafka consumer for referential-system" {
+                    tags "Component"
+                }
+            }
             PS9-referential = container "Michelin Tyre referential" "Michelin Tyre product referential" {
                 tags "Container"
             }
@@ -170,8 +180,19 @@ workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
             }
         }
         
-        loyalty = softwareSystem "Loyalty Programs" "Loyalty program adapter" {
-            tags "Existing System"
+        loyalty-adapter = softwareSystem "Loyalty Programs" "Loyalty program adapter" {
+            tags "container"
+
+            // ==================== CONTAINERS====================
+            Thailand-iCare = container "Thailand iCare" "Thailand iCare loyalty program" {
+                tags "Container"
+            }
+            Korea-loyalty = container "Korea Loyalty" "Korea loyalty program" {
+                tags "Container"
+            }
+            Other-Loyalty = container "Other Loyalty" "Other loyalty program" {
+                tags "Container" "API"
+            }
         }
 
         eordering = softwareSystem "E-Ordering" "E-ordering adapter" {
@@ -219,14 +240,18 @@ workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
         service-mobile -> dcpMobile "Authenticates & exchanges data"
         
         // Referentials
-        PS9 -> Ps9-referential "Gets tyre referential data" "kafka"
-        Spyder -> Spyder-referential "Gets non-tyre referential data" "kafka"
-        WyzAuto -> WyzAuto-referential "Gets non-tyre referential data" "API" "kafka"
-        MARS -> Manual-dump-referential "Gets non-tyre referential data" "kafka"
-        referential-system -> sku "Provides referential data" "kafka"
+        PS9 -> kafka-consumer-referential "Gets tyre referential data" "kafka"
+        kafka-consumer-referential -> Ps9-referential "Gets tyre referential data" "kafka"
+        Spyder -> kafka-consumer-referential "Gets non-tyre referential data" "kafka"
+        kafka-consumer-referential -> Spyder-referential "Gets non-tyre referential data" "kafka"
+        WyzAuto -> kafka-consumer-referential "Gets non-tyre referential data" "API" "kafka"
+        kafka-consumer-referential -> WyzAuto-referential "Gets non-tyre referential data" "API" "kafka"
+        MARS -> kafka-consumer-referential "Gets non-tyre referential data" "kafka"
+        kafka-consumer-referential -> Manual-dump-referential "Gets non-tyre referential data" "kafka"
+        kafka-producer-referential -> sku "Provides referential data" "kafka"
 
         //
-        loyalty -> teds-customer "Provides available coupons" "kafka"
+        loyalty-adapter -> teds-customer "Provides available coupons" "kafka"
         eordering -> supplychain "Sends purchase orders" "kafka"
         finance -> taxation "Sends tax data" "kafka"
         taxation -> finance "Provides government reference ID" "kafka"
@@ -256,72 +281,6 @@ workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
         transferController -> mainframeFacade "Uses"
     }
 
-    views {
-        systemContext teds "Level1_SystemContext" {
-            title "System Context"
-            include *
-            # autoLayout lr
-        }
-
-        container teds "Level2_teds_Containers" {
-            title "Containers"
-            include *
-            # autoLayout lr
-        }
-
-        container referential-system "Level2_referential_Containers" {
-            title "Containers"
-            include *
-            # autoLayout lr
-        }
-
-        component api "Level3_Components" {
-            title "API Application – Components"
-            include *
-            # autoLayout lr
-        }
-
-        dynamic api "SignIn_Flow" "User signs in" {
-            spa -> signInController "POST /signin"
-            signInController -> securityComponent "validate()"
-            securityComponent -> signInController "JWT"
-            signInController -> spa "200 OK + JWT"
-            # autoLayout lr
-        }
-
-        styles {
-            element "Person" {
-                shape Person
-                background #1168bd
-                color #ffffff
-            }
-            element "Existing System" {
-                background #999999
-                color #ffffff
-            }
-            element "Database" {
-                shape Cylinder
-            }
-            element "Container" {
-                background #438dd6
-                color #ffffff
-            }
-            element "Component" {
-                background #85bbf0
-                color #000000
-            }
-            element "WebBrowser" {
-                shape WebBrowser
-                background white
-                color #000000
-            }
-            element "MobileDevicePortrait" {
-                shape MobileDevicePortrait
-                background white
-                color #000000
-            }
-        }
-
-        theme default
-    }
+    !include views/views.dsl
+    
 }
