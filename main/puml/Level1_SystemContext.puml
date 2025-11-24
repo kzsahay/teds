@@ -9,10 +9,10 @@ top to bottom direction
 
 Person(Dealer, "Dealer", $descr="Performs manual data entry, manages tires & services, creates quotations", $tags="", $link="")
 Person(Administrator, "Administrator", $descr="Performs manual data entry, manages tires & services, creates quotations", $tags="", $link="")
-System(DCPMobileApplication, "DCP Mobile Application", $descr="Mobile login application", $tags="", $link="")
-Person(Customer, "Customer", $descr="Receives NPS surveys, messages, quotations", $tags="", $link="")
 System(ReferentialSystem, "Referential System", $descr="Wecare-like referential provider", $tags="", $link="")
+Person(Customer, "Customer", $descr="Receives NPS surveys, messages, quotations", $tags="", $link="")
 System(LoyaltyPrograms, "Loyalty Programs", $descr="Loyalty program adapter", $tags="", $link="")
+System(DCPMobileApplication, "DCP Mobile Application", $descr="Mobile login application", $tags="", $link="")
 System(EOrdering, "E-Ordering", $descr="E-ordering adapter", $tags="", $link="")
 System(TaxationAdapter, "Taxation Adapter", $descr="Downstream tax processing & government linking", $tags="", $link="")
 System(TDataPlatform, "T+ Data Platform", $descr="Reporting data platform & CRM programs", $tags="", $link="")

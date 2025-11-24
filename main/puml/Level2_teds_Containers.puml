@@ -11,9 +11,9 @@ top to bottom direction
 Person(Dealer, "Dealer", $descr="Performs manual data entry, manages tires & services, creates quotations", $tags="", $link="")
 Person(Administrator, "Administrator", $descr="Performs manual data entry, manages tires & services, creates quotations", $tags="", $link="")
 Person(Customer, "Customer", $descr="Receives NPS surveys, messages, quotations", $tags="", $link="")
-System(DCPMobileApplication, "DCP Mobile Application", $descr="Mobile login application", $tags="", $link="")
 System(ReferentialSystem, "Referential System", $descr="Wecare-like referential provider", $tags="", $link="")
 System(LoyaltyPrograms, "Loyalty Programs", $descr="Loyalty program adapter", $tags="", $link="")
+System(DCPMobileApplication, "DCP Mobile Application", $descr="Mobile login application", $tags="", $link="")
 System(EOrdering, "E-Ordering", $descr="E-ordering adapter", $tags="", $link="")
 System(TaxationAdapter, "Taxation Adapter", $descr="Downstream tax processing & government linking", $tags="", $link="")
 System(TDataPlatform, "T+ Data Platform", $descr="Reporting data platform & CRM programs", $tags="", $link="")
@@ -69,7 +69,7 @@ System_Boundary("TEDSCoreSystem_boundary", "TEDS Core System", $tags="") {
   Container(TEDSCoreSystem.APIApplication, "API Application", $techn="Java + Spring Boot", $descr="Provides functionality via JSON/HTTPS API", $tags="", $link="")
   ContainerDb(TEDSCoreSystem.sqlproxy, "sqlproxy", $techn="", $descr="medium performance database", $tags="", $link="")
   ContainerDb(TEDSCoreSystem.reportingdatabase, "reporting-database", $techn="", $descr="medium performance database", $tags="", $link="")
-  ContainerDb(TEDSCoreSystem.coreatabase, "core-atabase", $techn="", $descr="high performance database", $tags="", $link="")
+  ContainerDb(TEDSCoreSystem.coredatabase, "core-database", $techn="", $descr="high performance database", $tags="", $link="")
 }
 
 Rel(ReferentialSystem, TEDSCoreSystem.tedsservicesku, "Provides referential data", $techn="kafka", $tags="", $link="")
