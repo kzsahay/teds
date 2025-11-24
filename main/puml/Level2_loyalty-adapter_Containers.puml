@@ -20,7 +20,7 @@ System_Boundary("LoyaltyPrograms_boundary", "Loyalty Programs", $tags="") {
 Rel(ThailandiCare, LoyaltyPrograms.TEDSLoyalty, "Gets available coupons", $techn="API", $tags="", $link="")
 Rel(KoreaLoyalty, LoyaltyPrograms.TEDSLoyalty, "Gets available coupons", $techn="API", $tags="", $link="")
 Rel(OtherLoyalty, LoyaltyPrograms.TEDSLoyalty, "Gets available coupons", $techn="API", $tags="", $link="")
-Rel(LoyaltyPrograms.TEDSLoyalty, TEDSCoreSystem, "Provides available coupons", $techn="kafka", $tags="", $link="")
+Rel(LoyaltyPrograms.TEDSLoyalty, TEDSCoreSystem, "Stores loyalty data", $techn="", $tags="", $link="")
 
 SHOW_LEGEND(true)
 @enduml

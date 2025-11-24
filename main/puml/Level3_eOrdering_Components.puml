@@ -21,6 +21,7 @@ Container_Boundary("EOrdering.TEDSEOrdering_boundary", "TEDS E-Ordering", $tags=
 Rel(ThailandMDO, EOrdering.TEDSEOrdering.Kafkaconsumerforeorderingsystem, "Gets available E-orders", $techn="API", $tags="", $link="")
 Rel(KoreaSANA, EOrdering.TEDSEOrdering.Kafkaconsumerforeorderingsystem, "Gets available E-orders", $techn="API", $tags="", $link="")
 Rel(OtherEOrdering, EOrdering.TEDSEOrdering.Kafkaconsumerforeorderingsystem, "Gets available E-orders", $techn="API", $tags="", $link="")
+Rel(EOrdering.TEDSEOrdering.Kafkaconsumerforeorderingsystem, TEDSCoreSystem, "Stores eOrdering data", $techn="", $tags="", $link="")
 Rel(EOrdering.TEDSEOrdering.Kafkaproducerforeorderingsystem, TEDSCoreSystem, "Provides available E-orders", $techn="kafka", $tags="", $link="")
 
 SHOW_LEGEND(true)

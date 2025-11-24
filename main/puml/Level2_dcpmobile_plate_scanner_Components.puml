@@ -1,0 +1,24 @@
+@startuml
+set separator none
+title Containers
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Component>
+
+System(TEDSCoreSystem, "TEDS Core System", $descr="DOS platform including microservices and core business logic", $tags="", $link="")
+System(PlateScannerExternalAPI, "Plate Scanner External API", $descr="Third-party number plate and VIN scanning API", $tags="", $link="")
+
+Container_Boundary("DCPMobileApplication.PlateScanner_boundary", "Plate Scanner", $tags="") {
+  Component(DCPMobileApplication.PlateScanner.Cameraaccessforplatescanner, "Camera access for plate scanner", $techn="", $descr="", $tags="", $link="")
+  Component(DCPMobileApplication.PlateScanner.ExternalAPItoreadplateandVIN, "External API to read plate and VIN", $techn="", $descr="", $tags="", $link="")
+}
+
+Rel(DCPMobileApplication.PlateScanner.ExternalAPItoreadplateandVIN, PlateScannerExternalAPI, "Send images of number plates & VINs", $techn="JSON/HTTPS", $tags="", $link="")
+Rel(PlateScannerExternalAPI, DCPMobileApplication.PlateScanner.ExternalAPItoreadplateandVIN, "Receives text number plates & VINs", $techn="JSON/HTTPS", $tags="", $link="")
+Rel(TEDSCoreSystem, DCPMobileApplication.PlateScanner.Cameraaccessforplatescanner, "Accesses camera to take pictures of number plates & VINs", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

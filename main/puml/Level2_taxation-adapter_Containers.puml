@@ -21,7 +21,7 @@ Rel(ETax.TEDSTaxation, ThailandETax, "Sends E-tax data to Govt agency", $techn="
 Rel(ETax.TEDSTaxation, OtherETax, "Sends E-tax data to Govt agency", $techn="kafka", $tags="", $link="")
 Rel(ThailandETax, ETax.TEDSTaxation, "Gets E-tax reference from Govt agency", $techn="kafka", $tags="", $link="")
 Rel(OtherETax, ETax.TEDSTaxation, "Gets E-tax reference from Govt agency", $techn="kafka", $tags="", $link="")
-Rel(ETax.TEDSTaxation, TEDSCoreSystem, "Provides government reference ID", $techn="kafka", $tags="", $link="")
+Rel(ETax.TEDSTaxation, TEDSCoreSystem, "Stores taxation data", $techn="", $tags="", $link="")
 
 SHOW_LEGEND(true)
 @enduml

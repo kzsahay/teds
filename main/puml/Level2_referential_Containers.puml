@@ -16,15 +16,13 @@ System(MARSApplication, "MARS Application", $descr="Mobile login application", $
 
 System_Boundary("ReferentialSystem_boundary", "Referential System", $tags="") {
   Container(ReferentialSystem.TEDSTyrereferential, "TEDS Tyre referential", $techn="", $descr="TEDS product and services referential", $tags="", $link="")
-  ContainerDb(ReferentialSystem.MichelinTyrereferential, "Michelin Tyre referential", $techn="", $descr="Michelin Tyre product referential", $tags="", $link="")
 }
 
-Rel(SpyderApplication, ReferentialSystem.TEDSTyrereferential, "Gets non-tyre referential data", $techn="kafka", $tags="", $link="")
 Rel(WyzAutoApplication, ReferentialSystem.TEDSTyrereferential, "Gets non-tyre referential data", $techn="API", $tags="", $link="")
 Rel(MARSApplication, ReferentialSystem.TEDSTyrereferential, "Gets non-tyre referential data", $techn="Manual dump", $tags="", $link="")
-Rel(ReferentialSystem.TEDSTyrereferential, ReferentialSystem.MichelinTyrereferential, "Stores referential", $techn="", $tags="", $link="")
-Rel(ReferentialSystem.TEDSTyrereferential, TEDSCoreSystem, "Provides referential data", $techn="kafka", $tags="", $link="")
+Rel(ReferentialSystem.TEDSTyrereferential, TEDSCoreSystem, "Stores referential", $techn="", $tags="", $link="")
 Rel(PS9Application, ReferentialSystem.TEDSTyrereferential, "Gets Michelin tyre referential data", $techn="kafka", $tags="", $link="")
+Rel(SpyderApplication, ReferentialSystem.TEDSTyrereferential, "Gets non-tyre referential data", $techn="kafka", $tags="", $link="")
 
 SHOW_LEGEND(true)
 @enduml

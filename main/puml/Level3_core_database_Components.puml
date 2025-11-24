@@ -1,0 +1,35 @@
+@startuml
+set separator none
+title Core Database – Components
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+!include <C4/C4_Component>
+
+Container(TEDSCoreSystem.tedsservicepc, "teds-service-pc", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+System(ReferentialSystem, "Referential System", $descr="Wecare-like referential provider", $tags="", $link="")
+System(LoyaltyPrograms, "Loyalty Programs", $descr="Loyalty program adapter", $tags="", $link="")
+System(EOrdering, "E-Ordering", $descr="E-ordering adapter", $tags="", $link="")
+System(ETax, "E-Tax", $descr="E-tax adapter", $tags="", $link="")
+System(DCPMobileApplication, "DCP Mobile Application", $descr="Mobile login application", $tags="", $link="")
+
+Container_Boundary("TEDSCoreSystem.coredatabase_boundary", "core-database", $tags="") {
+  Component(TEDSCoreSystem.coredatabase.DCPMobileDatabase, "DCP Mobile Database", $techn="postgres", $descr="Stores credentials for log in", $tags="", $link="")
+  Component(TEDSCoreSystem.coredatabase.EOrderingDatabase, "E-Ordering Database", $techn="postgres", $descr="Stores E-Ordering data", $tags="", $link="")
+  Component(TEDSCoreSystem.coredatabase.ReferentialDatabase, "Referential Database", $techn="postgres", $descr="Stores referential data", $tags="", $link="")
+  Component(TEDSCoreSystem.coredatabase.TaxationDatabase, "Taxation Database", $techn="postgres", $descr="Stores taxation data", $tags="", $link="")
+  Component(TEDSCoreSystem.coredatabase.LoyaltyDatabase, "Loyalty Database", $techn="postgres", $descr="Stores loyalty data", $tags="", $link="")
+}
+
+Rel(ReferentialSystem, TEDSCoreSystem.coredatabase.ReferentialDatabase, "Stores referential", $techn="", $tags="", $link="")
+Rel(LoyaltyPrograms, TEDSCoreSystem.coredatabase.LoyaltyDatabase, "Stores loyalty data", $techn="", $tags="", $link="")
+Rel(EOrdering, TEDSCoreSystem.coredatabase.EOrderingDatabase, "Stores eOrdering data", $techn="", $tags="", $link="")
+Rel(ETax, TEDSCoreSystem.coredatabase.TaxationDatabase, "Stores taxation data", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.tedsservicepc, TEDSCoreSystem.coredatabase.DCPMobileDatabase, "Stores credentials", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.coredatabase.DCPMobileDatabase, DCPMobileApplication, "Authenticates users", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

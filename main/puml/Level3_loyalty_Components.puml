@@ -21,6 +21,7 @@ Container_Boundary("LoyaltyPrograms.TEDSLoyalty_boundary", "TEDS Loyalty", $tags
 Rel(ThailandiCare, LoyaltyPrograms.TEDSLoyalty.Kafkaconsumerforloyaltysystem, "Gets available coupons", $techn="API", $tags="", $link="")
 Rel(KoreaLoyalty, LoyaltyPrograms.TEDSLoyalty.Kafkaconsumerforloyaltysystem, "Gets available coupons", $techn="API", $tags="", $link="")
 Rel(OtherLoyalty, LoyaltyPrograms.TEDSLoyalty.Kafkaconsumerforloyaltysystem, "Gets available coupons", $techn="API", $tags="", $link="")
+Rel(LoyaltyPrograms.TEDSLoyalty.Kafkaconsumerforloyaltysystem, TEDSCoreSystem, "Stores loyalty data", $techn="", $tags="", $link="")
 Rel(LoyaltyPrograms.TEDSLoyalty.Kafkaproducerforloyaltysystem, TEDSCoreSystem, "Provides available coupons", $techn="kafka", $tags="", $link="")
 
 SHOW_LEGEND(true)
