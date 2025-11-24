@@ -1,0 +1,36 @@
+@startuml
+set separator none
+title Containers
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+
+Person(Customer, "Customer", $descr="Receives NPS surveys, messages, quotations", $tags="", $link="")
+Person(TConsultant, "T+ Consultant", $descr="Accesses reports produced from the T+ Data Platform", $tags="", $link="")
+System(TEDSCoreSystem, "TEDS Core System", $descr="DOS platform including microservices and core business logic", $tags="", $link="")
+
+System_Boundary("CRMandBISystem_boundary", "CRM and BI System", $tags="") {
+  Container(CRMandBISystem.TDataPlatform, "T+ Data Platform", $techn="", $descr="T+ Data Platform for reporting and CRM data storage", $tags="", $link="")
+  Container(CRMandBISystem.BIDashboards, "BI Dashboards", $techn="", $descr="Reporting and Dashboard platform", $tags="", $link="")
+  Container(CRMandBISystem.HubSpot, "HubSpot", $techn="", $descr="CRM & marketing automation", $tags="", $link="")
+  Container(CRMandBISystem.Infobip, "Infobip", $techn="", $descr="Enabler for messaging platforms", $tags="", $link="")
+  Container(CRMandBISystem.NPSSystem, "NPS System", $techn="", $descr="Net Promoter Score & consent management", $tags="", $link="")
+  Container(CRMandBISystem.MessagingPlatforms, "Messaging Platforms", $techn="", $descr="Line, WhatsApp, etc.", $tags="", $link="")
+}
+
+Rel(TEDSCoreSystem, CRMandBISystem.TDataPlatform, "Stores reporting data", $techn="", $tags="", $link="")
+Rel(CRMandBISystem.TDataPlatform, CRMandBISystem.HubSpot, "Provides CRM data", $techn="", $tags="", $link="")
+Rel(CRMandBISystem.HubSpot, CRMandBISystem.Infobip, "Sends/receives customer messages", $techn="", $tags="", $link="")
+Rel(CRMandBISystem.Infobip, CRMandBISystem.MessagingPlatforms, "Sends messages to customers", $techn="", $tags="", $link="")
+Rel(CRMandBISystem.MessagingPlatforms, Customer, "Sends NPS to customers", $techn="", $tags="", $link="")
+Rel(Customer, CRMandBISystem.MessagingPlatforms, "Responds to NPS surveys", $techn="", $tags="", $link="")
+Rel(CRMandBISystem.MessagingPlatforms, CRMandBISystem.Infobip, "Sends customer replies back to Infobip", $techn="", $tags="", $link="")
+Rel(CRMandBISystem.Infobip, CRMandBISystem.HubSpot, "SSends customer replies back to Hubspot", $techn="", $tags="", $link="")
+Rel(CRMandBISystem.TDataPlatform, CRMandBISystem.BIDashboards, "Provides data for reports and dashboards", $techn="", $tags="", $link="")
+Rel(CRMandBISystem.BIDashboards, TConsultant, "Accesses dashboards", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

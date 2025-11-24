@@ -1,0 +1,21 @@
+@startuml
+set separator none
+title HubSpot CRM – Components
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+!include <C4/C4_Component>
+
+Container(CRMandBISystem.HubSpot, "HubSpot", $techn="", $descr="CRM & marketing automation", $tags="", $link="")
+
+Container_Boundary("CRMandBISystem.TDataPlatform_boundary", "T+ Data Platform", $tags="") {
+  Component(CRMandBISystem.TDataPlatform.pgbouncerforPostgresdatabaseconnections, "pgbouncer for Postgres database connections", $techn="", $descr="", $tags="", $link="")
+}
+
+Rel(CRMandBISystem.TDataPlatform.pgbouncerforPostgresdatabaseconnections, CRMandBISystem.HubSpot, "Provides CRM data", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

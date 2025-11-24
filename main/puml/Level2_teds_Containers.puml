@@ -16,7 +16,7 @@ System(LoyaltyPrograms, "Loyalty Programs", $descr="Loyalty program adapter", $t
 System(EOrdering, "E-Ordering", $descr="E-ordering adapter", $tags="", $link="")
 System(ETax, "E-Tax", $descr="E-tax adapter", $tags="", $link="")
 System(DCPMobileApplication, "DCP Mobile Application", $descr="Mobile login application", $tags="", $link="")
-System(TDataPlatform, "T+ Data Platform", $descr="Reporting data platform & CRM programs", $tags="", $link="")
+System(CRMandBISystem, "CRM and BI System", $descr="CRM and Business Intelligence platform", $tags="", $link="")
 
 System_Boundary("TEDSCoreSystem_boundary", "TEDS Core System", $tags="") {
   AddBoundaryTag("Backend", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="dashed")
@@ -63,13 +63,13 @@ System_Boundary("TEDSCoreSystem_boundary", "TEDS Core System", $tags="") {
   }
 
   Container(TEDSCoreSystem.CDN, "CDN", $techn="", $descr="Serves static content and the SPA", $tags="", $link="")
-  ContainerDb(TEDSCoreSystem.sqlproxy, "sqlproxy", $techn="", $descr="medium performance database", $tags="", $link="")
+  Container(TEDSCoreSystem.sqlproxy, "sqlproxy", $techn="", $descr="medium performance database", $tags="", $link="")
   ContainerDb(TEDSCoreSystem.reportingdatabase, "reporting-database", $techn="", $descr="medium performance database", $tags="", $link="")
   ContainerDb(TEDSCoreSystem.coredatabase, "core-database", $techn="", $descr="high performance database", $tags="", $link="")
 }
 
-Rel(TEDSCoreSystem.tedsservicepc, TEDSCoreSystem.sqlproxy, "stores transaction data to core database", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.tedsservicemobile, TEDSCoreSystem.sqlproxy, "stores transaction data to core database", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.tedsservicepc, TEDSCoreSystem.sqlproxy, "stores transaction data to core database", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.tedsserviceweb, TEDSCoreSystem.sqlproxy, "stores transaction data to core database", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.systemfoundation, TEDSCoreSystem.sqlproxy, "stores transaction data to core database", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.tedsserviceaftersales, TEDSCoreSystem.sqlproxy, "stores transaction data to core database", $techn="", $tags="", $link="")
@@ -94,7 +94,7 @@ Rel(TEDSCoreSystem.tedsservicemobile, DCPMobileApplication, "Exchanges data", $t
 Rel(TEDSCoreSystem.tedsservicepc, TEDSCoreSystem.coredatabase, "Stores credentials", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.coredatabase, DCPMobileApplication, "Authenticates users", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.coredatabase, TEDSCoreSystem.tedsservicescheduler, "Schedules copy of transaction data", $techn="", $tags="", $link="")
-Rel(TEDSCoreSystem.tedsservicescheduler, TDataPlatform, "Stores reporting data", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.tedsservicescheduler, CRMandBISystem, "Stores reporting data", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.CDN, Dealer, "Gets frontend assets", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.CDN, WorkshopStaff, "Gets frontend assets", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.CDN, Administrator, "Gets frontend assets", $techn="", $tags="", $link="")

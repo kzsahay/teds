@@ -11,7 +11,7 @@ top to bottom direction
 
 Container(TEDSCoreSystem.tedsservicepc, "teds-service-pc", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
 Container(TEDSCoreSystem.tedsservicescheduler, "teds-service-scheduler", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
-ContainerDb(TEDSCoreSystem.sqlproxy, "sqlproxy", $techn="", $descr="medium performance database", $tags="", $link="")
+Container(TEDSCoreSystem.sqlproxy, "sqlproxy", $techn="", $descr="medium performance database", $tags="", $link="")
 System(ReferentialSystem, "Referential System", $descr="Wecare-like referential provider", $tags="", $link="")
 System(LoyaltyPrograms, "Loyalty Programs", $descr="Loyalty program adapter", $tags="", $link="")
 System(EOrdering, "E-Ordering", $descr="E-ordering adapter", $tags="", $link="")
