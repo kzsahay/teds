@@ -17,14 +17,44 @@ views {
             # autoLayout lr
         }
 
+        component teds-referential "Level3_referential_Components" {
+            title "Referential System – Components"
+            include *
+            # autoLayout lr
+        }
+
         container loyalty-adapter "Level2_loyalty-adapter_Containers" {
             title "Containers"
             include *
             # autoLayout lr
         }
 
-        component teds-referential "Level3_referential_Components" {
-            title "Referential System – Components"
+        component teds-loyalty "Level3_loyalty_Components" {
+            title "Loyalty System – Components"
+            include *
+            # autoLayout lr
+        }
+
+        container eOrdering-adapter "Level2_eOrdering-adapter_Containers" {
+            title "Containers"
+            include *
+            # autoLayout lr
+        }
+
+        component teds-eOrdering "Level3_eOrdering_Components" {
+            title "E-Ordering System – Components"
+            include *
+            # autoLayout lr
+        }
+
+        container taxation-adapter "Level2_taxation-adapter_Containers" {
+            title "Containers"
+            include *
+            # autoLayout lr
+        }
+
+        component teds-taxation "Level3_taxation_Components" {
+            title "Taxation System – Components"
             include *
             # autoLayout lr
         }

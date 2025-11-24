@@ -28,16 +28,7 @@ referential-system = softwareSystem "Referential System" "Wecare-like referentia
             tags "Component"
         }
     }
-    PS9-referential = container "Michelin Tyre referential" "Michelin Tyre product referential" {
-        tags "Container"
-    }
-    Spyder-referential = container "Non-Michelin Tyre referential" "Non-Michelin Tyre product referential" {
-        tags "Container"
-    }
-    WyzAuto-referential = container "WyzAuto Non-Tyre products referential" "Non-tyre products referential" {
-        tags "Container" "API"
-    }
-    Manual-dump-referential = container "Manual Non-Tyre products referential" "Manual dump from MARS if WyzAuto is not ready" {
-        tags "Container" 
+    referential-database = container "Michelin Tyre referential" "Michelin Tyre product referential" {
+        tags "Database"
     }
 }

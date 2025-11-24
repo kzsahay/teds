@@ -3,7 +3,8 @@
   "description" : "System Context Diagram (C4 Level 1)",
   "documentation" : { },
   "id" : 1,
-  "lastModifiedDate" : "2025-11-24T03:35:58Z",
+  "lastModifiedAgent" : "structurizr-ui",
+  "lastModifiedDate" : "2025-11-24T04:26:24Z",
   "model" : {
     "people" : [ {
       "description" : "Performs manual data entry, manages tires & services, creates quotations",
@@ -14,8 +15,8 @@
       },
       "relationships" : [ {
         "description" : "Uses",
-        "destinationId" : "51",
-        "id" : "80",
+        "destinationId" : "65",
+        "id" : "92",
         "sourceId" : "1",
         "tags" : "Relationship"
       } ],
@@ -46,27 +47,27 @@
       "relationships" : [ {
         "description" : "Uses",
         "destinationId" : "23",
-        "id" : "77",
+        "id" : "89",
         "sourceId" : "4",
         "tags" : "Relationship",
         "technology" : "HTTPS"
       }, {
         "description" : "Uses",
         "destinationId" : "6",
-        "id" : "78",
-        "linkedRelationshipId" : "77",
+        "id" : "90",
+        "linkedRelationshipId" : "89",
         "sourceId" : "4",
         "technology" : "HTTPS"
       }, {
         "description" : "Uses",
         "destinationId" : "25",
-        "id" : "79",
+        "id" : "91",
         "sourceId" : "4",
         "tags" : "Relationship"
       }, {
         "description" : "Responds to NPS surveys",
-        "destinationId" : "57",
-        "id" : "126",
+        "destinationId" : "69",
+        "id" : "180",
         "sourceId" : "4",
         "tags" : "Relationship"
       } ],
@@ -96,7 +97,7 @@
         "relationships" : [ {
           "description" : "Uses",
           "destinationId" : "9",
-          "id" : "65",
+          "id" : "77",
           "sourceId" : "7",
           "tags" : "Relationship"
         } ],
@@ -114,13 +115,13 @@
         "relationships" : [ {
           "description" : "Uses",
           "destinationId" : "9",
-          "id" : "66",
+          "id" : "78",
           "sourceId" : "8",
           "tags" : "Relationship"
         }, {
           "description" : "Authenticates & exchanges data",
-          "destinationId" : "51",
-          "id" : "83",
+          "destinationId" : "65",
+          "id" : "95",
           "sourceId" : "8",
           "tags" : "Relationship"
         } ],
@@ -160,49 +161,49 @@
         "relationships" : [ {
           "description" : "Uses",
           "destinationId" : "12",
-          "id" : "69",
+          "id" : "81",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Uses",
           "destinationId" : "13",
-          "id" : "70",
+          "id" : "82",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Uses",
           "destinationId" : "14",
-          "id" : "71",
+          "id" : "83",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Uses",
           "destinationId" : "15",
-          "id" : "72",
+          "id" : "84",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Uses",
           "destinationId" : "16",
-          "id" : "73",
+          "id" : "85",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Uses",
           "destinationId" : "17",
-          "id" : "74",
+          "id" : "86",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Uses",
           "destinationId" : "18",
-          "id" : "75",
+          "id" : "87",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Uses",
           "destinationId" : "19",
-          "id" : "76",
+          "id" : "88",
           "sourceId" : "11",
           "tags" : "Relationship"
         } ],
@@ -228,6 +229,14 @@
         "properties" : {
           "structurizr.dsl.identifier" : "teds-customer"
         },
+        "relationships" : [ {
+          "description" : "Requests available coupons",
+          "destinationId" : "44",
+          "id" : "117",
+          "sourceId" : "13",
+          "tags" : "Relationship",
+          "technology" : "kafka"
+        } ],
         "tags" : "Element,Container",
         "technology" : "React + TypeScript"
       }, {
@@ -241,10 +250,24 @@
         },
         "relationships" : [ {
           "description" : "Sends tax data",
-          "destinationId" : "53",
-          "id" : "115",
+          "destinationId" : "62",
+          "id" : "149",
           "sourceId" : "14",
           "tags" : "Relationship",
+          "technology" : "kafka"
+        }, {
+          "description" : "Sends tax data",
+          "destinationId" : "60",
+          "id" : "150",
+          "linkedRelationshipId" : "149",
+          "sourceId" : "14",
+          "technology" : "kafka"
+        }, {
+          "description" : "Sends tax data",
+          "destinationId" : "59",
+          "id" : "151",
+          "linkedRelationshipId" : "149",
+          "sourceId" : "14",
           "technology" : "kafka"
         } ],
         "tags" : "Element,Container",
@@ -293,8 +316,8 @@
         },
         "relationships" : [ {
           "description" : "Sends reporting data",
-          "destinationId" : "54",
-          "id" : "119",
+          "destinationId" : "66",
+          "id" : "173",
           "sourceId" : "18",
           "tags" : "Relationship",
           "technology" : "kafka"
@@ -323,25 +346,25 @@
         "relationships" : [ {
           "description" : "Gets frontend assets",
           "destinationId" : "1",
-          "id" : "59",
+          "id" : "71",
           "sourceId" : "20",
           "tags" : "Relationship"
         }, {
           "description" : "Gets frontend assets",
           "destinationId" : "3",
-          "id" : "61",
+          "id" : "73",
           "sourceId" : "20",
           "tags" : "Relationship"
         }, {
           "description" : "Gives frontend assets",
           "destinationId" : "7",
-          "id" : "63",
+          "id" : "75",
           "sourceId" : "20",
           "tags" : "Relationship"
         }, {
           "description" : "Gives frontend assets",
           "destinationId" : "8",
-          "id" : "64",
+          "id" : "76",
           "sourceId" : "20",
           "tags" : "Relationship"
         } ],
@@ -359,7 +382,7 @@
         "relationships" : [ {
           "description" : "Uses",
           "destinationId" : "11",
-          "id" : "67",
+          "id" : "79",
           "sourceId" : "21",
           "tags" : "Relationship"
         } ],
@@ -377,7 +400,7 @@
         "relationships" : [ {
           "description" : "Uses",
           "destinationId" : "11",
-          "id" : "68",
+          "id" : "80",
           "sourceId" : "22",
           "tags" : "Relationship"
         } ],
@@ -394,7 +417,7 @@
         "relationships" : [ {
           "description" : "Delivers",
           "destinationId" : "24",
-          "id" : "127",
+          "id" : "181",
           "sourceId" : "23",
           "tags" : "Relationship"
         } ],
@@ -411,28 +434,28 @@
         "relationships" : [ {
           "description" : "Calls",
           "destinationId" : "26",
-          "id" : "128",
+          "id" : "182",
           "sourceId" : "24",
           "tags" : "Relationship",
           "technology" : "JSON/HTTPS"
         }, {
           "description" : "POST /signin",
           "destinationId" : "27",
-          "id" : "130",
+          "id" : "184",
           "sourceId" : "24",
           "tags" : "Relationship",
           "technology" : "JSON/HTTPS"
         }, {
           "description" : "GET /accounts",
           "destinationId" : "28",
-          "id" : "131",
+          "id" : "185",
           "sourceId" : "24",
           "tags" : "Relationship",
           "technology" : "JSON/HTTPS"
         }, {
           "description" : "POST /transfer",
           "destinationId" : "29",
-          "id" : "132",
+          "id" : "186",
           "sourceId" : "24",
           "tags" : "Relationship",
           "technology" : "JSON/HTTPS"
@@ -450,28 +473,28 @@
         "relationships" : [ {
           "description" : "Calls",
           "destinationId" : "26",
-          "id" : "129",
+          "id" : "183",
           "sourceId" : "25",
           "tags" : "Relationship",
           "technology" : "JSON/HTTPS"
         }, {
           "description" : "POST /signin",
           "destinationId" : "27",
-          "id" : "133",
+          "id" : "187",
           "sourceId" : "25",
           "tags" : "Relationship",
           "technology" : "JSON/HTTPS"
         }, {
           "description" : "GET /accounts",
           "destinationId" : "28",
-          "id" : "134",
+          "id" : "188",
           "sourceId" : "25",
           "tags" : "Relationship",
           "technology" : "JSON/HTTPS"
         }, {
           "description" : "POST /transfer",
           "destinationId" : "29",
-          "id" : "135",
+          "id" : "189",
           "sourceId" : "25",
           "tags" : "Relationship",
           "technology" : "JSON/HTTPS"
@@ -490,7 +513,7 @@
           "relationships" : [ {
             "description" : "Uses",
             "destinationId" : "30",
-            "id" : "136",
+            "id" : "190",
             "sourceId" : "27",
             "tags" : "Relationship"
           } ],
@@ -507,7 +530,7 @@
           "relationships" : [ {
             "description" : "Uses",
             "destinationId" : "31",
-            "id" : "137",
+            "id" : "191",
             "sourceId" : "28",
             "tags" : "Relationship"
           } ],
@@ -524,7 +547,7 @@
           "relationships" : [ {
             "description" : "Uses",
             "destinationId" : "31",
-            "id" : "138",
+            "id" : "192",
             "sourceId" : "29",
             "tags" : "Relationship"
           } ],
@@ -598,33 +621,54 @@
       "relationships" : [ {
         "description" : "Gets frontend assets",
         "destinationId" : "1",
-        "id" : "60",
-        "linkedRelationshipId" : "59",
+        "id" : "72",
+        "linkedRelationshipId" : "71",
         "sourceId" : "6"
       }, {
         "description" : "Gets frontend assets",
         "destinationId" : "3",
-        "id" : "62",
-        "linkedRelationshipId" : "61",
+        "id" : "74",
+        "linkedRelationshipId" : "73",
         "sourceId" : "6"
       }, {
         "description" : "Authenticates & exchanges data",
-        "destinationId" : "51",
-        "id" : "84",
-        "linkedRelationshipId" : "83",
+        "destinationId" : "65",
+        "id" : "96",
+        "linkedRelationshipId" : "95",
         "sourceId" : "6"
       }, {
+        "description" : "Requests available coupons",
+        "destinationId" : "44",
+        "id" : "118",
+        "linkedRelationshipId" : "117",
+        "sourceId" : "6",
+        "technology" : "kafka"
+      }, {
         "description" : "Sends tax data",
-        "destinationId" : "53",
-        "id" : "116",
-        "linkedRelationshipId" : "115",
+        "destinationId" : "62",
+        "id" : "152",
+        "linkedRelationshipId" : "149",
+        "sourceId" : "6",
+        "technology" : "kafka"
+      }, {
+        "description" : "Sends tax data",
+        "destinationId" : "60",
+        "id" : "153",
+        "linkedRelationshipId" : "149",
+        "sourceId" : "6",
+        "technology" : "kafka"
+      }, {
+        "description" : "Sends tax data",
+        "destinationId" : "59",
+        "id" : "154",
+        "linkedRelationshipId" : "149",
         "sourceId" : "6",
         "technology" : "kafka"
       }, {
         "description" : "Sends reporting data",
-        "destinationId" : "54",
-        "id" : "120",
-        "linkedRelationshipId" : "119",
+        "destinationId" : "66",
+        "id" : "174",
+        "linkedRelationshipId" : "173",
         "sourceId" : "6",
         "technology" : "kafka"
       } ],
@@ -638,24 +682,24 @@
         "structurizr.dsl.identifier" : "PS9"
       },
       "relationships" : [ {
-        "description" : "Gets tyre referential data",
+        "description" : "Gets Michelin tyre referential data",
         "destinationId" : "42",
-        "id" : "85",
+        "id" : "97",
         "sourceId" : "35",
         "tags" : "Relationship",
         "technology" : "kafka"
       }, {
-        "description" : "Gets tyre referential data",
+        "description" : "Gets Michelin tyre referential data",
         "destinationId" : "40",
-        "id" : "86",
-        "linkedRelationshipId" : "85",
+        "id" : "98",
+        "linkedRelationshipId" : "97",
         "sourceId" : "35",
         "technology" : "kafka"
       }, {
-        "description" : "Gets tyre referential data",
+        "description" : "Gets Michelin tyre referential data",
         "destinationId" : "39",
-        "id" : "87",
-        "linkedRelationshipId" : "85",
+        "id" : "99",
+        "linkedRelationshipId" : "97",
         "sourceId" : "35",
         "technology" : "kafka"
       } ],
@@ -671,22 +715,22 @@
       "relationships" : [ {
         "description" : "Gets non-tyre referential data",
         "destinationId" : "42",
-        "id" : "90",
+        "id" : "100",
         "sourceId" : "36",
         "tags" : "Relationship",
         "technology" : "kafka"
       }, {
         "description" : "Gets non-tyre referential data",
         "destinationId" : "40",
-        "id" : "91",
-        "linkedRelationshipId" : "90",
+        "id" : "101",
+        "linkedRelationshipId" : "100",
         "sourceId" : "36",
         "technology" : "kafka"
       }, {
         "description" : "Gets non-tyre referential data",
         "destinationId" : "39",
-        "id" : "92",
-        "linkedRelationshipId" : "90",
+        "id" : "102",
+        "linkedRelationshipId" : "100",
         "sourceId" : "36",
         "technology" : "kafka"
       } ],
@@ -702,22 +746,22 @@
       "relationships" : [ {
         "description" : "Gets non-tyre referential data",
         "destinationId" : "42",
-        "id" : "95",
+        "id" : "103",
         "sourceId" : "37",
         "tags" : "Relationship,kafka",
         "technology" : "API"
       }, {
         "description" : "Gets non-tyre referential data",
         "destinationId" : "40",
-        "id" : "96",
-        "linkedRelationshipId" : "95",
+        "id" : "104",
+        "linkedRelationshipId" : "103",
         "sourceId" : "37",
         "technology" : "API"
       }, {
         "description" : "Gets non-tyre referential data",
         "destinationId" : "39",
-        "id" : "97",
-        "linkedRelationshipId" : "95",
+        "id" : "105",
+        "linkedRelationshipId" : "103",
         "sourceId" : "37",
         "technology" : "API"
       } ],
@@ -733,24 +777,24 @@
       "relationships" : [ {
         "description" : "Gets non-tyre referential data",
         "destinationId" : "42",
-        "id" : "100",
+        "id" : "106",
         "sourceId" : "38",
         "tags" : "Relationship",
-        "technology" : "kafka"
+        "technology" : "Manual dump"
       }, {
         "description" : "Gets non-tyre referential data",
         "destinationId" : "40",
-        "id" : "101",
-        "linkedRelationshipId" : "100",
+        "id" : "107",
+        "linkedRelationshipId" : "106",
         "sourceId" : "38",
-        "technology" : "kafka"
+        "technology" : "Manual dump"
       }, {
         "description" : "Gets non-tyre referential data",
         "destinationId" : "39",
-        "id" : "102",
-        "linkedRelationshipId" : "100",
+        "id" : "108",
+        "linkedRelationshipId" : "106",
         "sourceId" : "38",
-        "technology" : "kafka"
+        "technology" : "Manual dump"
       } ],
       "tags" : "Element,Software System,Existing System,Kafka"
     }, {
@@ -765,15 +809,15 @@
           "relationships" : [ {
             "description" : "Provides referential data",
             "destinationId" : "16",
-            "id" : "105",
+            "id" : "111",
             "sourceId" : "41",
             "tags" : "Relationship",
             "technology" : "kafka"
           }, {
             "description" : "Provides referential data",
             "destinationId" : "6",
-            "id" : "106",
-            "linkedRelationshipId" : "105",
+            "id" : "112",
+            "linkedRelationshipId" : "111",
             "sourceId" : "41",
             "technology" : "kafka"
           } ],
@@ -786,33 +830,11 @@
             "structurizr.dsl.identifier" : "Kafka-consumer-referential"
           },
           "relationships" : [ {
-            "description" : "Gets tyre referential data",
+            "description" : "Stores referential",
             "destinationId" : "43",
-            "id" : "88",
+            "id" : "109",
             "sourceId" : "42",
-            "tags" : "Relationship",
-            "technology" : "kafka"
-          }, {
-            "description" : "Gets non-tyre referential data",
-            "destinationId" : "44",
-            "id" : "93",
-            "sourceId" : "42",
-            "tags" : "Relationship",
-            "technology" : "kafka"
-          }, {
-            "description" : "Gets non-tyre referential data",
-            "destinationId" : "45",
-            "id" : "98",
-            "sourceId" : "42",
-            "tags" : "Relationship,kafka",
-            "technology" : "API"
-          }, {
-            "description" : "Gets non-tyre referential data",
-            "destinationId" : "46",
-            "id" : "103",
-            "sourceId" : "42",
-            "tags" : "Relationship",
-            "technology" : "kafka"
+            "tags" : "Relationship"
           } ],
           "tags" : "Element,Component"
         } ],
@@ -824,45 +846,23 @@
           "structurizr.dsl.identifier" : "teds-referential"
         },
         "relationships" : [ {
-          "description" : "Gets tyre referential data",
+          "description" : "Stores referential",
           "destinationId" : "43",
-          "id" : "89",
-          "linkedRelationshipId" : "88",
-          "sourceId" : "40",
-          "technology" : "kafka"
-        }, {
-          "description" : "Gets non-tyre referential data",
-          "destinationId" : "44",
-          "id" : "94",
-          "linkedRelationshipId" : "93",
-          "sourceId" : "40",
-          "technology" : "kafka"
-        }, {
-          "description" : "Gets non-tyre referential data",
-          "destinationId" : "45",
-          "id" : "99",
-          "linkedRelationshipId" : "98",
-          "sourceId" : "40",
-          "technology" : "API"
-        }, {
-          "description" : "Gets non-tyre referential data",
-          "destinationId" : "46",
-          "id" : "104",
-          "linkedRelationshipId" : "103",
-          "sourceId" : "40",
-          "technology" : "kafka"
+          "id" : "110",
+          "linkedRelationshipId" : "109",
+          "sourceId" : "40"
         }, {
           "description" : "Provides referential data",
           "destinationId" : "16",
-          "id" : "107",
-          "linkedRelationshipId" : "105",
+          "id" : "113",
+          "linkedRelationshipId" : "111",
           "sourceId" : "40",
           "technology" : "kafka"
         }, {
           "description" : "Provides referential data",
           "destinationId" : "6",
-          "id" : "108",
-          "linkedRelationshipId" : "105",
+          "id" : "114",
+          "linkedRelationshipId" : "111",
           "sourceId" : "40",
           "technology" : "kafka"
         } ],
@@ -873,36 +873,9 @@
         "id" : "43",
         "name" : "Michelin Tyre referential",
         "properties" : {
-          "structurizr.dsl.identifier" : "PS9-referential"
+          "structurizr.dsl.identifier" : "referential-database"
         },
-        "tags" : "Element,Container"
-      }, {
-        "description" : "Non-Michelin Tyre product referential",
-        "documentation" : { },
-        "id" : "44",
-        "name" : "Non-Michelin Tyre referential",
-        "properties" : {
-          "structurizr.dsl.identifier" : "Spyder-referential"
-        },
-        "tags" : "Element,Container"
-      }, {
-        "description" : "Non-tyre products referential",
-        "documentation" : { },
-        "id" : "45",
-        "name" : "WyzAuto Non-Tyre products referential",
-        "properties" : {
-          "structurizr.dsl.identifier" : "WyzAuto-referential"
-        },
-        "tags" : "Element,Container,API"
-      }, {
-        "description" : "Manual dump from MARS if WyzAuto is not ready",
-        "documentation" : { },
-        "id" : "46",
-        "name" : "Manual Non-Tyre products referential",
-        "properties" : {
-          "structurizr.dsl.identifier" : "Manual-dump-referential"
-        },
-        "tags" : "Element,Container"
+        "tags" : "Element,Container,Database"
       } ],
       "description" : "Wecare-like referential provider",
       "documentation" : { },
@@ -914,51 +887,80 @@
       "relationships" : [ {
         "description" : "Provides referential data",
         "destinationId" : "16",
-        "id" : "109",
-        "linkedRelationshipId" : "105",
+        "id" : "115",
+        "linkedRelationshipId" : "111",
         "sourceId" : "39",
         "technology" : "kafka"
       }, {
         "description" : "Provides referential data",
         "destinationId" : "6",
-        "id" : "110",
-        "linkedRelationshipId" : "105",
+        "id" : "116",
+        "linkedRelationshipId" : "111",
         "sourceId" : "39",
         "technology" : "kafka"
       } ],
       "tags" : "Element,Software System,Container"
     }, {
       "containers" : [ {
-        "description" : "Thailand iCare loyalty program",
+        "components" : [ {
+          "documentation" : { },
+          "id" : "46",
+          "name" : "Kafka producer for loyalty-system",
+          "properties" : {
+            "structurizr.dsl.identifier" : "Kafka-producer-loyalty"
+          },
+          "relationships" : [ {
+            "description" : "Provides available coupons",
+            "destinationId" : "13",
+            "id" : "128",
+            "sourceId" : "46",
+            "tags" : "Relationship",
+            "technology" : "kafka"
+          }, {
+            "description" : "Provides available coupons",
+            "destinationId" : "6",
+            "id" : "129",
+            "linkedRelationshipId" : "128",
+            "sourceId" : "46",
+            "technology" : "kafka"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "documentation" : { },
+          "id" : "47",
+          "name" : "Kafka consumer for loyalty-system",
+          "properties" : {
+            "structurizr.dsl.identifier" : "Kafka-consumer-loyalty"
+          },
+          "tags" : "Element,Component"
+        } ],
+        "description" : "TEDS loyalty program",
         "documentation" : { },
-        "id" : "48",
-        "name" : "Thailand iCare",
+        "id" : "45",
+        "name" : "TEDS Loyalty",
         "properties" : {
-          "structurizr.dsl.identifier" : "Thailand-iCare"
+          "structurizr.dsl.identifier" : "teds-loyalty"
         },
+        "relationships" : [ {
+          "description" : "Provides available coupons",
+          "destinationId" : "13",
+          "id" : "130",
+          "linkedRelationshipId" : "128",
+          "sourceId" : "45",
+          "technology" : "kafka"
+        }, {
+          "description" : "Provides available coupons",
+          "destinationId" : "6",
+          "id" : "131",
+          "linkedRelationshipId" : "128",
+          "sourceId" : "45",
+          "technology" : "kafka"
+        } ],
         "tags" : "Element,Container"
-      }, {
-        "description" : "Korea loyalty program",
-        "documentation" : { },
-        "id" : "49",
-        "name" : "Korea Loyalty",
-        "properties" : {
-          "structurizr.dsl.identifier" : "Korea-loyalty"
-        },
-        "tags" : "Element,Container"
-      }, {
-        "description" : "Other loyalty program",
-        "documentation" : { },
-        "id" : "50",
-        "name" : "Other Loyalty",
-        "properties" : {
-          "structurizr.dsl.identifier" : "Other-Loyalty"
-        },
-        "tags" : "Element,Container,API"
       } ],
       "description" : "Loyalty program adapter",
       "documentation" : { },
-      "id" : "47",
+      "id" : "44",
       "name" : "Loyalty Programs",
       "properties" : {
         "structurizr.dsl.identifier" : "loyalty-adapter"
@@ -966,23 +968,484 @@
       "relationships" : [ {
         "description" : "Provides available coupons",
         "destinationId" : "13",
-        "id" : "111",
-        "sourceId" : "47",
-        "tags" : "Relationship",
+        "id" : "132",
+        "linkedRelationshipId" : "128",
+        "sourceId" : "44",
         "technology" : "kafka"
       }, {
         "description" : "Provides available coupons",
         "destinationId" : "6",
-        "id" : "112",
-        "linkedRelationshipId" : "111",
-        "sourceId" : "47",
+        "id" : "133",
+        "linkedRelationshipId" : "128",
+        "sourceId" : "44",
         "technology" : "kafka"
       } ],
       "tags" : "Element,Software System,container"
     }, {
-      "description" : "Mobile login application",
+      "description" : "Thailand iCare loyalty program",
+      "documentation" : { },
+      "id" : "48",
+      "name" : "Thailand iCare",
+      "properties" : {
+        "structurizr.dsl.identifier" : "Thailand-iCare"
+      },
+      "relationships" : [ {
+        "description" : "Gets available coupons",
+        "destinationId" : "47",
+        "id" : "119",
+        "sourceId" : "48",
+        "tags" : "Relationship,kafka",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available coupons",
+        "destinationId" : "45",
+        "id" : "120",
+        "linkedRelationshipId" : "119",
+        "sourceId" : "48",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available coupons",
+        "destinationId" : "44",
+        "id" : "121",
+        "linkedRelationshipId" : "119",
+        "sourceId" : "48",
+        "technology" : "API"
+      } ],
+      "tags" : "Element,Software System,Container"
+    }, {
+      "description" : "Korea loyalty program",
+      "documentation" : { },
+      "id" : "49",
+      "name" : "Korea Loyalty",
+      "properties" : {
+        "structurizr.dsl.identifier" : "Korea-loyalty"
+      },
+      "relationships" : [ {
+        "description" : "Gets available coupons",
+        "destinationId" : "47",
+        "id" : "122",
+        "sourceId" : "49",
+        "tags" : "Relationship,kafka",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available coupons",
+        "destinationId" : "45",
+        "id" : "123",
+        "linkedRelationshipId" : "122",
+        "sourceId" : "49",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available coupons",
+        "destinationId" : "44",
+        "id" : "124",
+        "linkedRelationshipId" : "122",
+        "sourceId" : "49",
+        "technology" : "API"
+      } ],
+      "tags" : "Element,Software System,Container"
+    }, {
+      "description" : "Other loyalty program",
+      "documentation" : { },
+      "id" : "50",
+      "name" : "Other Loyalty",
+      "properties" : {
+        "structurizr.dsl.identifier" : "Other-Loyalty"
+      },
+      "relationships" : [ {
+        "description" : "Gets available coupons",
+        "destinationId" : "47",
+        "id" : "125",
+        "sourceId" : "50",
+        "tags" : "Relationship,kafka",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available coupons",
+        "destinationId" : "45",
+        "id" : "126",
+        "linkedRelationshipId" : "125",
+        "sourceId" : "50",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available coupons",
+        "destinationId" : "44",
+        "id" : "127",
+        "linkedRelationshipId" : "125",
+        "sourceId" : "50",
+        "technology" : "API"
+      } ],
+      "tags" : "Element,Software System,Container,API"
+    }, {
+      "containers" : [ {
+        "components" : [ {
+          "documentation" : { },
+          "id" : "53",
+          "name" : "Kafka producer for e-ordering system",
+          "properties" : {
+            "structurizr.dsl.identifier" : "Kafka-producer-eOrdering"
+          },
+          "relationships" : [ {
+            "description" : "Provides available E-orders",
+            "destinationId" : "15",
+            "id" : "143",
+            "sourceId" : "53",
+            "tags" : "Relationship",
+            "technology" : "kafka"
+          }, {
+            "description" : "Provides available E-orders",
+            "destinationId" : "6",
+            "id" : "144",
+            "linkedRelationshipId" : "143",
+            "sourceId" : "53",
+            "technology" : "kafka"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "documentation" : { },
+          "id" : "54",
+          "name" : "Kafka consumer for e-ordering system",
+          "properties" : {
+            "structurizr.dsl.identifier" : "Kafka-consumer-eOrdering"
+          },
+          "tags" : "Element,Component"
+        } ],
+        "description" : "TEDS e-ordering program",
+        "documentation" : { },
+        "id" : "52",
+        "name" : "TEDS E-Ordering",
+        "properties" : {
+          "structurizr.dsl.identifier" : "teds-eOrdering"
+        },
+        "relationships" : [ {
+          "description" : "Provides available E-orders",
+          "destinationId" : "15",
+          "id" : "145",
+          "linkedRelationshipId" : "143",
+          "sourceId" : "52",
+          "technology" : "kafka"
+        }, {
+          "description" : "Provides available E-orders",
+          "destinationId" : "6",
+          "id" : "146",
+          "linkedRelationshipId" : "143",
+          "sourceId" : "52",
+          "technology" : "kafka"
+        } ],
+        "tags" : "Element,Container"
+      } ],
+      "description" : "E-ordering adapter",
       "documentation" : { },
       "id" : "51",
+      "name" : "E-Ordering",
+      "properties" : {
+        "structurizr.dsl.identifier" : "eordering-adapter"
+      },
+      "relationships" : [ {
+        "description" : "Provides available E-orders",
+        "destinationId" : "15",
+        "id" : "147",
+        "linkedRelationshipId" : "143",
+        "sourceId" : "51",
+        "technology" : "kafka"
+      }, {
+        "description" : "Provides available E-orders",
+        "destinationId" : "6",
+        "id" : "148",
+        "linkedRelationshipId" : "143",
+        "sourceId" : "51",
+        "technology" : "kafka"
+      } ],
+      "tags" : "Element,Software System,container"
+    }, {
+      "description" : "Thailand MDO e-ordering program",
+      "documentation" : { },
+      "id" : "55",
+      "name" : "Thailand MDO",
+      "properties" : {
+        "structurizr.dsl.identifier" : "Thailand-MDO"
+      },
+      "relationships" : [ {
+        "description" : "Gets available E-orders",
+        "destinationId" : "54",
+        "id" : "134",
+        "sourceId" : "55",
+        "tags" : "Relationship,kafka",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available E-orders",
+        "destinationId" : "52",
+        "id" : "135",
+        "linkedRelationshipId" : "134",
+        "sourceId" : "55",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available E-orders",
+        "destinationId" : "51",
+        "id" : "136",
+        "linkedRelationshipId" : "134",
+        "sourceId" : "55",
+        "technology" : "API"
+      } ],
+      "tags" : "Element,Software System,Container"
+    }, {
+      "description" : "Korea SANA e-ordering program",
+      "documentation" : { },
+      "id" : "56",
+      "name" : "Korea SANA",
+      "properties" : {
+        "structurizr.dsl.identifier" : "Korea-SANA"
+      },
+      "relationships" : [ {
+        "description" : "Gets available E-orders",
+        "destinationId" : "54",
+        "id" : "137",
+        "sourceId" : "56",
+        "tags" : "Relationship,kafka",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available E-orders",
+        "destinationId" : "52",
+        "id" : "138",
+        "linkedRelationshipId" : "137",
+        "sourceId" : "56",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available E-orders",
+        "destinationId" : "51",
+        "id" : "139",
+        "linkedRelationshipId" : "137",
+        "sourceId" : "56",
+        "technology" : "API"
+      } ],
+      "tags" : "Element,Software System,Container"
+    }, {
+      "description" : "Other e-ordering program",
+      "documentation" : { },
+      "id" : "57",
+      "name" : "Other E-Ordering",
+      "properties" : {
+        "structurizr.dsl.identifier" : "Other-eOrdering"
+      },
+      "relationships" : [ {
+        "description" : "Gets available E-orders",
+        "destinationId" : "54",
+        "id" : "140",
+        "sourceId" : "57",
+        "tags" : "Relationship,kafka",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available E-orders",
+        "destinationId" : "52",
+        "id" : "141",
+        "linkedRelationshipId" : "140",
+        "sourceId" : "57",
+        "technology" : "API"
+      }, {
+        "description" : "Gets available E-orders",
+        "destinationId" : "51",
+        "id" : "142",
+        "linkedRelationshipId" : "140",
+        "sourceId" : "57",
+        "technology" : "API"
+      } ],
+      "tags" : "Element,Software System,Container,API"
+    }, {
+      "description" : "Downstream tax processing & government linking",
+      "documentation" : { },
+      "id" : "58",
+      "name" : "Taxation Adapter",
+      "properties" : {
+        "structurizr.dsl.identifier" : "taxation"
+      },
+      "tags" : "Element,Software System,Existing System"
+    }, {
+      "containers" : [ {
+        "components" : [ {
+          "documentation" : { },
+          "id" : "61",
+          "name" : "Kafka producer for taxation system",
+          "properties" : {
+            "structurizr.dsl.identifier" : "Kafka-producer-taxation"
+          },
+          "relationships" : [ {
+            "description" : "Sends E-tax data to Govt agency",
+            "destinationId" : "63",
+            "id" : "155",
+            "sourceId" : "61",
+            "tags" : "Relationship",
+            "technology" : "kafka"
+          }, {
+            "description" : "Sends E-tax data to Govt agency",
+            "destinationId" : "64",
+            "id" : "158",
+            "sourceId" : "61",
+            "tags" : "Relationship",
+            "technology" : "kafka"
+          }, {
+            "description" : "Provides government reference ID",
+            "destinationId" : "14",
+            "id" : "167",
+            "sourceId" : "61",
+            "tags" : "Relationship",
+            "technology" : "kafka"
+          }, {
+            "description" : "Provides government reference ID",
+            "destinationId" : "6",
+            "id" : "168",
+            "linkedRelationshipId" : "167",
+            "sourceId" : "61",
+            "technology" : "kafka"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "documentation" : { },
+          "id" : "62",
+          "name" : "Kafka consumer for taxation system",
+          "properties" : {
+            "structurizr.dsl.identifier" : "Kafka-consumer-taxation"
+          },
+          "tags" : "Element,Component"
+        } ],
+        "description" : "TEDS taxation program",
+        "documentation" : { },
+        "id" : "60",
+        "name" : "TEDS Taxation",
+        "properties" : {
+          "structurizr.dsl.identifier" : "teds-taxation"
+        },
+        "relationships" : [ {
+          "description" : "Sends E-tax data to Govt agency",
+          "destinationId" : "63",
+          "id" : "156",
+          "linkedRelationshipId" : "155",
+          "sourceId" : "60",
+          "technology" : "kafka"
+        }, {
+          "description" : "Sends E-tax data to Govt agency",
+          "destinationId" : "64",
+          "id" : "159",
+          "linkedRelationshipId" : "158",
+          "sourceId" : "60",
+          "technology" : "kafka"
+        }, {
+          "description" : "Provides government reference ID",
+          "destinationId" : "14",
+          "id" : "169",
+          "linkedRelationshipId" : "167",
+          "sourceId" : "60",
+          "technology" : "kafka"
+        }, {
+          "description" : "Provides government reference ID",
+          "destinationId" : "6",
+          "id" : "170",
+          "linkedRelationshipId" : "167",
+          "sourceId" : "60",
+          "technology" : "kafka"
+        } ],
+        "tags" : "Element,Container"
+      } ],
+      "description" : "E-tax adapter",
+      "documentation" : { },
+      "id" : "59",
+      "name" : "E-Tax",
+      "properties" : {
+        "structurizr.dsl.identifier" : "taxation-adapter"
+      },
+      "relationships" : [ {
+        "description" : "Sends E-tax data to Govt agency",
+        "destinationId" : "63",
+        "id" : "157",
+        "linkedRelationshipId" : "155",
+        "sourceId" : "59",
+        "technology" : "kafka"
+      }, {
+        "description" : "Sends E-tax data to Govt agency",
+        "destinationId" : "64",
+        "id" : "160",
+        "linkedRelationshipId" : "158",
+        "sourceId" : "59",
+        "technology" : "kafka"
+      }, {
+        "description" : "Provides government reference ID",
+        "destinationId" : "14",
+        "id" : "171",
+        "linkedRelationshipId" : "167",
+        "sourceId" : "59",
+        "technology" : "kafka"
+      }, {
+        "description" : "Provides government reference ID",
+        "destinationId" : "6",
+        "id" : "172",
+        "linkedRelationshipId" : "167",
+        "sourceId" : "59",
+        "technology" : "kafka"
+      } ],
+      "tags" : "Element,Software System,container"
+    }, {
+      "description" : "Thailand E-Tax program",
+      "documentation" : { },
+      "id" : "63",
+      "name" : "Thailand E-Tax",
+      "properties" : {
+        "structurizr.dsl.identifier" : "Thailand-eTax"
+      },
+      "relationships" : [ {
+        "description" : "Gets E-tax reference from Govt agency",
+        "destinationId" : "62",
+        "id" : "161",
+        "sourceId" : "63",
+        "tags" : "Relationship",
+        "technology" : "kafka"
+      }, {
+        "description" : "Gets E-tax reference from Govt agency",
+        "destinationId" : "60",
+        "id" : "162",
+        "linkedRelationshipId" : "161",
+        "sourceId" : "63",
+        "technology" : "kafka"
+      }, {
+        "description" : "Gets E-tax reference from Govt agency",
+        "destinationId" : "59",
+        "id" : "163",
+        "linkedRelationshipId" : "161",
+        "sourceId" : "63",
+        "technology" : "kafka"
+      } ],
+      "tags" : "Element,Software System,Container"
+    }, {
+      "description" : "Other e-tax program",
+      "documentation" : { },
+      "id" : "64",
+      "name" : "Other E-Tax",
+      "properties" : {
+        "structurizr.dsl.identifier" : "Other-eTax"
+      },
+      "relationships" : [ {
+        "description" : "Gets E-tax reference from Govt agency",
+        "destinationId" : "62",
+        "id" : "164",
+        "sourceId" : "64",
+        "tags" : "Relationship",
+        "technology" : "kafka"
+      }, {
+        "description" : "Gets E-tax reference from Govt agency",
+        "destinationId" : "60",
+        "id" : "165",
+        "linkedRelationshipId" : "164",
+        "sourceId" : "64",
+        "technology" : "kafka"
+      }, {
+        "description" : "Gets E-tax reference from Govt agency",
+        "destinationId" : "59",
+        "id" : "166",
+        "linkedRelationshipId" : "164",
+        "sourceId" : "64",
+        "technology" : "kafka"
+      } ],
+      "tags" : "Element,Software System,Container,API"
+    }, {
+      "description" : "Mobile login application",
+      "documentation" : { },
+      "id" : "65",
       "name" : "DCP Mobile Application",
       "properties" : {
         "structurizr.dsl.identifier" : "dcpMobile"
@@ -990,78 +1453,30 @@
       "relationships" : [ {
         "description" : "Authenticates & exchanges data",
         "destinationId" : "8",
-        "id" : "81",
-        "sourceId" : "51",
+        "id" : "93",
+        "sourceId" : "65",
         "tags" : "Relationship"
       }, {
         "description" : "Authenticates & exchanges data",
         "destinationId" : "6",
-        "id" : "82",
-        "linkedRelationshipId" : "81",
-        "sourceId" : "51"
-      } ],
-      "tags" : "Element,Software System,Existing System"
-    }, {
-      "description" : "E-ordering adapter",
-      "documentation" : { },
-      "id" : "52",
-      "name" : "E-Ordering",
-      "properties" : {
-        "structurizr.dsl.identifier" : "eordering"
-      },
-      "relationships" : [ {
-        "description" : "Sends purchase orders",
-        "destinationId" : "15",
-        "id" : "113",
-        "sourceId" : "52",
-        "tags" : "Relationship",
-        "technology" : "kafka"
-      }, {
-        "description" : "Sends purchase orders",
-        "destinationId" : "6",
-        "id" : "114",
-        "linkedRelationshipId" : "113",
-        "sourceId" : "52",
-        "technology" : "kafka"
-      } ],
-      "tags" : "Element,Software System,Existing System"
-    }, {
-      "description" : "Downstream tax processing & government linking",
-      "documentation" : { },
-      "id" : "53",
-      "name" : "Taxation Adapter",
-      "properties" : {
-        "structurizr.dsl.identifier" : "taxation"
-      },
-      "relationships" : [ {
-        "description" : "Provides government reference ID",
-        "destinationId" : "14",
-        "id" : "117",
-        "sourceId" : "53",
-        "tags" : "Relationship",
-        "technology" : "kafka"
-      }, {
-        "description" : "Provides government reference ID",
-        "destinationId" : "6",
-        "id" : "118",
-        "linkedRelationshipId" : "117",
-        "sourceId" : "53",
-        "technology" : "kafka"
+        "id" : "94",
+        "linkedRelationshipId" : "93",
+        "sourceId" : "65"
       } ],
       "tags" : "Element,Software System,Existing System"
     }, {
       "description" : "Reporting data platform & CRM programs",
       "documentation" : { },
-      "id" : "54",
+      "id" : "66",
       "name" : "T+ Data Platform",
       "properties" : {
         "structurizr.dsl.identifier" : "TDP"
       },
       "relationships" : [ {
         "description" : "Provides CRM data",
-        "destinationId" : "55",
-        "id" : "121",
-        "sourceId" : "54",
+        "destinationId" : "67",
+        "id" : "175",
+        "sourceId" : "66",
         "tags" : "Relationship"
       } ],
       "tags" : "Element,Software System,Existing System,Database"
@@ -1069,16 +1484,16 @@
       "description" : "CRM & marketing automation",
       "documentation" : { },
       "group" : "CRM Activities",
-      "id" : "55",
+      "id" : "67",
       "name" : "HubSpot",
       "properties" : {
         "structurizr.dsl.identifier" : "hubspot"
       },
       "relationships" : [ {
         "description" : "Sends/receives customer messages (HubSpot-driven)",
-        "destinationId" : "56",
-        "id" : "122",
-        "sourceId" : "55",
+        "destinationId" : "68",
+        "id" : "176",
+        "sourceId" : "67",
         "tags" : "Relationship"
       } ],
       "tags" : "Element,Software System"
@@ -1086,16 +1501,16 @@
       "description" : "Enabler for messaging platforms",
       "documentation" : { },
       "group" : "CRM Activities",
-      "id" : "56",
+      "id" : "68",
       "name" : "Infobip",
       "properties" : {
         "structurizr.dsl.identifier" : "infobip"
       },
       "relationships" : [ {
         "description" : "Sends messages to customers",
-        "destinationId" : "58",
-        "id" : "123",
-        "sourceId" : "56",
+        "destinationId" : "70",
+        "id" : "177",
+        "sourceId" : "68",
         "tags" : "Relationship"
       } ],
       "tags" : "Element,Software System"
@@ -1103,16 +1518,16 @@
       "description" : "Net Promoter Score & consent management",
       "documentation" : { },
       "group" : "CRM Activities",
-      "id" : "57",
+      "id" : "69",
       "name" : "NPS System",
       "properties" : {
         "structurizr.dsl.identifier" : "nps"
       },
       "relationships" : [ {
         "description" : "Sends NPS surveys to customers",
-        "destinationId" : "58",
-        "id" : "125",
-        "sourceId" : "57",
+        "destinationId" : "70",
+        "id" : "179",
+        "sourceId" : "69",
         "tags" : "Relationship"
       } ],
       "tags" : "Element,Software System"
@@ -1120,16 +1535,16 @@
       "description" : "Line, WhatsApp, etc.",
       "documentation" : { },
       "group" : "CRM Activities",
-      "id" : "58",
+      "id" : "70",
       "name" : "Messaging Platforms",
       "properties" : {
         "structurizr.dsl.identifier" : "messaging"
       },
       "relationships" : [ {
         "description" : "Sends customer replies back to Infobip",
-        "destinationId" : "56",
-        "id" : "124",
-        "sourceId" : "58",
+        "destinationId" : "68",
+        "id" : "178",
+        "sourceId" : "70",
         "tags" : "Relationship"
       } ],
       "tags" : "Element,Software System,CRM"
@@ -1137,9 +1552,9 @@
   },
   "name" : "TEDS Ecosystem",
   "properties" : {
-    "structurizr.inspection.error" : "73",
     "structurizr.inspection.info" : "0",
     "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.error" : "87",
     "structurizr.inspection.warning" : "0"
   },
   "views" : {
@@ -1181,26 +1596,18 @@
         "id" : "43",
         "x" : 329,
         "y" : 1408
-      }, {
-        "id" : "44",
-        "x" : 1079,
-        "y" : 1408
-      }, {
-        "id" : "45",
-        "x" : 1829,
-        "y" : 1408
-      }, {
-        "id" : "46",
-        "x" : 2579,
-        "y" : 1408
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "Level3_referential_Components",
       "name" : "Component View: Referential System - TEDS Tyre referential",
-      "order" : 5,
+      "order" : 4,
       "paperSize" : "A3_Landscape",
       "relationships" : [ {
-        "id" : "100",
+        "id" : "100"
+      }, {
+        "id" : "103"
+      }, {
+        "id" : "106",
         "vertices" : [ {
           "x" : 2700,
           "y" : 508
@@ -1209,23 +1616,173 @@
           "y" : 600
         } ]
       }, {
-        "id" : "103"
+        "id" : "109"
       }, {
-        "id" : "106"
+        "id" : "112"
       }, {
-        "id" : "85"
-      }, {
-        "id" : "88"
-      }, {
-        "id" : "90"
-      }, {
-        "id" : "93"
-      }, {
-        "id" : "95"
-      }, {
-        "id" : "98"
+        "id" : "97"
       } ],
       "title" : "Referential System – Components"
+    }, {
+      "containerId" : "45",
+      "dimensions" : {
+        "height" : 1916,
+        "width" : 2575
+      },
+      "elements" : [ {
+        "id" : "6",
+        "x" : 1708,
+        "y" : 1408
+      }, {
+        "id" : "46",
+        "x" : 1708,
+        "y" : 808
+      }, {
+        "id" : "47",
+        "x" : 958,
+        "y" : 808
+      }, {
+        "id" : "48",
+        "x" : 208,
+        "y" : 208
+      }, {
+        "id" : "49",
+        "x" : 958,
+        "y" : 208
+      }, {
+        "id" : "50",
+        "x" : 1708,
+        "y" : 208
+      } ],
+      "externalContainerBoundariesVisible" : false,
+      "key" : "Level3_loyalty_Components",
+      "name" : "Component View: Loyalty Programs - TEDS Loyalty",
+      "order" : 6,
+      "paperSize" : "A4_Landscape",
+      "relationships" : [ {
+        "id" : "119"
+      }, {
+        "id" : "122"
+      }, {
+        "id" : "125",
+        "vertices" : [ {
+          "x" : 1558,
+          "y" : 600
+        } ]
+      }, {
+        "id" : "129"
+      } ],
+      "title" : "Loyalty System – Components"
+    }, {
+      "containerId" : "52",
+      "dimensions" : {
+        "height" : 1916,
+        "width" : 2575
+      },
+      "elements" : [ {
+        "id" : "6",
+        "x" : 1708,
+        "y" : 1408
+      }, {
+        "id" : "53",
+        "x" : 1708,
+        "y" : 808
+      }, {
+        "id" : "54",
+        "x" : 958,
+        "y" : 808
+      }, {
+        "id" : "55",
+        "x" : 208,
+        "y" : 208
+      }, {
+        "id" : "56",
+        "x" : 958,
+        "y" : 208
+      }, {
+        "id" : "57",
+        "x" : 1708,
+        "y" : 208
+      } ],
+      "externalContainerBoundariesVisible" : false,
+      "key" : "Level3_eOrdering_Components",
+      "name" : "Component View: E-Ordering - TEDS E-Ordering",
+      "order" : 8,
+      "paperSize" : "A4_Landscape",
+      "relationships" : [ {
+        "id" : "134"
+      }, {
+        "id" : "137"
+      }, {
+        "id" : "140",
+        "vertices" : [ {
+          "x" : 1558,
+          "y" : 600
+        } ]
+      }, {
+        "id" : "144"
+      } ],
+      "title" : "E-Ordering System – Components"
+    }, {
+      "containerId" : "60",
+      "dimensions" : {
+        "height" : 1525,
+        "width" : 2366
+      },
+      "elements" : [ {
+        "id" : "6",
+        "x" : 1708,
+        "y" : 208
+      }, {
+        "id" : "61",
+        "x" : 1333,
+        "y" : 808
+      }, {
+        "id" : "62",
+        "x" : 583,
+        "y" : 808
+      }, {
+        "id" : "63",
+        "x" : 208,
+        "y" : 208
+      }, {
+        "id" : "64",
+        "x" : 958,
+        "y" : 208
+      } ],
+      "externalContainerBoundariesVisible" : false,
+      "key" : "Level3_taxation_Components",
+      "name" : "Component View: E-Tax - TEDS Taxation",
+      "order" : 10,
+      "paperSize" : "A5_Landscape",
+      "relationships" : [ {
+        "id" : "152",
+        "vertices" : [ {
+          "x" : 1558,
+          "y" : 508
+        }, {
+          "x" : 1183,
+          "y" : 600
+        } ]
+      }, {
+        "id" : "155",
+        "vertices" : [ {
+          "x" : 1183,
+          "y" : 600
+        }, {
+          "x" : 808,
+          "y" : 508
+        } ]
+      }, {
+        "id" : "158"
+      }, {
+        "id" : "161"
+      }, {
+        "id" : "164"
+      }, {
+        "id" : "168"
+      } ],
+      "title" : "Taxation System – Components"
     }, {
       "containerId" : "26",
       "dimensions" : {
@@ -1264,13 +1821,13 @@
       "externalContainerBoundariesVisible" : false,
       "key" : "Level3_Components",
       "name" : "Component View: TEDS Core System - API Application",
-      "order" : 6,
+      "order" : 11,
       "relationships" : [ {
-        "id" : "130"
+        "id" : "184"
       }, {
-        "id" : "131"
+        "id" : "185"
       }, {
-        "id" : "132",
+        "id" : "186",
         "vertices" : [ {
           "x" : 669,
           "y" : 950
@@ -1279,7 +1836,7 @@
           "y" : 1250
         } ]
       }, {
-        "id" : "133",
+        "id" : "187",
         "vertices" : [ {
           "x" : 669,
           "y" : 950
@@ -1288,21 +1845,22 @@
           "y" : 650
         } ]
       }, {
-        "id" : "134"
+        "id" : "188"
       }, {
-        "id" : "135"
+        "id" : "189"
       }, {
-        "id" : "136"
+        "id" : "190"
       }, {
-        "id" : "137"
+        "id" : "191"
       }, {
-        "id" : "138"
+        "id" : "192"
       } ],
       "title" : "API Application – Components"
     } ],
     "configuration" : {
       "branding" : { },
-      "lastSavedView" : "Level2_referential_Containers",
+      "lastSavedView" : "Level3_taxation_Components",
+      "metadataSymbols" : "SquareBrackets",
       "styles" : {
         "elements" : [ {
           "background" : "#85bbf0",
@@ -1453,23 +2011,23 @@
         "x" : 208,
         "y" : 2208
       }, {
-        "id" : "47",
+        "id" : "44",
         "x" : 8612,
         "y" : 2208
       }, {
         "id" : "51",
-        "x" : 7862,
-        "y" : 2208
-      }, {
-        "id" : "52",
         "x" : 9362,
         "y" : 2208
       }, {
-        "id" : "53",
+        "id" : "59",
         "x" : 5496,
         "y" : 3454
       }, {
-        "id" : "54",
+        "id" : "65",
+        "x" : 7862,
+        "y" : 2208
+      }, {
+        "id" : "66",
         "x" : 2471,
         "y" : 3454
       } ],
@@ -1479,7 +2037,7 @@
       "order" : 2,
       "paperSize" : "A0_Landscape",
       "relationships" : [ {
-        "id" : "109",
+        "id" : "115",
         "vertices" : [ {
           "x" : 779,
           "y" : 2612
@@ -1488,7 +2046,9 @@
           "y" : 2704
         } ]
       }, {
-        "id" : "111",
+        "id" : "117"
+      }, {
+        "id" : "132",
         "vertices" : [ {
           "x" : 8462,
           "y" : 2612
@@ -1497,47 +2057,43 @@
           "y" : 2704
         } ]
       }, {
-        "id" : "113",
-        "vertices" : [ {
-          "x" : 9212,
-          "y" : 2612
-        } ]
+        "id" : "147"
       }, {
-        "id" : "115",
+        "id" : "151",
         "vertices" : [ {
           "x" : 5571,
           "y" : 3281
         } ]
       }, {
-        "id" : "117",
+        "id" : "171",
         "vertices" : [ {
           "x" : 5871,
           "y" : 3281
         } ]
       }, {
-        "id" : "119"
+        "id" : "173"
       }, {
-        "id" : "127"
+        "id" : "181"
       }, {
-        "id" : "128"
+        "id" : "182"
       }, {
-        "id" : "129"
+        "id" : "183"
       }, {
-        "id" : "59"
+        "id" : "71"
       }, {
-        "id" : "61",
+        "id" : "73",
         "vertices" : [ {
           "x" : 8412,
           "y" : 1454
         } ]
       }, {
-        "id" : "63"
+        "id" : "75"
       }, {
-        "id" : "64"
+        "id" : "76"
       }, {
-        "id" : "65"
+        "id" : "77"
       }, {
-        "id" : "66",
+        "id" : "78",
         "vertices" : [ {
           "x" : 6950,
           "y" : 1962
@@ -1546,17 +2102,17 @@
           "y" : 2000
         } ]
       }, {
-        "id" : "67"
+        "id" : "79"
       }, {
-        "id" : "68",
+        "id" : "80",
         "vertices" : [ {
           "x" : 5104,
           "y" : 2000
         } ]
       }, {
-        "id" : "69"
+        "id" : "81"
       }, {
-        "id" : "70",
+        "id" : "82",
         "vertices" : [ {
           "x" : 5721,
           "y" : 2612
@@ -1565,9 +2121,9 @@
           "y" : 2704
         } ]
       }, {
-        "id" : "71"
+        "id" : "83"
       }, {
-        "id" : "72",
+        "id" : "84",
         "vertices" : [ {
           "x" : 5721,
           "y" : 2612
@@ -1576,7 +2132,7 @@
           "y" : 2704
         } ]
       }, {
-        "id" : "73",
+        "id" : "85",
         "vertices" : [ {
           "x" : 5104,
           "y" : 2612
@@ -1585,7 +2141,7 @@
           "y" : 2704
         } ]
       }, {
-        "id" : "74",
+        "id" : "86",
         "vertices" : [ {
           "x" : 5104,
           "y" : 2612
@@ -1594,7 +2150,7 @@
           "y" : 2704
         } ]
       }, {
-        "id" : "75",
+        "id" : "87",
         "vertices" : [ {
           "x" : 5104,
           "y" : 2612
@@ -1603,7 +2159,7 @@
           "y" : 2704
         } ]
       }, {
-        "id" : "76",
+        "id" : "88",
         "vertices" : [ {
           "x" : 5104,
           "y" : 2612
@@ -1612,13 +2168,13 @@
           "y" : 2704
         } ]
       }, {
-        "id" : "77",
+        "id" : "89",
         "vertices" : [ {
           "x" : 3075,
           "y" : 804
         } ]
       }, {
-        "id" : "79",
+        "id" : "91",
         "vertices" : [ {
           "x" : 825,
           "y" : 804
@@ -1627,15 +2183,15 @@
           "y" : 1208
         } ]
       }, {
-        "id" : "80"
+        "id" : "92"
       }, {
-        "id" : "81",
+        "id" : "93",
         "vertices" : [ {
           "x" : 7753,
           "y" : 1946
         } ]
       }, {
-        "id" : "83",
+        "id" : "95",
         "vertices" : [ {
           "x" : 7583,
           "y" : 2194
@@ -1646,103 +2202,206 @@
     }, {
       "dimensions" : {
         "height" : 2020,
-        "width" : 4004
+        "width" : 3116
       },
       "elements" : [ {
         "id" : "6",
-        "x" : 3329,
+        "x" : 2083,
         "y" : 1408
       }, {
         "id" : "35",
-        "x" : 704,
+        "x" : 208,
         "y" : 208
       }, {
         "id" : "36",
-        "x" : 1454,
+        "x" : 958,
         "y" : 208
       }, {
         "id" : "37",
-        "x" : 2204,
+        "x" : 1708,
         "y" : 208
       }, {
         "id" : "38",
-        "x" : 2954,
+        "x" : 2458,
         "y" : 208
       }, {
         "id" : "40",
-        "x" : 1829,
+        "x" : 1333,
         "y" : 808
       }, {
         "id" : "43",
-        "x" : 329,
-        "y" : 1408
-      }, {
-        "id" : "44",
-        "x" : 1079,
-        "y" : 1408
-      }, {
-        "id" : "45",
-        "x" : 1829,
-        "y" : 1408
-      }, {
-        "id" : "46",
-        "x" : 2579,
+        "x" : 1333,
         "y" : 1408
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
       "key" : "Level2_referential_Containers",
       "name" : "Container View: Referential System",
       "order" : 3,
-      "paperSize" : "A3_Landscape",
+      "paperSize" : "A4_Landscape",
       "relationships" : [ {
         "id" : "101"
       }, {
         "id" : "104"
       }, {
-        "id" : "108",
-        "vertices" : [ {
-          "x" : 3208,
-          "y" : 1408
-        } ]
+        "id" : "107"
       }, {
-        "id" : "86"
+        "id" : "110"
       }, {
-        "id" : "89"
+        "id" : "114"
       }, {
-        "id" : "91"
-      }, {
-        "id" : "94"
-      }, {
-        "id" : "96"
-      }, {
-        "id" : "99"
+        "id" : "98"
       } ],
       "softwareSystemId" : "39",
       "title" : "Containers"
     }, {
       "dimensions" : {
-        "height" : 958,
-        "width" : 2608
+        "height" : 1454,
+        "width" : 2366
       },
       "elements" : [ {
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "45",
+        "x" : 960,
+        "y" : 330
+      }, {
         "id" : "48",
-        "x" : 1829,
-        "y" : 329
+        "x" : 208,
+        "y" : 929
       }, {
         "id" : "49",
-        "x" : 1079,
-        "y" : 329
+        "x" : 958,
+        "y" : 929
       }, {
         "id" : "50",
-        "x" : 329,
-        "y" : 329
+        "x" : 1708,
+        "y" : 929
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
       "key" : "Level2_loyalty-adapter_Containers",
       "name" : "Container View: Loyalty Programs",
-      "order" : 4,
+      "order" : 5,
+      "paperSize" : "A5_Landscape",
+      "relationships" : [ {
+        "id" : "120"
+      }, {
+        "id" : "123"
+      }, {
+        "id" : "126"
+      }, {
+        "id" : "131"
+      } ],
+      "softwareSystemId" : "44",
+      "title" : "Containers"
+    }, {
+      "dimensions" : {
+        "height" : 1916,
+        "width" : 2366
+      },
+      "elements" : [ {
+        "id" : "6",
+        "x" : 958,
+        "y" : 1408
+      }, {
+        "id" : "52",
+        "x" : 958,
+        "y" : 808
+      }, {
+        "id" : "55",
+        "x" : 208,
+        "y" : 208
+      }, {
+        "id" : "56",
+        "x" : 958,
+        "y" : 208
+      }, {
+        "id" : "57",
+        "x" : 1708,
+        "y" : 208
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Level2_eOrdering-adapter_Containers",
+      "name" : "Container View: E-Ordering",
+      "order" : 7,
       "paperSize" : "A4_Landscape",
-      "softwareSystemId" : "47",
+      "relationships" : [ {
+        "id" : "135"
+      }, {
+        "id" : "138"
+      }, {
+        "id" : "141"
+      }, {
+        "id" : "146"
+      } ],
+      "softwareSystemId" : "51",
+      "title" : "Containers"
+    }, {
+      "dimensions" : {
+        "height" : 1420,
+        "width" : 2366
+      },
+      "elements" : [ {
+        "id" : "6",
+        "x" : 208,
+        "y" : 208
+      }, {
+        "id" : "60",
+        "x" : 958,
+        "y" : 808
+      }, {
+        "id" : "63",
+        "x" : 958,
+        "y" : 208
+      }, {
+        "id" : "64",
+        "x" : 1708,
+        "y" : 208
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Level2_taxation-adapter_Containers",
+      "name" : "Container View: E-Tax",
+      "order" : 9,
+      "paperSize" : "A5_Landscape",
+      "relationships" : [ {
+        "id" : "153",
+        "vertices" : [ {
+          "x" : 714,
+          "y" : 775
+        } ]
+      }, {
+        "id" : "156",
+        "vertices" : [ {
+          "x" : 1333,
+          "y" : 658
+        } ]
+      }, {
+        "id" : "159",
+        "vertices" : [ {
+          "x" : 1651,
+          "y" : 775
+        } ]
+      }, {
+        "id" : "162",
+        "vertices" : [ {
+          "x" : 1033,
+          "y" : 658
+        } ]
+      }, {
+        "id" : "165",
+        "vertices" : [ {
+          "x" : 1464,
+          "y" : 540
+        } ]
+      }, {
+        "id" : "170",
+        "vertices" : [ {
+          "x" : 901,
+          "y" : 540
+        } ]
+      } ],
+      "softwareSystemId" : "59",
       "title" : "Containers"
     } ],
     "dynamicViews" : [ {
@@ -1768,11 +2427,11 @@
       "externalBoundariesVisible" : false,
       "key" : "SignIn_Flow",
       "name" : "Dynamic View: TEDS Core System - API Application",
-      "order" : 7,
+      "order" : 12,
       "paperSize" : "A4_Landscape",
       "relationships" : [ {
         "description" : "POST /signin",
-        "id" : "130",
+        "id" : "184",
         "order" : "1",
         "response" : false,
         "vertices" : [ {
@@ -1781,7 +2440,7 @@
         } ]
       }, {
         "description" : "validate()",
-        "id" : "136",
+        "id" : "190",
         "order" : "2",
         "response" : false,
         "vertices" : [ {
@@ -1790,7 +2449,7 @@
         } ]
       }, {
         "description" : "JWT",
-        "id" : "136",
+        "id" : "190",
         "order" : "3",
         "response" : true,
         "vertices" : [ {
@@ -1799,7 +2458,7 @@
         } ]
       }, {
         "description" : "200 OK + JWT",
-        "id" : "130",
+        "id" : "184",
         "order" : "4",
         "response" : true,
         "vertices" : [ {
@@ -1811,7 +2470,7 @@
     "systemContextViews" : [ {
       "dimensions" : {
         "height" : 2816,
-        "width" : 4425
+        "width" : 3675
       },
       "elements" : [ {
         "id" : "1",
@@ -1819,39 +2478,39 @@
         "y" : 208
       }, {
         "id" : "3",
-        "x" : 1929,
+        "x" : 1975,
         "y" : 2208
       }, {
         "id" : "4",
-        "x" : 1567,
+        "x" : 2317,
         "y" : 908
       }, {
         "id" : "6",
-        "x" : 1542,
+        "x" : 1225,
         "y" : 1608
       }, {
         "id" : "39",
-        "x" : 2267,
+        "x" : 1567,
         "y" : 958
       }, {
-        "id" : "47",
+        "id" : "44",
+        "x" : 475,
+        "y" : 2258
+      }, {
+        "id" : "51",
         "x" : 3017,
         "y" : 958
       }, {
-        "id" : "51",
+        "id" : "59",
+        "x" : 1225,
+        "y" : 2258
+      }, {
+        "id" : "65",
         "x" : 208,
         "y" : 958
       }, {
-        "id" : "52",
-        "x" : 3767,
-        "y" : 958
-      }, {
-        "id" : "53",
-        "x" : 1179,
-        "y" : 2258
-      }, {
-        "id" : "54",
-        "x" : 2629,
+        "id" : "66",
+        "x" : 2675,
         "y" : 2258
       } ],
       "enterpriseBoundaryVisible" : true,
@@ -1860,56 +2519,62 @@
       "order" : 1,
       "paperSize" : "A3_Landscape",
       "relationships" : [ {
-        "id" : "110"
+        "id" : "116"
       }, {
-        "id" : "112",
+        "id" : "118",
+        "vertices" : [ {
+          "x" : 976,
+          "y" : 1969
+        } ]
+      }, {
+        "id" : "133",
+        "vertices" : [ {
+          "x" : 1173,
+          "y" : 2196
+        } ]
+      }, {
+        "id" : "148",
         "vertices" : [ {
           "x" : 2867,
           "y" : 1308
         } ]
       }, {
-        "id" : "114",
+        "id" : "154",
         "vertices" : [ {
-          "x" : 3617,
-          "y" : 1308
+          "x" : 1300,
+          "y" : 2083
         } ]
       }, {
-        "id" : "116",
+        "id" : "172",
         "vertices" : [ {
-          "x" : 1454,
-          "y" : 2009
+          "x" : 1600,
+          "y" : 2083
         } ]
       }, {
-        "id" : "118",
+        "id" : "174",
         "vertices" : [ {
-          "x" : 1716,
-          "y" : 2156
+          "x" : 2525,
+          "y" : 2208
         } ]
       }, {
-        "id" : "120"
+        "id" : "72"
       }, {
-        "id" : "60",
+        "id" : "74"
+      }, {
+        "id" : "90"
+      }, {
+        "id" : "92"
+      }, {
+        "id" : "94",
         "vertices" : [ {
-          "x" : 1417,
-          "y" : 1308
+          "x" : 860,
+          "y" : 1559
         } ]
       }, {
-        "id" : "62"
-      }, {
-        "id" : "78"
-      }, {
-        "id" : "80"
-      }, {
-        "id" : "82",
+        "id" : "96",
         "vertices" : [ {
-          "x" : 1034,
-          "y" : 1567
-        } ]
-      }, {
-        "id" : "84",
-        "vertices" : [ {
-          "x" : 1165,
-          "y" : 1298
+          "x" : 1022,
+          "y" : 1306
         } ]
       } ],
       "softwareSystemId" : "6",
