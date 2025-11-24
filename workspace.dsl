@@ -1,6 +1,7 @@
 workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
 
     !impliedRelationships true
+    !docs workspace-docs
 
     model {
         properties {
