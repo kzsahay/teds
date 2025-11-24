@@ -18,8 +18,8 @@ openapi -> service-scheduler "Uses" ""
 dealer -> dcpMobile "Manages stores, creates quotations"
 administrator -> dcpMobile "Manages system configuration, create staff users"
 staff -> dcpMobile "Performs data entry, performs services, creates quotations"
-service-pc -> sqlproxy "stores transaction data to core database" ""
 service-mobile -> sqlproxy "stores transaction data to core database" ""
+service-pc -> sqlproxy "stores transaction data to core database" ""
 service-web -> sqlproxy "stores transaction data to core database" ""
 system-foundation -> sqlproxy "stores transaction data to core database" ""
 aftersales -> sqlproxy "stores transaction data to core database" ""
@@ -74,8 +74,8 @@ service-mobile -> plate-scanner-camera-access "Accesses camera to take pictures 
 
 // CRM Activities
 teds-transaction-database -> service-scheduler "Schedules copy of transaction data" ""
-service-scheduler -> TDP "Stores reporting data" ""
-TDP -> db-reader-hubspot "Provides CRM data" ""
+service-scheduler -> Tplus-data-platform "Stores reporting data" ""
+pgbouncer -> db-reader-hubspot "Provides CRM data" ""
 api-endpoint-hubspot -> api-endpoint-infobip "Sends/receives customer messages" ""
 api-endpoint-infobip -> messaging "Sends messages to customers" ""
 messaging -> customer "Sends NPS to customers" ""
@@ -84,4 +84,5 @@ messaging -> api-endpoint-infobip "Sends customer replies back to Infobip" ""
 api-endpoint-infobip -> api-endpoint-hubspot "SSends customer replies back to Hubspot" ""
 
 //Reporting
-TDP -> BI-dashboards "Provides data for reports and dashboards" ""
+Tplus-data-platform -> BI-dashboards "Provides data for reports and dashboards" ""
+BI-dashboards -> consultant "Accesses dashboards" ""

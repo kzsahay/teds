@@ -14,6 +14,7 @@ styles {
             }
             element "Database" {
                 shape Cylinder
+                color #438dd6
             }
             element "Container" {
                 background #438dd6

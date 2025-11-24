@@ -77,26 +77,14 @@ views {
             # autoLayout lr
         }
 
-        container hubspot "Level2_hubspot_Containers" {
+        container CRM-BI-System "Level2_CRM-BI-System_Containers" {
             title "Containers"
             include *
             # autoLayout lr
         }
 
-        component crm-hubspot "Level3_hubspot_Components" {
+        component Tplus-data-platform "Level3_Tplus-data-platform_Components" {
             title "HubSpot CRM – Components"
-            include *
-            # autoLayout lr
-        }
-
-        container infobip "Level2_infobip_Containers" {
-            title "Containers"
-            include *
-            # autoLayout lr
-        }
-
-        component crm-infobip "Level3_infobip_Components" {
-            title "Infobip CRM – Components"
             include *
             # autoLayout lr
         }

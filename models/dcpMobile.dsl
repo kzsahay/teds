@@ -12,4 +12,10 @@ dcpMobile = softwareSystem "DCP Mobile Application" "Mobile login application" {
             tags "Component" "API"
         }
     }
+    
+}
+
+// External API
+plate-scanner-external-api = softwareSystem "Plate Scanner External API" "Third-party number plate and VIN scanning API" {
+    tags "Existing System" "API"
 }

@@ -27,21 +27,8 @@ workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
         //DCP Mobile Application
         !include models/dcpMobile.dsl
 
-        // External API
-        plate-scanner-external-api = softwareSystem "Plate Scanner External API" "Third-party number plate and VIN scanning API" {
-            tags "Existing System" "API"
-        }
-
-        TDP = softwareSystem "T+ Data Platform" "Reporting data platform & CRM programs" {
-            tags "Existing System" "Database"
-        }
-
-        BI-dashboards = softwareSystem "BI Dashboards" "Reporting and Dashboard platform" {
-            tags "Existing System" "Container"
-        }
-
-        // CRM Activities
-        !include models/crm-activities.dsl
+        # // CRM Activities
+        !include models/crm-BI-activities.dsl
 
         // Relationships
         !include relationships/relationships.dsl

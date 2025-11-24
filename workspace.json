@@ -3,7 +3,7 @@
   "description" : "System Context Diagram (C4 Level 1)",
   "documentation" : {
     "sections" : [ {
-      "content" : "## TEDS OOC\n\nThis site documents and ecosystem of TEDS OOC\n\n### System Context \n\n![System Landscape Diagram](embed:Level1_SystemContext{graph})",
+      "content" : "## TEDS OOC\n\nThis site documents and ecosystem of TEDS OOC\n\n### System Context \n\n![System Landscape Diagram](embed:Level1_SystemContext)",
       "filename" : "00-index.md",
       "format" : "Markdown",
       "order" : 1,
@@ -17,7 +17,8 @@
     } ]
   },
   "id" : 1,
-  "lastModifiedDate" : "2025-11-24T08:42:34Z",
+  "lastModifiedAgent" : "structurizr-ui",
+  "lastModifiedDate" : "2025-11-24T12:07:02Z",
   "model" : {
     "people" : [ {
       "description" : "Performs manual data entry, manages tires & services, creates quotations",
@@ -74,9 +75,15 @@
       "relationships" : [ {
         "description" : "Responds to NPS surveys",
         "destinationId" : "76",
-        "id" : "252",
+        "id" : "250",
         "sourceId" : "4",
         "tags" : "Relationship"
+      }, {
+        "description" : "Responds to NPS surveys",
+        "destinationId" : "66",
+        "id" : "251",
+        "linkedRelationshipId" : "250",
+        "sourceId" : "4"
       } ],
       "tags" : "Element,Person,customer"
     }, {
@@ -110,7 +117,7 @@
         }, {
           "description" : "stores transaction data to core database",
           "destinationId" : "23",
-          "id" : "100",
+          "id" : "101",
           "sourceId" : "7",
           "tags" : "Relationship"
         }, {
@@ -146,7 +153,7 @@
         }, {
           "description" : "stores transaction data to core database",
           "destinationId" : "23",
-          "id" : "101",
+          "id" : "100",
           "sourceId" : "8",
           "tags" : "Relationship"
         }, {
@@ -417,10 +424,16 @@
         },
         "relationships" : [ {
           "description" : "Stores reporting data",
-          "destinationId" : "66",
+          "destinationId" : "67",
           "id" : "234",
           "sourceId" : "19",
           "tags" : "Relationship"
+        }, {
+          "description" : "Stores reporting data",
+          "destinationId" : "66",
+          "id" : "235",
+          "linkedRelationshipId" : "234",
+          "sourceId" : "19"
         } ],
         "tags" : "Element,Container",
         "technology" : "Java + Spring Boot"
@@ -527,7 +540,7 @@
           "linkedRelationshipId" : "110",
           "sourceId" : "23"
         } ],
-        "tags" : "Element,Container,Database"
+        "tags" : "Element,Container"
       }, {
         "description" : "medium performance database",
         "documentation" : { },
@@ -708,8 +721,14 @@
         "sourceId" : "6"
       }, {
         "description" : "Stores reporting data",
+        "destinationId" : "67",
+        "id" : "236",
+        "linkedRelationshipId" : "234",
+        "sourceId" : "6"
+      }, {
+        "description" : "Stores reporting data",
         "destinationId" : "66",
-        "id" : "235",
+        "id" : "237",
         "linkedRelationshipId" : "234",
         "sourceId" : "6"
       } ],
@@ -1729,53 +1748,76 @@
       } ],
       "tags" : "Element,Software System,Existing System,API"
     }, {
-      "description" : "Reporting data platform & CRM programs",
-      "documentation" : { },
-      "id" : "66",
-      "name" : "T+ Data Platform",
-      "properties" : {
-        "structurizr.dsl.identifier" : "TDP"
-      },
-      "relationships" : [ {
-        "description" : "Provides CRM data",
-        "destinationId" : "70",
-        "id" : "236",
-        "sourceId" : "66",
-        "tags" : "Relationship"
-      }, {
-        "description" : "Provides CRM data",
-        "destinationId" : "69",
-        "id" : "237",
-        "linkedRelationshipId" : "236",
-        "sourceId" : "66"
-      }, {
-        "description" : "Provides CRM data",
-        "destinationId" : "68",
-        "id" : "238",
-        "linkedRelationshipId" : "236",
-        "sourceId" : "66"
-      }, {
-        "description" : "Provides data for reports and dashboards",
-        "destinationId" : "67",
-        "id" : "265",
-        "sourceId" : "66",
-        "tags" : "Relationship"
-      } ],
-      "tags" : "Element,Software System,Existing System,Database"
-    }, {
-      "description" : "Reporting and Dashboard platform",
-      "documentation" : { },
-      "id" : "67",
-      "name" : "BI Dashboards",
-      "properties" : {
-        "structurizr.dsl.identifier" : "BI-dashboards"
-      },
-      "tags" : "Element,Software System,Existing System,Container"
-    }, {
       "containers" : [ {
         "components" : [ {
           "documentation" : { },
-          "id" : "70",
+          "id" : "68",
+          "name" : "pgbouncer for Postgres database connections",
+          "properties" : {
+            "structurizr.dsl.identifier" : "pgbouncer"
+          },
+          "relationships" : [ {
+            "description" : "Provides CRM data",
+            "destinationId" : "71",
+            "id" : "238",
+            "sourceId" : "68",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Provides CRM data",
+            "destinationId" : "70",
+            "id" : "239",
+            "linkedRelationshipId" : "238",
+            "sourceId" : "68"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "T+ Data Platform for reporting and CRM data storage",
+        "documentation" : { },
+        "id" : "67",
+        "name" : "T+ Data Platform",
+        "properties" : {
+          "structurizr.dsl.identifier" : "Tplus-data-platform"
+        },
+        "relationships" : [ {
+          "description" : "Provides CRM data",
+          "destinationId" : "71",
+          "id" : "240",
+          "linkedRelationshipId" : "238",
+          "sourceId" : "67"
+        }, {
+          "description" : "Provides CRM data",
+          "destinationId" : "70",
+          "id" : "241",
+          "linkedRelationshipId" : "238",
+          "sourceId" : "67"
+        }, {
+          "description" : "Provides data for reports and dashboards",
+          "destinationId" : "69",
+          "id" : "258",
+          "sourceId" : "67",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container,database"
+      }, {
+        "description" : "Reporting and Dashboard platform",
+        "documentation" : { },
+        "id" : "69",
+        "name" : "BI Dashboards",
+        "properties" : {
+          "structurizr.dsl.identifier" : "BI-dashboards"
+        },
+        "relationships" : [ {
+          "description" : "Accesses dashboards",
+          "destinationId" : "5",
+          "id" : "259",
+          "sourceId" : "69",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container,Existing System"
+      }, {
+        "components" : [ {
+          "documentation" : { },
+          "id" : "71",
           "name" : "Reads TDP to apply marketing rules",
           "properties" : {
             "structurizr.dsl.identifier" : "db-reader-hubspot"
@@ -1783,7 +1825,7 @@
           "tags" : "Element,Component"
         }, {
           "documentation" : { },
-          "id" : "71",
+          "id" : "72",
           "name" : "Connects to Infobip for messaging",
           "properties" : {
             "structurizr.dsl.identifier" : "api-endpoint-hubspot"
@@ -1791,82 +1833,40 @@
           "relationships" : [ {
             "description" : "Sends/receives customer messages",
             "destinationId" : "74",
-            "id" : "239",
-            "sourceId" : "71",
+            "id" : "242",
+            "sourceId" : "72",
             "tags" : "Relationship"
           }, {
             "description" : "Sends/receives customer messages",
             "destinationId" : "73",
-            "id" : "240",
-            "linkedRelationshipId" : "239",
-            "sourceId" : "71"
-          }, {
-            "description" : "Sends/receives customer messages",
-            "destinationId" : "72",
-            "id" : "241",
-            "linkedRelationshipId" : "239",
-            "sourceId" : "71"
+            "id" : "243",
+            "linkedRelationshipId" : "242",
+            "sourceId" : "72"
           } ],
           "tags" : "Element,Component"
         } ],
-        "description" : "hubspot crm program",
+        "description" : "CRM & marketing automation",
         "documentation" : { },
-        "id" : "69",
-        "name" : "Hubspot-crm",
+        "id" : "70",
+        "name" : "HubSpot",
         "properties" : {
-          "structurizr.dsl.identifier" : "crm-hubspot"
+          "structurizr.dsl.identifier" : "hubspot"
         },
         "relationships" : [ {
           "description" : "Sends/receives customer messages",
           "destinationId" : "74",
-          "id" : "242",
-          "linkedRelationshipId" : "239",
-          "sourceId" : "69"
+          "id" : "244",
+          "linkedRelationshipId" : "242",
+          "sourceId" : "70"
         }, {
           "description" : "Sends/receives customer messages",
           "destinationId" : "73",
-          "id" : "243",
-          "linkedRelationshipId" : "239",
-          "sourceId" : "69"
-        }, {
-          "description" : "Sends/receives customer messages",
-          "destinationId" : "72",
-          "id" : "244",
-          "linkedRelationshipId" : "239",
-          "sourceId" : "69"
+          "id" : "245",
+          "linkedRelationshipId" : "242",
+          "sourceId" : "70"
         } ],
-        "tags" : "Element,Container"
-      } ],
-      "description" : "CRM & marketing automation",
-      "documentation" : { },
-      "group" : "CRM Activities",
-      "id" : "68",
-      "name" : "HubSpot",
-      "properties" : {
-        "structurizr.dsl.identifier" : "hubspot"
-      },
-      "relationships" : [ {
-        "description" : "Sends/receives customer messages",
-        "destinationId" : "74",
-        "id" : "245",
-        "linkedRelationshipId" : "239",
-        "sourceId" : "68"
+        "tags" : "Element,Container,CRM"
       }, {
-        "description" : "Sends/receives customer messages",
-        "destinationId" : "73",
-        "id" : "246",
-        "linkedRelationshipId" : "239",
-        "sourceId" : "68"
-      }, {
-        "description" : "Sends/receives customer messages",
-        "destinationId" : "72",
-        "id" : "247",
-        "linkedRelationshipId" : "239",
-        "sourceId" : "68"
-      } ],
-      "tags" : "Element,Software System,CRM"
-    }, {
-      "containers" : [ {
         "components" : [ {
           "documentation" : { },
           "id" : "74",
@@ -1877,223 +1877,190 @@
           "relationships" : [ {
             "description" : "Sends messages to customers",
             "destinationId" : "76",
-            "id" : "248",
+            "id" : "246",
             "sourceId" : "74",
             "tags" : "Relationship"
           }, {
             "description" : "SSends customer replies back to Hubspot",
-            "destinationId" : "71",
-            "id" : "256",
+            "destinationId" : "72",
+            "id" : "254",
             "sourceId" : "74",
             "tags" : "Relationship"
           }, {
             "description" : "SSends customer replies back to Hubspot",
-            "destinationId" : "69",
-            "id" : "257",
-            "linkedRelationshipId" : "256",
-            "sourceId" : "74"
-          }, {
-            "description" : "SSends customer replies back to Hubspot",
-            "destinationId" : "68",
-            "id" : "258",
-            "linkedRelationshipId" : "256",
+            "destinationId" : "70",
+            "id" : "255",
+            "linkedRelationshipId" : "254",
             "sourceId" : "74"
           } ],
           "tags" : "Element,Component"
         } ],
-        "description" : "infobip enabler",
+        "description" : "Enabler for messaging platforms",
         "documentation" : { },
         "id" : "73",
-        "name" : "Infobip-crm",
+        "name" : "Infobip",
         "properties" : {
-          "structurizr.dsl.identifier" : "crm-infobip"
+          "structurizr.dsl.identifier" : "infobip"
         },
         "relationships" : [ {
           "description" : "Sends messages to customers",
           "destinationId" : "76",
-          "id" : "249",
-          "linkedRelationshipId" : "248",
+          "id" : "247",
+          "linkedRelationshipId" : "246",
           "sourceId" : "73"
         }, {
           "description" : "SSends customer replies back to Hubspot",
-          "destinationId" : "71",
-          "id" : "259",
-          "linkedRelationshipId" : "256",
+          "destinationId" : "72",
+          "id" : "256",
+          "linkedRelationshipId" : "254",
           "sourceId" : "73"
         }, {
           "description" : "SSends customer replies back to Hubspot",
-          "destinationId" : "69",
-          "id" : "260",
-          "linkedRelationshipId" : "256",
-          "sourceId" : "73"
-        }, {
-          "description" : "SSends customer replies back to Hubspot",
-          "destinationId" : "68",
-          "id" : "261",
-          "linkedRelationshipId" : "256",
+          "destinationId" : "70",
+          "id" : "257",
+          "linkedRelationshipId" : "254",
           "sourceId" : "73"
         } ],
+        "tags" : "Element,Container,CRM"
+      }, {
+        "description" : "Net Promoter Score & consent management",
+        "documentation" : { },
+        "id" : "75",
+        "name" : "NPS System",
+        "properties" : {
+          "structurizr.dsl.identifier" : "nps"
+        },
         "tags" : "Element,Container"
+      }, {
+        "description" : "Line, WhatsApp, etc.",
+        "documentation" : { },
+        "id" : "76",
+        "name" : "Messaging Platforms",
+        "properties" : {
+          "structurizr.dsl.identifier" : "messaging"
+        },
+        "relationships" : [ {
+          "description" : "Sends NPS to customers",
+          "destinationId" : "4",
+          "id" : "248",
+          "sourceId" : "76",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Sends customer replies back to Infobip",
+          "destinationId" : "74",
+          "id" : "252",
+          "sourceId" : "76",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Sends customer replies back to Infobip",
+          "destinationId" : "73",
+          "id" : "253",
+          "linkedRelationshipId" : "252",
+          "sourceId" : "76"
+        } ],
+        "tags" : "Element,Container,CRM"
       } ],
-      "description" : "Enabler for messaging platforms",
+      "description" : "CRM and Business Intelligence platform",
       "documentation" : { },
-      "group" : "CRM Activities",
-      "id" : "72",
-      "name" : "Infobip",
+      "id" : "66",
+      "name" : "CRM and BI System",
       "properties" : {
-        "structurizr.dsl.identifier" : "infobip"
-      },
-      "relationships" : [ {
-        "description" : "Sends messages to customers",
-        "destinationId" : "76",
-        "id" : "250",
-        "linkedRelationshipId" : "248",
-        "sourceId" : "72"
-      }, {
-        "description" : "SSends customer replies back to Hubspot",
-        "destinationId" : "71",
-        "id" : "262",
-        "linkedRelationshipId" : "256",
-        "sourceId" : "72"
-      }, {
-        "description" : "SSends customer replies back to Hubspot",
-        "destinationId" : "69",
-        "id" : "263",
-        "linkedRelationshipId" : "256",
-        "sourceId" : "72"
-      }, {
-        "description" : "SSends customer replies back to Hubspot",
-        "destinationId" : "68",
-        "id" : "264",
-        "linkedRelationshipId" : "256",
-        "sourceId" : "72"
-      } ],
-      "tags" : "Element,Software System,CRM"
-    }, {
-      "description" : "Net Promoter Score & consent management",
-      "documentation" : { },
-      "group" : "CRM Activities",
-      "id" : "75",
-      "name" : "NPS System",
-      "properties" : {
-        "structurizr.dsl.identifier" : "nps"
-      },
-      "tags" : "Element,Software System"
-    }, {
-      "description" : "Line, WhatsApp, etc.",
-      "documentation" : { },
-      "group" : "CRM Activities",
-      "id" : "76",
-      "name" : "Messaging Platforms",
-      "properties" : {
-        "structurizr.dsl.identifier" : "messaging"
+        "structurizr.dsl.identifier" : "CRM-BI-System"
       },
       "relationships" : [ {
         "description" : "Sends NPS to customers",
         "destinationId" : "4",
-        "id" : "251",
-        "sourceId" : "76",
-        "tags" : "Relationship"
+        "id" : "249",
+        "linkedRelationshipId" : "248",
+        "sourceId" : "66"
       }, {
-        "description" : "Sends customer replies back to Infobip",
-        "destinationId" : "74",
-        "id" : "253",
-        "sourceId" : "76",
-        "tags" : "Relationship"
-      }, {
-        "description" : "Sends customer replies back to Infobip",
-        "destinationId" : "73",
-        "id" : "254",
-        "linkedRelationshipId" : "253",
-        "sourceId" : "76"
-      }, {
-        "description" : "Sends customer replies back to Infobip",
-        "destinationId" : "72",
-        "id" : "255",
-        "linkedRelationshipId" : "253",
-        "sourceId" : "76"
+        "description" : "Accesses dashboards",
+        "destinationId" : "5",
+        "id" : "260",
+        "linkedRelationshipId" : "259",
+        "sourceId" : "66"
       } ],
-      "tags" : "Element,Software System,CRM"
+      "tags" : "Element,Software System,container,new system"
     } ]
   },
   "name" : "TEDS Ecosystem",
   "properties" : {
-    "structurizr.inspection.error" : "183",
     "structurizr.inspection.info" : "0",
     "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.error" : "179",
     "structurizr.inspection.warning" : "0"
   },
   "views" : {
     "componentViews" : [ {
       "containerId" : "25",
       "dimensions" : {
-        "height" : 2054,
-        "width" : 6891
+        "height" : 2758,
+        "width" : 7641
       },
       "elements" : [ {
         "id" : "7",
-        "x" : 1721,
+        "x" : 2092,
         "y" : 329
       }, {
         "id" : "19",
         "x" : 1721,
-        "y" : 329
+        "y" : 2129
       }, {
         "id" : "23",
-        "x" : 0,
-        "y" : 0
+        "x" : 1775,
+        "y" : 929
       }, {
         "id" : "26",
         "x" : 1721,
-        "y" : 929
+        "y" : 1529
       }, {
         "id" : "27",
-        "x" : 1721,
-        "y" : 929
+        "x" : 2471,
+        "y" : 1529
       }, {
         "id" : "28",
-        "x" : 3221,
-        "y" : 929
+        "x" : 3971,
+        "y" : 1529
       }, {
         "id" : "29",
         "x" : 971,
-        "y" : 929
+        "y" : 1529
       }, {
         "id" : "30",
-        "x" : 3971,
-        "y" : 929
+        "x" : 4721,
+        "y" : 1529
       }, {
         "id" : "31",
-        "x" : 2471,
-        "y" : 929
+        "x" : 3221,
+        "y" : 1529
       }, {
         "id" : "36",
         "x" : 208,
-        "y" : 329
+        "y" : 929
       }, {
         "id" : "40",
-        "x" : 4733,
-        "y" : 329
+        "x" : 5483,
+        "y" : 929
       }, {
         "id" : "47",
-        "x" : 5483,
-        "y" : 329
+        "x" : 6233,
+        "y" : 929
       }, {
         "id" : "55",
-        "x" : 6233,
-        "y" : 329
+        "x" : 6983,
+        "y" : 929
       }, {
         "id" : "61",
-        "x" : 1721,
-        "y" : 1529
+        "x" : 5483,
+        "y" : 2129
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "Level3_core_database_Components",
       "name" : "Component View: TEDS Core System - core-database",
       "order" : 3,
-      "paperSize" : "A2_Landscape",
+      "paperSize" : "A1_Landscape",
       "relationships" : [ {
-        "id" : "100"
+        "id" : "101"
       }, {
         "id" : "110"
       }, {
@@ -2101,31 +2068,35 @@
       }, {
         "id" : "154",
         "vertices" : [ {
-          "x" : 4704,
-          "y" : 629
+          "x" : 5454,
+          "y" : 1229
         }, {
-          "x" : 3071,
-          "y" : 825
+          "x" : 3821,
+          "y" : 1425
         } ]
       }, {
         "id" : "176",
         "vertices" : [ {
-          "x" : 5333,
-          "y" : 629
+          "x" : 6083,
+          "y" : 1229
         }, {
-          "x" : 3821,
-          "y" : 825
+          "x" : 4571,
+          "y" : 1425
         } ]
       }, {
         "id" : "207",
         "vertices" : [ {
-          "x" : 6083,
-          "y" : 629
+          "x" : 6833,
+          "y" : 1229
         } ]
       }, {
         "id" : "218"
       }, {
-        "id" : "220"
+        "id" : "220",
+        "vertices" : [ {
+          "x" : 3071,
+          "y" : 1933
+        } ]
       }, {
         "id" : "232"
       } ],
@@ -2177,43 +2148,43 @@
     }, {
       "containerId" : "37",
       "dimensions" : {
-        "height" : 2020,
-        "width" : 4004
+        "height" : 1916,
+        "width" : 3116
       },
       "elements" : [ {
         "id" : "6",
-        "x" : 3329,
+        "x" : 1708,
         "y" : 1408
       }, {
         "id" : "32",
-        "x" : 600,
+        "x" : 208,
         "y" : 208
       }, {
         "id" : "33",
-        "x" : 1350,
+        "x" : 958,
         "y" : 208
       }, {
         "id" : "34",
-        "x" : 2100,
+        "x" : 1708,
         "y" : 208
       }, {
         "id" : "35",
-        "x" : 2850,
+        "x" : 2458,
         "y" : 208
       }, {
         "id" : "38",
-        "x" : 2475,
+        "x" : 2083,
         "y" : 808
       }, {
         "id" : "39",
-        "x" : 1725,
+        "x" : 1333,
         "y" : 808
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "Level3_referential_Components",
       "name" : "Component View: Referential System - TEDS Tyre referential",
       "order" : 7,
-      "paperSize" : "A3_Landscape",
+      "paperSize" : "A4_Landscape",
       "relationships" : [ {
         "id" : "112"
       }, {
@@ -2223,10 +2194,10 @@
       }, {
         "id" : "121",
         "vertices" : [ {
-          "x" : 2700,
+          "x" : 2308,
           "y" : 508
         }, {
-          "x" : 2325,
+          "x" : 1933,
           "y" : 600
         } ]
       }, {
@@ -2347,8 +2318,8 @@
       },
       "elements" : [ {
         "id" : "6",
-        "x" : 810,
-        "y" : 1410
+        "x" : 808,
+        "y" : 1408
       }, {
         "id" : "57",
         "x" : 1183,
@@ -2404,87 +2375,34 @@
       } ],
       "title" : "Taxation System – Components"
     }, {
-      "containerId" : "69",
+      "containerId" : "67",
       "dimensions" : {
-        "height" : 1525,
-        "width" : 2066
-      },
-      "elements" : [ {
-        "id" : "66",
-        "x" : 1183,
-        "y" : 208
-      }, {
-        "id" : "70",
-        "x" : 1183,
-        "y" : 808
-      }, {
-        "id" : "71",
-        "x" : 433,
-        "y" : 808
-      }, {
-        "id" : "72",
-        "x" : 0,
-        "y" : 0
-      } ],
-      "externalContainerBoundariesVisible" : false,
-      "key" : "Level3_hubspot_Components",
-      "name" : "Component View: HubSpot - Hubspot-crm",
-      "order" : 15,
-      "paperSize" : "A5_Landscape",
-      "relationships" : [ {
-        "id" : "236"
-      }, {
-        "id" : "241",
-        "vertices" : [ {
-          "x" : 573,
-          "y" : 483
-        } ]
-      }, {
-        "id" : "262",
-        "vertices" : [ {
-          "x" : 309,
-          "y" : 624
-        } ]
-      } ],
-      "title" : "HubSpot CRM – Components"
-    }, {
-      "containerId" : "73",
-      "dimensions" : {
-        "height" : 1916,
+        "height" : 1662,
         "width" : 1316
       },
       "elements" : [ {
         "id" : "68",
         "x" : 433,
-        "y" : 208
+        "y" : 433
       }, {
-        "id" : "74",
+        "id" : "70",
         "x" : 433,
-        "y" : 808
-      }, {
-        "id" : "76",
-        "x" : 433,
-        "y" : 1408
+        "y" : 1033
       } ],
       "externalContainerBoundariesVisible" : false,
-      "key" : "Level3_infobip_Components",
-      "name" : "Component View: Infobip - Infobip-crm",
-      "order" : 17,
+      "key" : "Level3_Tplus-data-platform_Components",
+      "name" : "Component View: CRM and BI System - T+ Data Platform",
+      "order" : 15,
       "paperSize" : "A5_Portrait",
       "relationships" : [ {
-        "id" : "245"
-      }, {
-        "id" : "248"
-      }, {
-        "id" : "253"
-      }, {
-        "id" : "258"
+        "id" : "239"
       } ],
-      "title" : "Infobip CRM – Components"
+      "title" : "HubSpot CRM – Components"
     } ],
     "configuration" : {
       "branding" : { },
-      "lastSavedView" : "Level2_teds_Containers",
+      "lastSavedView" : "Level2_dcpmobile_plate_scanner_Components",
+      "metadataSymbols" : "SquareBrackets",
       "styles" : {
         "elements" : [ {
           "background" : "#85bbf0",
@@ -2495,6 +2413,7 @@
           "color" : "#ffffff",
           "tag" : "Container"
         }, {
+          "color" : "#438dd6",
           "shape" : "Cylinder",
           "tag" : "Database"
         }, {
@@ -2651,13 +2570,13 @@
       "relationships" : [ {
         "id" : "100",
         "vertices" : [ {
-          "x" : 8762,
+          "x" : 8842,
           "y" : 2737
         } ]
       }, {
         "id" : "101",
         "vertices" : [ {
-          "x" : 8842,
+          "x" : 8762,
           "y" : 2737
         } ]
       }, {
@@ -2830,7 +2749,7 @@
           "y" : 2737
         } ]
       }, {
-        "id" : "234",
+        "id" : "235",
         "vertices" : [ {
           "x" : 808,
           "y" : 2829
@@ -3030,8 +2949,8 @@
         "y" : 1408
       }, {
         "id" : "41",
-        "x" : 960,
-        "y" : 810
+        "x" : 958,
+        "y" : 808
       }, {
         "id" : "44",
         "x" : 208,
@@ -3171,77 +3090,97 @@
       "title" : "Containers"
     }, {
       "dimensions" : {
-        "height" : 1420,
-        "width" : 1616
+        "height" : 3916,
+        "width" : 2362
       },
       "elements" : [ {
-        "id" : "66",
-        "x" : 210,
-        "y" : 210
+        "id" : "4",
+        "x" : 354,
+        "y" : 3308
       }, {
-        "id" : "69",
-        "x" : 583,
+        "id" : "5",
+        "x" : 1737,
+        "y" : 2008
+      }, {
+        "id" : "6",
+        "x" : 1079,
+        "y" : 208
+      }, {
+        "id" : "67",
+        "x" : 1079,
         "y" : 808
       }, {
-        "id" : "72",
-        "x" : 958,
-        "y" : 208
-      } ],
-      "externalSoftwareSystemBoundariesVisible" : false,
-      "key" : "Level2_hubspot_Containers",
-      "name" : "Container View: HubSpot",
-      "order" : 14,
-      "paperSize" : "A5_Landscape",
-      "relationships" : [ {
-        "id" : "237"
+        "id" : "69",
+        "x" : 1079,
+        "y" : 1408
       }, {
-        "id" : "244",
-        "vertices" : [ {
-          "x" : 1122,
-          "y" : 737
-        } ]
-      }, {
-        "id" : "263",
-        "vertices" : [ {
-          "x" : 868,
-          "y" : 578
-        } ]
-      } ],
-      "softwareSystemId" : "68",
-      "title" : "Containers"
-    }, {
-      "dimensions" : {
-        "height" : 1916,
-        "width" : 1108
-      },
-      "elements" : [ {
-        "id" : "68",
+        "id" : "70",
         "x" : 329,
-        "y" : 208
+        "y" : 1408
       }, {
         "id" : "73",
+        "x" : 329,
+        "y" : 2058
+      }, {
+        "id" : "75",
         "x" : 329,
         "y" : 808
       }, {
         "id" : "76",
         "x" : 329,
-        "y" : 1408
+        "y" : 2708
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
-      "key" : "Level2_infobip_Containers",
-      "name" : "Container View: Infobip",
-      "order" : 16,
-      "paperSize" : "A5_Portrait",
+      "key" : "Level2_CRM-BI-System_Containers",
+      "name" : "Container View: CRM and BI System",
+      "order" : 14,
+      "paperSize" : "A3_Portrait",
       "relationships" : [ {
-        "id" : "246"
+        "id" : "236"
       }, {
-        "id" : "249"
+        "id" : "241"
       }, {
-        "id" : "254"
+        "id" : "245",
+        "vertices" : [ {
+          "x" : 404,
+          "y" : 1883
+        } ]
       }, {
-        "id" : "261"
+        "id" : "247",
+        "vertices" : [ {
+          "x" : 404,
+          "y" : 2533
+        } ]
+      }, {
+        "id" : "248",
+        "vertices" : [ {
+          "x" : 404,
+          "y" : 3183
+        } ]
+      }, {
+        "id" : "250",
+        "vertices" : [ {
+          "x" : 704,
+          "y" : 3183
+        } ]
+      }, {
+        "id" : "253",
+        "vertices" : [ {
+          "x" : 704,
+          "y" : 2533
+        } ]
+      }, {
+        "id" : "257",
+        "vertices" : [ {
+          "x" : 704,
+          "y" : 1883
+        } ]
+      }, {
+        "id" : "258"
+      }, {
+        "id" : "259"
       } ],
-      "softwareSystemId" : "72",
+      "softwareSystemId" : "66",
       "title" : "Containers"
     } ],
     "systemContextViews" : [ {
@@ -3336,7 +3275,7 @@
           "y" : 1240
         } ]
       }, {
-        "id" : "235",
+        "id" : "237",
         "vertices" : [ {
           "x" : 2958,
           "y" : 2108

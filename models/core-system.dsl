@@ -67,7 +67,7 @@ teds = softwareSystem "TEDS Core System" "DOS platform including microservices a
                 }
             }
             sqlproxy = container "sqlproxy" "medium performance database" {
-                tags "Container" "Database"
+                tags "Container" 
             }
             reporting-database = container "reporting-database" "medium performance database" {
                 tags "Container" "Database"
