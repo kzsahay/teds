@@ -3,8 +3,7 @@
   "description" : "System Context Diagram (C4 Level 1)",
   "documentation" : { },
   "id" : 1,
-  "lastModifiedAgent" : "structurizr-ui",
-  "lastModifiedDate" : "2025-11-24T04:26:24Z",
+  "lastModifiedDate" : "2025-11-24T04:28:21Z",
   "model" : {
     "people" : [ {
       "description" : "Performs manual data entry, manages tires & services, creates quotations",
@@ -1552,9 +1551,9 @@
   },
   "name" : "TEDS Ecosystem",
   "properties" : {
+    "structurizr.inspection.error" : "87",
     "structurizr.inspection.info" : "0",
     "structurizr.inspection.ignore" : "0",
-    "structurizr.inspection.error" : "87",
     "structurizr.inspection.warning" : "0"
   },
   "views" : {
@@ -1860,7 +1859,6 @@
     "configuration" : {
       "branding" : { },
       "lastSavedView" : "Level3_taxation_Components",
-      "metadataSymbols" : "SquareBrackets",
       "styles" : {
         "elements" : [ {
           "background" : "#85bbf0",

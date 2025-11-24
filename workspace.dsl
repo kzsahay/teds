@@ -24,12 +24,6 @@ workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
         // Taxation
         !include models/taxation.dsl
 
-        // CRM Activities
-        !include models/crm-activities.dsl
-
-        // Relationships
-        !include relationships/relationships.dsl
-
         dcpMobile = softwareSystem "DCP Mobile Application" "Mobile login application" {
             tags "Existing System"
         }
@@ -37,6 +31,12 @@ workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
         TDP = softwareSystem "T+ Data Platform" "Reporting data platform & CRM programs" {
             tags "Existing System" "Database"
         }
+
+        // CRM Activities
+        !include models/crm-activities.dsl
+
+        // Relationships
+        !include relationships/relationships.dsl
     }
 
     // Views
