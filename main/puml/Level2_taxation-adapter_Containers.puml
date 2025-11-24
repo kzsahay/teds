@@ -1,0 +1,27 @@
+@startuml
+set separator none
+title Containers
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+
+System(TEDSCoreSystem, "TEDS Core System", $descr="DOS platform including microservices and core business logic", $tags="", $link="")
+System(ThailandETax, "Thailand E-Tax", $descr="Thailand E-Tax program", $tags="", $link="")
+System(OtherETax, "Other E-Tax", $descr="Other e-tax program", $tags="", $link="")
+
+System_Boundary("ETax_boundary", "E-Tax", $tags="") {
+  Container(ETax.TEDSTaxation, "TEDS Taxation", $techn="", $descr="TEDS taxation program", $tags="", $link="")
+}
+
+Rel(TEDSCoreSystem, ETax.TEDSTaxation, "Sends tax data", $techn="kafka", $tags="", $link="")
+Rel(ETax.TEDSTaxation, ThailandETax, "Sends E-tax data to Govt agency", $techn="kafka", $tags="", $link="")
+Rel(ETax.TEDSTaxation, OtherETax, "Sends E-tax data to Govt agency", $techn="kafka", $tags="", $link="")
+Rel(ThailandETax, ETax.TEDSTaxation, "Gets E-tax reference from Govt agency", $techn="kafka", $tags="", $link="")
+Rel(OtherETax, ETax.TEDSTaxation, "Gets E-tax reference from Govt agency", $techn="kafka", $tags="", $link="")
+Rel(ETax.TEDSTaxation, TEDSCoreSystem, "Provides government reference ID", $techn="kafka", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

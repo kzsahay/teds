@@ -1,0 +1,27 @@
+@startuml
+set separator none
+title Loyalty System – Components
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Component>
+
+System(TEDSCoreSystem, "TEDS Core System", $descr="DOS platform including microservices and core business logic", $tags="", $link="")
+System(ThailandiCare, "Thailand iCare", $descr="Thailand iCare loyalty program", $tags="", $link="")
+System(KoreaLoyalty, "Korea Loyalty", $descr="Korea loyalty program", $tags="", $link="")
+System(OtherLoyalty, "Other Loyalty", $descr="Other loyalty program", $tags="", $link="")
+
+Container_Boundary("LoyaltyPrograms.TEDSLoyalty_boundary", "TEDS Loyalty", $tags="") {
+  Component(LoyaltyPrograms.TEDSLoyalty.Kafkaproducerforloyaltysystem, "Kafka producer for loyalty-system", $techn="", $descr="", $tags="", $link="")
+  Component(LoyaltyPrograms.TEDSLoyalty.Kafkaconsumerforloyaltysystem, "Kafka consumer for loyalty-system", $techn="", $descr="", $tags="", $link="")
+}
+
+Rel(ThailandiCare, LoyaltyPrograms.TEDSLoyalty.Kafkaconsumerforloyaltysystem, "Gets available coupons", $techn="API", $tags="", $link="")
+Rel(KoreaLoyalty, LoyaltyPrograms.TEDSLoyalty.Kafkaconsumerforloyaltysystem, "Gets available coupons", $techn="API", $tags="", $link="")
+Rel(OtherLoyalty, LoyaltyPrograms.TEDSLoyalty.Kafkaconsumerforloyaltysystem, "Gets available coupons", $techn="API", $tags="", $link="")
+Rel(LoyaltyPrograms.TEDSLoyalty.Kafkaproducerforloyaltysystem, TEDSCoreSystem, "Provides available coupons", $techn="kafka", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

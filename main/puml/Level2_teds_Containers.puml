@@ -13,9 +13,9 @@ Person(Administrator, "Administrator", $descr="Performs manual data entry, manag
 Person(Customer, "Customer", $descr="Receives NPS surveys, messages, quotations", $tags="", $link="")
 System(ReferentialSystem, "Referential System", $descr="Wecare-like referential provider", $tags="", $link="")
 System(LoyaltyPrograms, "Loyalty Programs", $descr="Loyalty program adapter", $tags="", $link="")
-System(DCPMobileApplication, "DCP Mobile Application", $descr="Mobile login application", $tags="", $link="")
 System(EOrdering, "E-Ordering", $descr="E-ordering adapter", $tags="", $link="")
-System(TaxationAdapter, "Taxation Adapter", $descr="Downstream tax processing & government linking", $tags="", $link="")
+System(ETax, "E-Tax", $descr="E-tax adapter", $tags="", $link="")
+System(DCPMobileApplication, "DCP Mobile Application", $descr="Mobile login application", $tags="", $link="")
 System(TDataPlatform, "T+ Data Platform", $descr="Reporting data platform & CRM programs", $tags="", $link="")
 
 System_Boundary("TEDSCoreSystem_boundary", "TEDS Core System", $tags="") {
@@ -73,10 +73,11 @@ System_Boundary("TEDSCoreSystem_boundary", "TEDS Core System", $tags="") {
 }
 
 Rel(ReferentialSystem, TEDSCoreSystem.tedsservicesku, "Provides referential data", $techn="kafka", $tags="", $link="")
+Rel(TEDSCoreSystem.tedsservicecustomer, LoyaltyPrograms, "Requests available coupons", $techn="kafka", $tags="", $link="")
 Rel(LoyaltyPrograms, TEDSCoreSystem.tedsservicecustomer, "Provides available coupons", $techn="kafka", $tags="", $link="")
-Rel(EOrdering, TEDSCoreSystem.tedsservicesupplychain, "Sends purchase orders", $techn="kafka", $tags="", $link="")
-Rel(TEDSCoreSystem.tedsservicefinance, TaxationAdapter, "Sends tax data", $techn="kafka", $tags="", $link="")
-Rel(TaxationAdapter, TEDSCoreSystem.tedsservicefinance, "Provides government reference ID", $techn="kafka", $tags="", $link="")
+Rel(EOrdering, TEDSCoreSystem.tedsservicesupplychain, "Provides available E-orders", $techn="kafka", $tags="", $link="")
+Rel(TEDSCoreSystem.tedsservicefinance, ETax, "Sends tax data", $techn="kafka", $tags="", $link="")
+Rel(ETax, TEDSCoreSystem.tedsservicefinance, "Provides government reference ID", $techn="kafka", $tags="", $link="")
 Rel(TEDSCoreSystem.tedsservicereport, TDataPlatform, "Sends reporting data", $techn="kafka", $tags="", $link="")
 Rel(TEDSCoreSystem.WebApplication, TEDSCoreSystem.SinglePageApplication, "Delivers", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.SinglePageApplication, TEDSCoreSystem.APIApplication, "Calls", $techn="JSON/HTTPS", $tags="", $link="")

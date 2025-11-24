@@ -1,0 +1,27 @@
+@startuml
+set separator none
+title E-Ordering System – Components
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Component>
+
+System(TEDSCoreSystem, "TEDS Core System", $descr="DOS platform including microservices and core business logic", $tags="", $link="")
+System(ThailandMDO, "Thailand MDO", $descr="Thailand MDO e-ordering program", $tags="", $link="")
+System(KoreaSANA, "Korea SANA", $descr="Korea SANA e-ordering program", $tags="", $link="")
+System(OtherEOrdering, "Other E-Ordering", $descr="Other e-ordering program", $tags="", $link="")
+
+Container_Boundary("EOrdering.TEDSEOrdering_boundary", "TEDS E-Ordering", $tags="") {
+  Component(EOrdering.TEDSEOrdering.Kafkaproducerforeorderingsystem, "Kafka producer for e-ordering system", $techn="", $descr="", $tags="", $link="")
+  Component(EOrdering.TEDSEOrdering.Kafkaconsumerforeorderingsystem, "Kafka consumer for e-ordering system", $techn="", $descr="", $tags="", $link="")
+}
+
+Rel(ThailandMDO, EOrdering.TEDSEOrdering.Kafkaconsumerforeorderingsystem, "Gets available E-orders", $techn="API", $tags="", $link="")
+Rel(KoreaSANA, EOrdering.TEDSEOrdering.Kafkaconsumerforeorderingsystem, "Gets available E-orders", $techn="API", $tags="", $link="")
+Rel(OtherEOrdering, EOrdering.TEDSEOrdering.Kafkaconsumerforeorderingsystem, "Gets available E-orders", $techn="API", $tags="", $link="")
+Rel(EOrdering.TEDSEOrdering.Kafkaproducerforeorderingsystem, TEDSCoreSystem, "Provides available E-orders", $techn="kafka", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

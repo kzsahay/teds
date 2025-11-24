@@ -1,0 +1,28 @@
+@startuml
+set separator none
+title Taxation System – Components
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Component>
+
+System(TEDSCoreSystem, "TEDS Core System", $descr="DOS platform including microservices and core business logic", $tags="", $link="")
+System(ThailandETax, "Thailand E-Tax", $descr="Thailand E-Tax program", $tags="", $link="")
+System(OtherETax, "Other E-Tax", $descr="Other e-tax program", $tags="", $link="")
+
+Container_Boundary("ETax.TEDSTaxation_boundary", "TEDS Taxation", $tags="") {
+  Component(ETax.TEDSTaxation.Kafkaproducerfortaxationsystem, "Kafka producer for taxation system", $techn="", $descr="", $tags="", $link="")
+  Component(ETax.TEDSTaxation.Kafkaconsumerfortaxationsystem, "Kafka consumer for taxation system", $techn="", $descr="", $tags="", $link="")
+}
+
+Rel(TEDSCoreSystem, ETax.TEDSTaxation.Kafkaconsumerfortaxationsystem, "Sends tax data", $techn="kafka", $tags="", $link="")
+Rel(ETax.TEDSTaxation.Kafkaproducerfortaxationsystem, ThailandETax, "Sends E-tax data to Govt agency", $techn="kafka", $tags="", $link="")
+Rel(ETax.TEDSTaxation.Kafkaproducerfortaxationsystem, OtherETax, "Sends E-tax data to Govt agency", $techn="kafka", $tags="", $link="")
+Rel(ThailandETax, ETax.TEDSTaxation.Kafkaconsumerfortaxationsystem, "Gets E-tax reference from Govt agency", $techn="kafka", $tags="", $link="")
+Rel(OtherETax, ETax.TEDSTaxation.Kafkaconsumerfortaxationsystem, "Gets E-tax reference from Govt agency", $techn="kafka", $tags="", $link="")
+Rel(ETax.TEDSTaxation.Kafkaproducerfortaxationsystem, TEDSCoreSystem, "Provides government reference ID", $techn="kafka", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml
