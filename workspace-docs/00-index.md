@@ -4,7 +4,4 @@ This site documents and ecosystem of TEDS OOC
 
 ### System Context 
 
-```markdown
-![System Context  Diagram](embed:Level1_SystemContext)
-```
-
+![System Landscape Diagram](embed:Level1_SystemContext)

@@ -2,7 +2,7 @@ views {
         systemContext teds "Level1_SystemContext" {
             title "System Context"
             include *
-            # autoLayout lr
+            # autoLayout
         }
 
         container teds "Level2_teds_Containers" {
@@ -73,6 +73,30 @@ views {
 
         component teds-taxation "Level3_taxation_Components" {
             title "Taxation System – Components"
+            include *
+            # autoLayout lr
+        }
+
+        container hubspot "Level2_hubspot_Containers" {
+            title "Containers"
+            include *
+            # autoLayout lr
+        }
+
+        component crm-hubspot "Level3_hubspot_Components" {
+            title "HubSpot CRM – Components"
+            include *
+            # autoLayout lr
+        }
+
+        container infobip "Level2_infobip_Containers" {
+            title "Containers"
+            include *
+            # autoLayout lr
+        }
+
+        component crm-infobip "Level3_infobip_Components" {
+            title "Infobip CRM – Components"
             include *
             # autoLayout lr
         }

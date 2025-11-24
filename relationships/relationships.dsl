@@ -18,6 +18,18 @@ openapi -> service-scheduler "Uses" ""
 dealer -> dcpMobile "Manages stores, creates quotations"
 administrator -> dcpMobile "Manages system configuration, create staff users"
 staff -> dcpMobile "Performs data entry, performs services, creates quotations"
+service-pc -> sqlproxy "stores transaction data to core database" ""
+service-mobile -> sqlproxy "stores transaction data to core database" ""
+service-web -> sqlproxy "stores transaction data to core database" ""
+system-foundation -> sqlproxy "stores transaction data to core database" ""
+aftersales -> sqlproxy "stores transaction data to core database" ""
+teds-customer -> sqlproxy "stores transaction data to core database" ""
+finance -> sqlproxy "stores transaction data to core database" ""
+supplychain -> sqlproxy "stores transaction data to core database" ""
+sku -> sqlproxy "stores transaction data to core database" ""
+sqlproxy -> service-search "Enables searching transaction data" ""
+sqlproxy -> teds-transaction-database "Stores transactional data" ""
+
 
 // Referentials
 PS9 -> kafka-consumer-referential "Gets Michelin tyre referential data" "kafka"
@@ -60,11 +72,16 @@ plate-scanner-external-api-connector -> plate-scanner-external-api "Send images 
 plate-scanner-external-api -> plate-scanner-external-api-connector "Receives text number plates & VINs" "JSON/HTTPS"
 service-mobile -> plate-scanner-camera-access "Accesses camera to take pictures of number plates & VINs"
 
-// 
-service-report -> TDP "Sends reporting data" "kafka"
-TDP -> hubspot "Provides CRM data" ""
-hubspot -> infobip "Sends/receives customer messages (HubSpot-driven)"
-infobip -> messaging "Sends messages to customers" ""
-messaging -> infobip "Sends customer replies back to Infobip" ""
-nps -> messaging "Sends NPS surveys to customers" ""
-customer -> nps "Responds to NPS surveys" ""
+// CRM Activities
+teds-transaction-database -> service-scheduler "Schedules copy of transaction data" ""
+service-scheduler -> TDP "Stores reporting data" ""
+TDP -> db-reader-hubspot "Provides CRM data" ""
+api-endpoint-hubspot -> api-endpoint-infobip "Sends/receives customer messages" ""
+api-endpoint-infobip -> messaging "Sends messages to customers" ""
+messaging -> customer "Sends NPS to customers" ""
+customer -> messaging "Responds to NPS surveys" ""
+messaging -> api-endpoint-infobip "Sends customer replies back to Infobip" ""
+api-endpoint-infobip -> api-endpoint-hubspot "SSends customer replies back to Hubspot" ""
+
+//Reporting
+TDP -> BI-dashboards "Provides data for reports and dashboards" ""

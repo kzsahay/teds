@@ -1,7 +1,6 @@
 workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
-
-    !impliedRelationships true
     !docs workspace-docs
+    !impliedRelationships true
 
     model {
         properties {
@@ -35,6 +34,10 @@ workspace "TEDS Ecosystem" "System Context Diagram (C4 Level 1)" {
 
         TDP = softwareSystem "T+ Data Platform" "Reporting data platform & CRM programs" {
             tags "Existing System" "Database"
+        }
+
+        BI-dashboards = softwareSystem "BI Dashboards" "Reporting and Dashboard platform" {
+            tags "Existing System" "Container"
         }
 
         // CRM Activities

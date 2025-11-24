@@ -55,7 +55,7 @@ teds = softwareSystem "TEDS Core System" "DOS platform including microservices a
                     }
                 }
             }
-            CDN = container "CDN" "Serves static content and the SPA" "Java + Spring Boot" {
+            CDN = container "CDN" "Serves static content and the SPA" {
                 tags "Container"
             }
             group "external-communication" {
@@ -76,6 +76,9 @@ teds = softwareSystem "TEDS Core System" "DOS platform including microservices a
                 tags "Container" "Database"
 
                 // ==================== COMPONENTS (must be inside their container) ====================
+                teds-transaction-database = component "TEDS transactional Database" "Stores transactional data" "postgres" {
+                    tags "Component"
+                }
                 DCP-database = component "DCP Mobile Database" "Stores credentials for log in" "postgres" {
                     tags "Component"
                 }
