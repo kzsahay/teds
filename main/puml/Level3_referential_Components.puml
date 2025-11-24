@@ -19,12 +19,12 @@ Container_Boundary("ReferentialSystem.TEDSTyrereferential_boundary", "TEDS Tyre 
   Component(ReferentialSystem.TEDSTyrereferential.Kafkaconsumerforreferentialsystem, "Kafka consumer for referential-system", $techn="", $descr="", $tags="", $link="")
 }
 
-Rel(MARSApplication, ReferentialSystem.TEDSTyrereferential.Kafkaconsumerforreferentialsystem, "Gets non-tyre referential data", $techn="Manual dump", $tags="", $link="")
-Rel(ReferentialSystem.TEDSTyrereferential.Kafkaconsumerforreferentialsystem, TEDSCoreSystem, "Stores referential", $techn="", $tags="", $link="")
-Rel(ReferentialSystem.TEDSTyrereferential.Kafkaproducerforreferentialsystem, TEDSCoreSystem, "Provides referential data", $techn="kafka", $tags="", $link="")
 Rel(PS9Application, ReferentialSystem.TEDSTyrereferential.Kafkaconsumerforreferentialsystem, "Gets Michelin tyre referential data", $techn="kafka", $tags="", $link="")
 Rel(SpyderApplication, ReferentialSystem.TEDSTyrereferential.Kafkaconsumerforreferentialsystem, "Gets non-tyre referential data", $techn="kafka", $tags="", $link="")
 Rel(WyzAutoApplication, ReferentialSystem.TEDSTyrereferential.Kafkaconsumerforreferentialsystem, "Gets non-tyre referential data", $techn="API", $tags="", $link="")
+Rel(MARSApplication, ReferentialSystem.TEDSTyrereferential.Kafkaconsumerforreferentialsystem, "Gets non-tyre referential data", $techn="Manual dump", $tags="", $link="")
+Rel(ReferentialSystem.TEDSTyrereferential.Kafkaconsumerforreferentialsystem, TEDSCoreSystem, "Stores referential", $techn="", $tags="", $link="")
+Rel(ReferentialSystem.TEDSTyrereferential.Kafkaproducerforreferentialsystem, TEDSCoreSystem, "Provides referential data", $techn="kafka", $tags="", $link="")
 
 SHOW_LEGEND(true)
 @enduml

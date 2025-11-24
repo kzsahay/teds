@@ -1,0 +1,23 @@
+@startuml
+set separator none
+title Containers
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+
+System(TDataPlatform, "T+ Data Platform", $descr="Reporting data platform & CRM programs", $tags="", $link="")
+System(Infobip, "Infobip", $descr="Enabler for messaging platforms", $tags="", $link="")
+
+System_Boundary("HubSpot_boundary", "HubSpot", $tags="") {
+  Container(HubSpot.Hubspotcrm, "Hubspot-crm", $techn="", $descr="hubspot crm program", $tags="", $link="")
+}
+
+Rel(TDataPlatform, HubSpot.Hubspotcrm, "Provides CRM data", $techn="", $tags="", $link="")
+Rel(HubSpot.Hubspotcrm, Infobip, "Sends/receives customer messages", $techn="", $tags="", $link="")
+Rel(Infobip, HubSpot.Hubspotcrm, "SSends customer replies back to Hubspot", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

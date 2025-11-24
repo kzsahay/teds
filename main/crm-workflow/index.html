@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CRM Workflow | TEDS Ecosystem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
+    <link href="./../style-branding.css" rel="stylesheet">
+    <script type="text/javascript" src="../../modal.js"></script>
+    <script type="text/javascript" src="../../svg-modal.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.2/dist/svg-pan-zoom.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript" src="../../header.js"></script>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand has-site-branding"><a href="../" class="navbar-item"><span class="has-text-weight-semibold has-site-branding">TEDS Ecosystem</span></a></div>
+      <div class="navbar-menu has-site-branding">
+        <div class="navbar-end">
+          <div class="navbar-item"><input class="input is-small is-rounded" id="search" type="search" size="30" maxlength="50" placeholder="Search..." onkeyup="redirect(event, value, '../search/')"></div>
+          <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link has-site-branding">main</a>
+            <div class="navbar-dropdown is-right"><a href="../../main/" class="navbar-item">main</a>
+              <hr class="navbar-divider">
+              <div class="navbar-item has-text-grey-light"><span>v</span><span>0.0.0</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="site-layout" id="site">
+      <aside class="menu p-3">
+        <p class="menu-label">General</p>
+        <ul class="menu-list has-site-branding">
+          <li><a href="../" class="">Home</a><a href="../software-systems/" class="">Software Systems</a><a href="./" class="is-active">CRM Workflow</a></li>
+        </ul>
+        <p class="menu-label">Software systems</p>
+        <ul class="menu-list has-site-branding">
+          <li><a href="../bi-dashboards/" class="">BI Dashboards</a><a href="../dcp-mobile-application/" class="">DCP Mobile Application</a><a href="../e-ordering/" class="">E-Ordering</a><a href="../e-tax/" class="">E-Tax</a><a href="../hubspot/" class="">HubSpot</a><a href="../infobip/" class="">Infobip</a><a href="../korea-loyalty/" class="">Korea Loyalty</a><a href="../korea-sana/" class="">Korea SANA</a><a href="../loyalty-programs/" class="">Loyalty Programs</a><a href="../mars-application/" class="">MARS Application</a><a href="../messaging-platforms/" class="">Messaging Platforms</a><a href="../nps-system/" class="">NPS System</a><a href="../other-e-ordering/" class="">Other E-Ordering</a><a href="../other-e-tax/" class="">Other E-Tax</a><a href="../other-loyalty/" class="">Other Loyalty</a><a href="../plate-scanner-external-api/" class="">Plate Scanner External API</a><a href="../ps9-application/" class="">PS9 Application</a><a href="../referential-system/" class="">Referential System</a><a href="../spyder-application/" class="">Spyder Application</a><a href="../t-data-platform/" class="">T+ Data Platform</a><a href="../taxation-adapter/" class="">Taxation Adapter</a><a href="../teds-core-system/" class="">TEDS Core System</a><a href="../thailand-e-tax/" class="">Thailand E-Tax</a><a href="../thailand-icare/" class="">Thailand iCare</a><a href="../thailand-mdo/" class="">Thailand MDO</a><a href="../wyzauto-application/" class="">WyzAuto Application</a></li>
+        </ul>
+      </aside>
+      <div class="container is-fluid">
+        <div class="content p-3">
+          <div><h2>CRM Workflow</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant TEDS
+    participant TDP
+    participant Hubspot
+    participant InfoBip
+    participant Messaging
+    participant Customer
+    rect rgb(220, 245, 255)
+        TEDS-&gt;&gt;TDP: Sends transaction data
+        TDP-&gt;&gt;Hubspot: Reads data and applies marketing rules
+        Hubspot-&gt;&gt;InfoBip: Uses to send customer messages
+        InfoBip--&gt;&gt;Messaging: Sends customer marketing messages
+        Messaging--&gt;&gt;Customer: Sends customer marketing messages
+        Customer-&gt;&gt;Messaging: Sends consent
+        Messaging-&gt;&gt;InfoBip: Receives customer consent
+        InfoBip--&gt;&gt;Hubspot: Receives customer consent
+        Hubspot-&gt;&gt;TDP: Receives customer consent
+        TDP-&gt;&gt;TEDS: Receives customer consent
+    end
+
+    rect rgb(255, 245, 220)
+        TDP-&gt;&gt;Hubspot: Reads data and sends out NPS
+        Hubspot-&gt;&gt;InfoBip: Uses to send customer NPS
+        InfoBip--&gt;&gt;Messaging: Sends NPS to customer
+        Messaging--&gt;&gt;Customer: Sends NPS to customer
+        Customer-&gt;&gt;Messaging: Responds to NPS
+        Messaging-&gt;&gt;InfoBip: Receives NPS from customer
+        InfoBip--&gt;&gt;Hubspot: Receives NPS from customer
+        Hubspot-&gt;&gt;TDP: Receives NPS from customer
+        TDP-&gt;&gt;TEDS: Receives NPS from customer
+    end
+</code></pre></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../../reformat-mermaid.js"></script>
+    <script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.9.0/dist/mermaid.esm.min.mjs';</script>
+  </body>
+</html>

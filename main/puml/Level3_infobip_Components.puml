@@ -1,0 +1,24 @@
+@startuml
+set separator none
+title Infobip CRM – Components
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Component>
+
+System(HubSpot, "HubSpot", $descr="CRM & marketing automation", $tags="", $link="")
+System(MessagingPlatforms, "Messaging Platforms", $descr="Line, WhatsApp, etc.", $tags="", $link="")
+
+Container_Boundary("Infobip.Infobipcrm_boundary", "Infobip-crm", $tags="") {
+  Component(Infobip.Infobipcrm.Connectstomessagingforsendingoutmessages, "Connects to messaging for sending out messages", $techn="", $descr="", $tags="", $link="")
+}
+
+Rel(HubSpot, Infobip.Infobipcrm.Connectstomessagingforsendingoutmessages, "Sends/receives customer messages", $techn="", $tags="", $link="")
+Rel(Infobip.Infobipcrm.Connectstomessagingforsendingoutmessages, MessagingPlatforms, "Sends messages to customers", $techn="", $tags="", $link="")
+Rel(MessagingPlatforms, Infobip.Infobipcrm.Connectstomessagingforsendingoutmessages, "Sends customer replies back to Infobip", $techn="", $tags="", $link="")
+Rel(Infobip.Infobipcrm.Connectstomessagingforsendingoutmessages, HubSpot, "SSends customer replies back to Hubspot", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

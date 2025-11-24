@@ -10,6 +10,8 @@ top to bottom direction
 !include <C4/C4_Component>
 
 Container(TEDSCoreSystem.tedsservicepc, "teds-service-pc", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+Container(TEDSCoreSystem.tedsservicescheduler, "teds-service-scheduler", $techn="Java + Spring Boot", $descr="Serves static content and the SPA", $tags="", $link="")
+ContainerDb(TEDSCoreSystem.sqlproxy, "sqlproxy", $techn="", $descr="medium performance database", $tags="", $link="")
 System(ReferentialSystem, "Referential System", $descr="Wecare-like referential provider", $tags="", $link="")
 System(LoyaltyPrograms, "Loyalty Programs", $descr="Loyalty program adapter", $tags="", $link="")
 System(EOrdering, "E-Ordering", $descr="E-ordering adapter", $tags="", $link="")
@@ -17,6 +19,7 @@ System(ETax, "E-Tax", $descr="E-tax adapter", $tags="", $link="")
 System(DCPMobileApplication, "DCP Mobile Application", $descr="Mobile login application", $tags="", $link="")
 
 Container_Boundary("TEDSCoreSystem.coredatabase_boundary", "core-database", $tags="") {
+  Component(TEDSCoreSystem.coredatabase.TEDStransactionalDatabase, "TEDS transactional Database", $techn="postgres", $descr="Stores transactional data", $tags="", $link="")
   Component(TEDSCoreSystem.coredatabase.DCPMobileDatabase, "DCP Mobile Database", $techn="postgres", $descr="Stores credentials for log in", $tags="", $link="")
   Component(TEDSCoreSystem.coredatabase.EOrderingDatabase, "E-Ordering Database", $techn="postgres", $descr="Stores E-Ordering data", $tags="", $link="")
   Component(TEDSCoreSystem.coredatabase.ReferentialDatabase, "Referential Database", $techn="postgres", $descr="Stores referential data", $tags="", $link="")
@@ -24,12 +27,15 @@ Container_Boundary("TEDSCoreSystem.coredatabase_boundary", "core-database", $tag
   Component(TEDSCoreSystem.coredatabase.LoyaltyDatabase, "Loyalty Database", $techn="postgres", $descr="Stores loyalty data", $tags="", $link="")
 }
 
+Rel(TEDSCoreSystem.tedsservicepc, TEDSCoreSystem.sqlproxy, "stores transaction data to core database", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.sqlproxy, TEDSCoreSystem.coredatabase.TEDStransactionalDatabase, "Stores transactional data", $techn="", $tags="", $link="")
 Rel(ReferentialSystem, TEDSCoreSystem.coredatabase.ReferentialDatabase, "Stores referential", $techn="", $tags="", $link="")
 Rel(LoyaltyPrograms, TEDSCoreSystem.coredatabase.LoyaltyDatabase, "Stores loyalty data", $techn="", $tags="", $link="")
 Rel(EOrdering, TEDSCoreSystem.coredatabase.EOrderingDatabase, "Stores eOrdering data", $techn="", $tags="", $link="")
 Rel(ETax, TEDSCoreSystem.coredatabase.TaxationDatabase, "Stores taxation data", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.tedsservicepc, TEDSCoreSystem.coredatabase.DCPMobileDatabase, "Stores credentials", $techn="", $tags="", $link="")
 Rel(TEDSCoreSystem.coredatabase.DCPMobileDatabase, DCPMobileApplication, "Authenticates users", $techn="", $tags="", $link="")
+Rel(TEDSCoreSystem.coredatabase.TEDStransactionalDatabase, TEDSCoreSystem.tedsservicescheduler, "Schedules copy of transaction data", $techn="", $tags="", $link="")
 
 SHOW_LEGEND(true)
 @enduml

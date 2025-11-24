@@ -3,10 +3,16 @@
   "description" : "System Context Diagram (C4 Level 1)",
   "documentation" : {
     "sections" : [ {
-      "content" : "## TEDS OOC\n\nThis site documents and ecosystem of TEDS OOC\n\n### System Context \n\n```markdown\n![System Context  Diagram](embed:Level1_SystemContext)\n```\n\n",
-      "filename" : "00.md",
+      "content" : "## TEDS OOC\n\nThis site documents and ecosystem of TEDS OOC\n\n### System Context \n\n![System Landscape Diagram](embed:Level1_SystemContext)",
+      "filename" : "00-index.md",
       "format" : "Markdown",
       "order" : 1,
+      "title" : ""
+    }, {
+      "content" : "## CRM Workflow\n\n\n```mermaid\nsequenceDiagram\n    participant TEDS\n    participant TDP\n    participant Hubspot\n    participant InfoBip\n    participant Messaging\n    participant Customer\n    rect rgb(220, 245, 255)\n        TEDS->>TDP: Sends transaction data\n        TDP->>Hubspot: Reads data and applies marketing rules\n        Hubspot->>InfoBip: Uses to send customer messages\n        InfoBip-->>Messaging: Sends customer marketing messages\n        Messaging-->>Customer: Sends customer marketing messages\n        Customer->>Messaging: Sends consent\n        Messaging->>InfoBip: Receives customer consent\n        InfoBip-->>Hubspot: Receives customer consent\n        Hubspot->>TDP: Receives customer consent\n        TDP->>TEDS: Receives customer consent\n    end\n\n    rect rgb(255, 245, 220)\n        TDP->>Hubspot: Reads data and sends out NPS\n        Hubspot->>InfoBip: Uses to send customer NPS\n        InfoBip-->>Messaging: Sends NPS to customer\n        Messaging-->>Customer: Sends NPS to customer\n        Customer->>Messaging: Responds to NPS\n        Messaging->>InfoBip: Receives NPS from customer\n        InfoBip-->>Hubspot: Receives NPS from customer\n        Hubspot->>TDP: Receives NPS from customer\n        TDP->>TEDS: Receives NPS from customer\n    end\n```",
+      "filename" : "01-CRM_workflow.md",
+      "format" : "Markdown",
+      "order" : 2,
       "title" : ""
     } ]
   },
@@ -22,8 +28,8 @@
       },
       "relationships" : [ {
         "description" : "Manages stores, creates quotations",
-        "destinationId" : "60",
-        "id" : "90",
+        "destinationId" : "61",
+        "id" : "97",
         "sourceId" : "1",
         "tags" : "Relationship"
       } ],
@@ -38,8 +44,8 @@
       },
       "relationships" : [ {
         "description" : "Performs data entry, performs services, creates quotations",
-        "destinationId" : "60",
-        "id" : "92",
+        "destinationId" : "61",
+        "id" : "99",
         "sourceId" : "2",
         "tags" : "Relationship"
       } ],
@@ -54,8 +60,8 @@
       },
       "relationships" : [ {
         "description" : "Manages system configuration, create staff users",
-        "destinationId" : "60",
-        "id" : "91",
+        "destinationId" : "61",
+        "id" : "98",
         "sourceId" : "3",
         "tags" : "Relationship"
       } ],
@@ -70,8 +76,8 @@
       },
       "relationships" : [ {
         "description" : "Responds to NPS surveys",
-        "destinationId" : "68",
-        "id" : "220",
+        "destinationId" : "76",
+        "id" : "252",
         "sourceId" : "4",
         "tags" : "Relationship"
       } ],
@@ -102,20 +108,26 @@
         "relationships" : [ {
           "description" : "Exchanges data",
           "destinationId" : "9",
-          "id" : "78",
+          "id" : "85",
+          "sourceId" : "7",
+          "tags" : "Relationship"
+        }, {
+          "description" : "stores transaction data to core database",
+          "destinationId" : "23",
+          "id" : "100",
           "sourceId" : "7",
           "tags" : "Relationship"
         }, {
           "description" : "Stores credentials",
-          "destinationId" : "26",
-          "id" : "199",
+          "destinationId" : "27",
+          "id" : "218",
           "sourceId" : "7",
           "tags" : "Relationship"
         }, {
           "description" : "Stores credentials",
           "destinationId" : "25",
-          "id" : "200",
-          "linkedRelationshipId" : "199",
+          "id" : "219",
+          "linkedRelationshipId" : "218",
           "sourceId" : "7"
         } ],
         "tags" : "Element,Container,WebBrowser",
@@ -132,26 +144,32 @@
         "relationships" : [ {
           "description" : "Exchanges data",
           "destinationId" : "9",
-          "id" : "79",
+          "id" : "86",
+          "sourceId" : "8",
+          "tags" : "Relationship"
+        }, {
+          "description" : "stores transaction data to core database",
+          "destinationId" : "23",
+          "id" : "101",
           "sourceId" : "8",
           "tags" : "Relationship"
         }, {
           "description" : "Exchanges data",
-          "destinationId" : "60",
-          "id" : "197",
+          "destinationId" : "61",
+          "id" : "216",
+          "sourceId" : "8",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Accesses camera to take pictures of number plates & VINs",
+          "destinationId" : "63",
+          "id" : "228",
           "sourceId" : "8",
           "tags" : "Relationship"
         }, {
           "description" : "Accesses camera to take pictures of number plates & VINs",
           "destinationId" : "62",
-          "id" : "209",
-          "sourceId" : "8",
-          "tags" : "Relationship"
-        }, {
-          "description" : "Accesses camera to take pictures of number plates & VINs",
-          "destinationId" : "61",
-          "id" : "210",
-          "linkedRelationshipId" : "209",
+          "id" : "229",
+          "linkedRelationshipId" : "228",
           "sourceId" : "8"
         } ],
         "tags" : "Element,Container,MobileDevicePortrait",
@@ -165,6 +183,13 @@
         "properties" : {
           "structurizr.dsl.identifier" : "service-web"
         },
+        "relationships" : [ {
+          "description" : "stores transaction data to core database",
+          "destinationId" : "23",
+          "id" : "102",
+          "sourceId" : "9",
+          "tags" : "Relationship"
+        } ],
         "tags" : "Element,Container",
         "technology" : "Java + Spring Boot"
       }, {
@@ -176,6 +201,13 @@
         "properties" : {
           "structurizr.dsl.identifier" : "system-foundation"
         },
+        "relationships" : [ {
+          "description" : "stores transaction data to core database",
+          "destinationId" : "23",
+          "id" : "103",
+          "sourceId" : "10",
+          "tags" : "Relationship"
+        } ],
         "tags" : "Element,Container",
         "technology" : "React + TypeScript"
       }, {
@@ -190,49 +222,49 @@
         "relationships" : [ {
           "description" : "Connects microservices",
           "destinationId" : "12",
-          "id" : "82",
+          "id" : "89",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Connects microservices",
           "destinationId" : "13",
-          "id" : "83",
+          "id" : "90",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Connects microservices",
           "destinationId" : "14",
-          "id" : "84",
+          "id" : "91",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Connects microservices",
           "destinationId" : "15",
-          "id" : "85",
+          "id" : "92",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Connects microservices",
           "destinationId" : "16",
-          "id" : "86",
+          "id" : "93",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Connects microservices",
           "destinationId" : "17",
-          "id" : "87",
+          "id" : "94",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Connects microservices",
           "destinationId" : "18",
-          "id" : "88",
+          "id" : "95",
           "sourceId" : "11",
           "tags" : "Relationship"
         }, {
           "description" : "Uses",
           "destinationId" : "19",
-          "id" : "89",
+          "id" : "96",
           "sourceId" : "11",
           "tags" : "Relationship"
         } ],
@@ -247,6 +279,13 @@
         "properties" : {
           "structurizr.dsl.identifier" : "aftersales"
         },
+        "relationships" : [ {
+          "description" : "stores transaction data to core database",
+          "destinationId" : "23",
+          "id" : "104",
+          "sourceId" : "12",
+          "tags" : "Relationship"
+        } ],
         "tags" : "Element,Container",
         "technology" : "Java + Spring Boot"
       }, {
@@ -259,9 +298,15 @@
           "structurizr.dsl.identifier" : "teds-customer"
         },
         "relationships" : [ {
+          "description" : "stores transaction data to core database",
+          "destinationId" : "23",
+          "id" : "105",
+          "sourceId" : "13",
+          "tags" : "Relationship"
+        }, {
           "description" : "Requests available coupons",
-          "destinationId" : "39",
-          "id" : "118",
+          "destinationId" : "40",
+          "id" : "137",
           "sourceId" : "13",
           "tags" : "Relationship",
           "technology" : "kafka"
@@ -278,24 +323,30 @@
           "structurizr.dsl.identifier" : "finance"
         },
         "relationships" : [ {
+          "description" : "stores transaction data to core database",
+          "destinationId" : "23",
+          "id" : "106",
+          "sourceId" : "14",
+          "tags" : "Relationship"
+        }, {
           "description" : "Sends tax data",
-          "destinationId" : "57",
-          "id" : "164",
+          "destinationId" : "58",
+          "id" : "183",
           "sourceId" : "14",
           "tags" : "Relationship",
           "technology" : "kafka"
         }, {
           "description" : "Sends tax data",
-          "destinationId" : "55",
-          "id" : "165",
-          "linkedRelationshipId" : "164",
+          "destinationId" : "56",
+          "id" : "184",
+          "linkedRelationshipId" : "183",
           "sourceId" : "14",
           "technology" : "kafka"
         }, {
           "description" : "Sends tax data",
-          "destinationId" : "54",
-          "id" : "166",
-          "linkedRelationshipId" : "164",
+          "destinationId" : "55",
+          "id" : "185",
+          "linkedRelationshipId" : "183",
           "sourceId" : "14",
           "technology" : "kafka"
         } ],
@@ -310,6 +361,13 @@
         "properties" : {
           "structurizr.dsl.identifier" : "supplychain"
         },
+        "relationships" : [ {
+          "description" : "stores transaction data to core database",
+          "destinationId" : "23",
+          "id" : "107",
+          "sourceId" : "15",
+          "tags" : "Relationship"
+        } ],
         "tags" : "Element,Container",
         "technology" : "React + TypeScript"
       }, {
@@ -321,6 +379,13 @@
         "properties" : {
           "structurizr.dsl.identifier" : "sku"
         },
+        "relationships" : [ {
+          "description" : "stores transaction data to core database",
+          "destinationId" : "23",
+          "id" : "108",
+          "sourceId" : "16",
+          "tags" : "Relationship"
+        } ],
         "tags" : "Element,Container",
         "technology" : "React + TypeScript"
       }, {
@@ -343,14 +408,6 @@
         "properties" : {
           "structurizr.dsl.identifier" : "service-report"
         },
-        "relationships" : [ {
-          "description" : "Sends reporting data",
-          "destinationId" : "65",
-          "id" : "213",
-          "sourceId" : "18",
-          "tags" : "Relationship",
-          "technology" : "kafka"
-        } ],
         "tags" : "Element,Container",
         "technology" : "Java + Spring Boot"
       }, {
@@ -362,6 +419,13 @@
         "properties" : {
           "structurizr.dsl.identifier" : "service-scheduler"
         },
+        "relationships" : [ {
+          "description" : "Stores reporting data",
+          "destinationId" : "66",
+          "id" : "234",
+          "sourceId" : "19",
+          "tags" : "Relationship"
+        } ],
         "tags" : "Element,Container",
         "technology" : "Java + Spring Boot"
       }, {
@@ -375,36 +439,35 @@
         "relationships" : [ {
           "description" : "Gets frontend assets",
           "destinationId" : "1",
-          "id" : "70",
+          "id" : "77",
           "sourceId" : "20",
           "tags" : "Relationship"
         }, {
           "description" : "Gets frontend assets",
           "destinationId" : "2",
-          "id" : "72",
+          "id" : "79",
           "sourceId" : "20",
           "tags" : "Relationship"
         }, {
           "description" : "Gets frontend assets",
           "destinationId" : "3",
-          "id" : "74",
+          "id" : "81",
           "sourceId" : "20",
           "tags" : "Relationship"
         }, {
           "description" : "Gives frontend assets",
           "destinationId" : "7",
-          "id" : "76",
+          "id" : "83",
           "sourceId" : "20",
           "tags" : "Relationship"
         }, {
           "description" : "Gives frontend assets",
           "destinationId" : "8",
-          "id" : "77",
+          "id" : "84",
           "sourceId" : "20",
           "tags" : "Relationship"
         } ],
-        "tags" : "Element,Container",
-        "technology" : "Java + Spring Boot"
+        "tags" : "Element,Container"
       }, {
         "description" : "Serves static content and the SPA",
         "documentation" : { },
@@ -417,7 +480,7 @@
         "relationships" : [ {
           "description" : "Uses",
           "destinationId" : "11",
-          "id" : "80",
+          "id" : "87",
           "sourceId" : "21",
           "tags" : "Relationship"
         } ],
@@ -435,7 +498,7 @@
         "relationships" : [ {
           "description" : "Uses",
           "destinationId" : "11",
-          "id" : "81",
+          "id" : "88",
           "sourceId" : "22",
           "tags" : "Relationship"
         } ],
@@ -449,6 +512,25 @@
         "properties" : {
           "structurizr.dsl.identifier" : "sqlproxy"
         },
+        "relationships" : [ {
+          "description" : "Enables searching transaction data",
+          "destinationId" : "17",
+          "id" : "109",
+          "sourceId" : "23",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Stores transactional data",
+          "destinationId" : "26",
+          "id" : "110",
+          "sourceId" : "23",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Stores transactional data",
+          "destinationId" : "25",
+          "id" : "111",
+          "linkedRelationshipId" : "110",
+          "sourceId" : "23"
+        } ],
         "tags" : "Element,Container,Database"
       }, {
         "description" : "medium performance database",
@@ -461,18 +543,35 @@
         "tags" : "Element,Container,Database"
       }, {
         "components" : [ {
-          "description" : "Stores credentials for log in",
+          "description" : "Stores transactional data",
           "documentation" : { },
           "id" : "26",
+          "name" : "TEDS transactional Database",
+          "properties" : {
+            "structurizr.dsl.identifier" : "teds-transaction-database"
+          },
+          "relationships" : [ {
+            "description" : "Schedules copy of transaction data",
+            "destinationId" : "19",
+            "id" : "232",
+            "sourceId" : "26",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component",
+          "technology" : "postgres"
+        }, {
+          "description" : "Stores credentials for log in",
+          "documentation" : { },
+          "id" : "27",
           "name" : "DCP Mobile Database",
           "properties" : {
             "structurizr.dsl.identifier" : "dcp-database"
           },
           "relationships" : [ {
             "description" : "Authenticates users",
-            "destinationId" : "60",
-            "id" : "201",
-            "sourceId" : "26",
+            "destinationId" : "61",
+            "id" : "220",
+            "sourceId" : "27",
             "tags" : "Relationship"
           } ],
           "tags" : "Element,Component",
@@ -480,7 +579,7 @@
         }, {
           "description" : "Stores E-Ordering data",
           "documentation" : { },
-          "id" : "27",
+          "id" : "28",
           "name" : "E-Ordering Database",
           "properties" : {
             "structurizr.dsl.identifier" : "eordering-database"
@@ -490,7 +589,7 @@
         }, {
           "description" : "Stores referential data",
           "documentation" : { },
-          "id" : "28",
+          "id" : "29",
           "name" : "Referential Database",
           "properties" : {
             "structurizr.dsl.identifier" : "referential-database"
@@ -500,7 +599,7 @@
         }, {
           "description" : "Stores taxation data",
           "documentation" : { },
-          "id" : "29",
+          "id" : "30",
           "name" : "Taxation Database",
           "properties" : {
             "structurizr.dsl.identifier" : "taxation-database"
@@ -510,7 +609,7 @@
         }, {
           "description" : "Stores loyalty data",
           "documentation" : { },
-          "id" : "30",
+          "id" : "31",
           "name" : "Loyalty Database",
           "properties" : {
             "structurizr.dsl.identifier" : "loyalty-database"
@@ -527,9 +626,15 @@
         },
         "relationships" : [ {
           "description" : "Authenticates users",
-          "destinationId" : "60",
-          "id" : "202",
-          "linkedRelationshipId" : "201",
+          "destinationId" : "61",
+          "id" : "221",
+          "linkedRelationshipId" : "220",
+          "sourceId" : "25"
+        }, {
+          "description" : "Schedules copy of transaction data",
+          "destinationId" : "19",
+          "id" : "233",
+          "linkedRelationshipId" : "232",
           "sourceId" : "25"
         } ],
         "tags" : "Element,Container,Database"
@@ -545,80 +650,79 @@
       "relationships" : [ {
         "description" : "Gets frontend assets",
         "destinationId" : "1",
-        "id" : "71",
-        "linkedRelationshipId" : "70",
+        "id" : "78",
+        "linkedRelationshipId" : "77",
         "sourceId" : "6"
       }, {
         "description" : "Gets frontend assets",
         "destinationId" : "2",
-        "id" : "73",
-        "linkedRelationshipId" : "72",
+        "id" : "80",
+        "linkedRelationshipId" : "79",
         "sourceId" : "6"
       }, {
         "description" : "Gets frontend assets",
         "destinationId" : "3",
-        "id" : "75",
-        "linkedRelationshipId" : "74",
+        "id" : "82",
+        "linkedRelationshipId" : "81",
         "sourceId" : "6"
       }, {
         "description" : "Requests available coupons",
-        "destinationId" : "39",
-        "id" : "119",
-        "linkedRelationshipId" : "118",
+        "destinationId" : "40",
+        "id" : "138",
+        "linkedRelationshipId" : "137",
         "sourceId" : "6",
         "technology" : "kafka"
       }, {
         "description" : "Sends tax data",
-        "destinationId" : "57",
-        "id" : "167",
-        "linkedRelationshipId" : "164",
+        "destinationId" : "58",
+        "id" : "186",
+        "linkedRelationshipId" : "183",
+        "sourceId" : "6",
+        "technology" : "kafka"
+      }, {
+        "description" : "Sends tax data",
+        "destinationId" : "56",
+        "id" : "187",
+        "linkedRelationshipId" : "183",
         "sourceId" : "6",
         "technology" : "kafka"
       }, {
         "description" : "Sends tax data",
         "destinationId" : "55",
-        "id" : "168",
-        "linkedRelationshipId" : "164",
-        "sourceId" : "6",
-        "technology" : "kafka"
-      }, {
-        "description" : "Sends tax data",
-        "destinationId" : "54",
-        "id" : "169",
-        "linkedRelationshipId" : "164",
+        "id" : "188",
+        "linkedRelationshipId" : "183",
         "sourceId" : "6",
         "technology" : "kafka"
       }, {
         "description" : "Exchanges data",
-        "destinationId" : "60",
-        "id" : "198",
-        "linkedRelationshipId" : "197",
+        "destinationId" : "61",
+        "id" : "217",
+        "linkedRelationshipId" : "216",
+        "sourceId" : "6"
+      }, {
+        "description" : "Accesses camera to take pictures of number plates & VINs",
+        "destinationId" : "63",
+        "id" : "230",
+        "linkedRelationshipId" : "228",
         "sourceId" : "6"
       }, {
         "description" : "Accesses camera to take pictures of number plates & VINs",
         "destinationId" : "62",
-        "id" : "211",
-        "linkedRelationshipId" : "209",
+        "id" : "231",
+        "linkedRelationshipId" : "228",
         "sourceId" : "6"
       }, {
-        "description" : "Accesses camera to take pictures of number plates & VINs",
-        "destinationId" : "61",
-        "id" : "212",
-        "linkedRelationshipId" : "209",
+        "description" : "Stores reporting data",
+        "destinationId" : "66",
+        "id" : "235",
+        "linkedRelationshipId" : "234",
         "sourceId" : "6"
-      }, {
-        "description" : "Sends reporting data",
-        "destinationId" : "65",
-        "id" : "214",
-        "linkedRelationshipId" : "213",
-        "sourceId" : "6",
-        "technology" : "kafka"
       } ],
       "tags" : "Element,Software System,TEDS Core System"
     }, {
       "description" : "Mobile login application",
       "documentation" : { },
-      "id" : "31",
+      "id" : "32",
       "location" : "Unspecified",
       "name" : "PS9 Application",
       "properties" : {
@@ -626,55 +730,23 @@
       },
       "relationships" : [ {
         "description" : "Gets Michelin tyre referential data",
-        "destinationId" : "38",
-        "id" : "93",
-        "sourceId" : "31",
-        "tags" : "Relationship",
-        "technology" : "kafka"
-      }, {
-        "description" : "Gets Michelin tyre referential data",
-        "destinationId" : "36",
-        "id" : "94",
-        "linkedRelationshipId" : "93",
-        "sourceId" : "31",
-        "technology" : "kafka"
-      }, {
-        "description" : "Gets Michelin tyre referential data",
-        "destinationId" : "35",
-        "id" : "95",
-        "linkedRelationshipId" : "93",
-        "sourceId" : "31",
-        "technology" : "kafka"
-      } ],
-      "tags" : "Element,Software System,Existing System,Kafka"
-    }, {
-      "description" : "Mobile login application",
-      "documentation" : { },
-      "id" : "32",
-      "location" : "Unspecified",
-      "name" : "Spyder Application",
-      "properties" : {
-        "structurizr.dsl.identifier" : "spyder"
-      },
-      "relationships" : [ {
-        "description" : "Gets non-tyre referential data",
-        "destinationId" : "38",
-        "id" : "96",
+        "destinationId" : "39",
+        "id" : "112",
         "sourceId" : "32",
         "tags" : "Relationship",
         "technology" : "kafka"
       }, {
-        "description" : "Gets non-tyre referential data",
-        "destinationId" : "36",
-        "id" : "97",
-        "linkedRelationshipId" : "96",
+        "description" : "Gets Michelin tyre referential data",
+        "destinationId" : "37",
+        "id" : "113",
+        "linkedRelationshipId" : "112",
         "sourceId" : "32",
         "technology" : "kafka"
       }, {
-        "description" : "Gets non-tyre referential data",
-        "destinationId" : "35",
-        "id" : "98",
-        "linkedRelationshipId" : "96",
+        "description" : "Gets Michelin tyre referential data",
+        "destinationId" : "36",
+        "id" : "114",
+        "linkedRelationshipId" : "112",
         "sourceId" : "32",
         "technology" : "kafka"
       } ],
@@ -684,31 +756,31 @@
       "documentation" : { },
       "id" : "33",
       "location" : "Unspecified",
-      "name" : "WyzAuto Application",
+      "name" : "Spyder Application",
       "properties" : {
-        "structurizr.dsl.identifier" : "wyzauto"
+        "structurizr.dsl.identifier" : "spyder"
       },
       "relationships" : [ {
         "description" : "Gets non-tyre referential data",
-        "destinationId" : "38",
-        "id" : "99",
+        "destinationId" : "39",
+        "id" : "115",
         "sourceId" : "33",
-        "tags" : "Relationship,kafka",
-        "technology" : "API"
+        "tags" : "Relationship",
+        "technology" : "kafka"
+      }, {
+        "description" : "Gets non-tyre referential data",
+        "destinationId" : "37",
+        "id" : "116",
+        "linkedRelationshipId" : "115",
+        "sourceId" : "33",
+        "technology" : "kafka"
       }, {
         "description" : "Gets non-tyre referential data",
         "destinationId" : "36",
-        "id" : "100",
-        "linkedRelationshipId" : "99",
+        "id" : "117",
+        "linkedRelationshipId" : "115",
         "sourceId" : "33",
-        "technology" : "API"
-      }, {
-        "description" : "Gets non-tyre referential data",
-        "destinationId" : "35",
-        "id" : "101",
-        "linkedRelationshipId" : "99",
-        "sourceId" : "33",
-        "technology" : "API"
+        "technology" : "kafka"
       } ],
       "tags" : "Element,Software System,Existing System,Kafka"
     }, {
@@ -716,30 +788,62 @@
       "documentation" : { },
       "id" : "34",
       "location" : "Unspecified",
+      "name" : "WyzAuto Application",
+      "properties" : {
+        "structurizr.dsl.identifier" : "wyzauto"
+      },
+      "relationships" : [ {
+        "description" : "Gets non-tyre referential data",
+        "destinationId" : "39",
+        "id" : "118",
+        "sourceId" : "34",
+        "tags" : "Relationship,kafka",
+        "technology" : "API"
+      }, {
+        "description" : "Gets non-tyre referential data",
+        "destinationId" : "37",
+        "id" : "119",
+        "linkedRelationshipId" : "118",
+        "sourceId" : "34",
+        "technology" : "API"
+      }, {
+        "description" : "Gets non-tyre referential data",
+        "destinationId" : "36",
+        "id" : "120",
+        "linkedRelationshipId" : "118",
+        "sourceId" : "34",
+        "technology" : "API"
+      } ],
+      "tags" : "Element,Software System,Existing System,Kafka"
+    }, {
+      "description" : "Mobile login application",
+      "documentation" : { },
+      "id" : "35",
+      "location" : "Unspecified",
       "name" : "MARS Application",
       "properties" : {
         "structurizr.dsl.identifier" : "mars"
       },
       "relationships" : [ {
         "description" : "Gets non-tyre referential data",
-        "destinationId" : "38",
-        "id" : "102",
-        "sourceId" : "34",
+        "destinationId" : "39",
+        "id" : "121",
+        "sourceId" : "35",
         "tags" : "Relationship",
         "technology" : "Manual dump"
       }, {
         "description" : "Gets non-tyre referential data",
-        "destinationId" : "36",
-        "id" : "103",
-        "linkedRelationshipId" : "102",
-        "sourceId" : "34",
+        "destinationId" : "37",
+        "id" : "122",
+        "linkedRelationshipId" : "121",
+        "sourceId" : "35",
         "technology" : "Manual dump"
       }, {
         "description" : "Gets non-tyre referential data",
-        "destinationId" : "35",
-        "id" : "104",
-        "linkedRelationshipId" : "102",
-        "sourceId" : "34",
+        "destinationId" : "36",
+        "id" : "123",
+        "linkedRelationshipId" : "121",
+        "sourceId" : "35",
         "technology" : "Manual dump"
       } ],
       "tags" : "Element,Software System,Existing System,Kafka"
@@ -747,7 +851,7 @@
       "containers" : [ {
         "components" : [ {
           "documentation" : { },
-          "id" : "37",
+          "id" : "38",
           "name" : "Kafka producer for referential-system",
           "properties" : {
             "structurizr.dsl.identifier" : "kafka-producer-referential"
@@ -755,85 +859,85 @@
           "relationships" : [ {
             "description" : "Provides referential data",
             "destinationId" : "16",
-            "id" : "114",
-            "sourceId" : "37",
+            "id" : "133",
+            "sourceId" : "38",
             "tags" : "Relationship",
             "technology" : "kafka"
           }, {
             "description" : "Provides referential data",
             "destinationId" : "6",
-            "id" : "115",
-            "linkedRelationshipId" : "114",
-            "sourceId" : "37",
+            "id" : "134",
+            "linkedRelationshipId" : "133",
+            "sourceId" : "38",
             "technology" : "kafka"
           } ],
           "tags" : "Element,Component"
         }, {
           "documentation" : { },
-          "id" : "38",
+          "id" : "39",
           "name" : "Kafka consumer for referential-system",
           "properties" : {
             "structurizr.dsl.identifier" : "kafka-consumer-referential"
           },
           "relationships" : [ {
             "description" : "Stores referential",
-            "destinationId" : "28",
-            "id" : "105",
-            "sourceId" : "38",
+            "destinationId" : "29",
+            "id" : "124",
+            "sourceId" : "39",
             "tags" : "Relationship"
           }, {
             "description" : "Stores referential",
             "destinationId" : "25",
-            "id" : "106",
-            "linkedRelationshipId" : "105",
-            "sourceId" : "38"
+            "id" : "125",
+            "linkedRelationshipId" : "124",
+            "sourceId" : "39"
           }, {
             "description" : "Stores referential",
             "destinationId" : "6",
-            "id" : "107",
-            "linkedRelationshipId" : "105",
-            "sourceId" : "38"
+            "id" : "126",
+            "linkedRelationshipId" : "124",
+            "sourceId" : "39"
           } ],
           "tags" : "Element,Component"
         } ],
         "description" : "TEDS product and services referential",
         "documentation" : { },
-        "id" : "36",
+        "id" : "37",
         "name" : "TEDS Tyre referential",
         "properties" : {
           "structurizr.dsl.identifier" : "teds-referential"
         },
         "relationships" : [ {
           "description" : "Stores referential",
-          "destinationId" : "28",
-          "id" : "108",
-          "linkedRelationshipId" : "105",
-          "sourceId" : "36"
+          "destinationId" : "29",
+          "id" : "127",
+          "linkedRelationshipId" : "124",
+          "sourceId" : "37"
         }, {
           "description" : "Stores referential",
           "destinationId" : "25",
-          "id" : "109",
-          "linkedRelationshipId" : "105",
-          "sourceId" : "36"
+          "id" : "128",
+          "linkedRelationshipId" : "124",
+          "sourceId" : "37"
         }, {
           "description" : "Stores referential",
           "destinationId" : "6",
-          "id" : "110",
-          "linkedRelationshipId" : "105",
-          "sourceId" : "36"
+          "id" : "129",
+          "linkedRelationshipId" : "124",
+          "sourceId" : "37"
         }, {
           "description" : "Provides referential data",
           "destinationId" : "16",
-          "id" : "116",
-          "linkedRelationshipId" : "114",
-          "sourceId" : "36",
+          "id" : "135",
+          "linkedRelationshipId" : "133",
+          "sourceId" : "37",
           "technology" : "kafka"
         } ],
         "tags" : "Element,Container"
       } ],
       "description" : "Wecare-like referential provider",
       "documentation" : { },
-      "id" : "35",
+      "id" : "36",
       "location" : "Unspecified",
       "name" : "Referential System",
       "properties" : {
@@ -841,28 +945,28 @@
       },
       "relationships" : [ {
         "description" : "Stores referential",
-        "destinationId" : "28",
-        "id" : "111",
-        "linkedRelationshipId" : "105",
-        "sourceId" : "35"
+        "destinationId" : "29",
+        "id" : "130",
+        "linkedRelationshipId" : "124",
+        "sourceId" : "36"
       }, {
         "description" : "Stores referential",
         "destinationId" : "25",
-        "id" : "112",
-        "linkedRelationshipId" : "105",
-        "sourceId" : "35"
+        "id" : "131",
+        "linkedRelationshipId" : "124",
+        "sourceId" : "36"
       }, {
         "description" : "Stores referential",
         "destinationId" : "6",
-        "id" : "113",
-        "linkedRelationshipId" : "105",
-        "sourceId" : "35"
+        "id" : "132",
+        "linkedRelationshipId" : "124",
+        "sourceId" : "36"
       }, {
         "description" : "Provides referential data",
         "destinationId" : "16",
-        "id" : "117",
-        "linkedRelationshipId" : "114",
-        "sourceId" : "35",
+        "id" : "136",
+        "linkedRelationshipId" : "133",
+        "sourceId" : "36",
         "technology" : "kafka"
       } ],
       "tags" : "Element,Software System,Container"
@@ -870,7 +974,7 @@
       "containers" : [ {
         "components" : [ {
           "documentation" : { },
-          "id" : "41",
+          "id" : "42",
           "name" : "Kafka producer for loyalty-system",
           "properties" : {
             "structurizr.dsl.identifier" : "kafka-producer-loyalty"
@@ -878,85 +982,85 @@
           "relationships" : [ {
             "description" : "Provides available coupons",
             "destinationId" : "13",
-            "id" : "138",
-            "sourceId" : "41",
+            "id" : "157",
+            "sourceId" : "42",
             "tags" : "Relationship",
             "technology" : "kafka"
           }, {
             "description" : "Provides available coupons",
             "destinationId" : "6",
-            "id" : "139",
-            "linkedRelationshipId" : "138",
-            "sourceId" : "41",
+            "id" : "158",
+            "linkedRelationshipId" : "157",
+            "sourceId" : "42",
             "technology" : "kafka"
           } ],
           "tags" : "Element,Component"
         }, {
           "documentation" : { },
-          "id" : "42",
+          "id" : "43",
           "name" : "Kafka consumer for loyalty-system",
           "properties" : {
             "structurizr.dsl.identifier" : "kafka-consumer-loyalty"
           },
           "relationships" : [ {
             "description" : "Stores loyalty data",
-            "destinationId" : "30",
-            "id" : "129",
-            "sourceId" : "42",
+            "destinationId" : "31",
+            "id" : "148",
+            "sourceId" : "43",
             "tags" : "Relationship"
           }, {
             "description" : "Stores loyalty data",
             "destinationId" : "25",
-            "id" : "130",
-            "linkedRelationshipId" : "129",
-            "sourceId" : "42"
+            "id" : "149",
+            "linkedRelationshipId" : "148",
+            "sourceId" : "43"
           }, {
             "description" : "Stores loyalty data",
             "destinationId" : "6",
-            "id" : "131",
-            "linkedRelationshipId" : "129",
-            "sourceId" : "42"
+            "id" : "150",
+            "linkedRelationshipId" : "148",
+            "sourceId" : "43"
           } ],
           "tags" : "Element,Component"
         } ],
         "description" : "TEDS loyalty program",
         "documentation" : { },
-        "id" : "40",
+        "id" : "41",
         "name" : "TEDS Loyalty",
         "properties" : {
           "structurizr.dsl.identifier" : "teds-loyalty"
         },
         "relationships" : [ {
           "description" : "Stores loyalty data",
-          "destinationId" : "30",
-          "id" : "132",
-          "linkedRelationshipId" : "129",
-          "sourceId" : "40"
+          "destinationId" : "31",
+          "id" : "151",
+          "linkedRelationshipId" : "148",
+          "sourceId" : "41"
         }, {
           "description" : "Stores loyalty data",
           "destinationId" : "25",
-          "id" : "133",
-          "linkedRelationshipId" : "129",
-          "sourceId" : "40"
+          "id" : "152",
+          "linkedRelationshipId" : "148",
+          "sourceId" : "41"
         }, {
           "description" : "Stores loyalty data",
           "destinationId" : "6",
-          "id" : "134",
-          "linkedRelationshipId" : "129",
-          "sourceId" : "40"
+          "id" : "153",
+          "linkedRelationshipId" : "148",
+          "sourceId" : "41"
         }, {
           "description" : "Provides available coupons",
           "destinationId" : "13",
-          "id" : "140",
-          "linkedRelationshipId" : "138",
-          "sourceId" : "40",
+          "id" : "159",
+          "linkedRelationshipId" : "157",
+          "sourceId" : "41",
           "technology" : "kafka"
         } ],
         "tags" : "Element,Container"
       } ],
       "description" : "Loyalty program adapter",
       "documentation" : { },
-      "id" : "39",
+      "id" : "40",
       "location" : "Unspecified",
       "name" : "Loyalty Programs",
       "properties" : {
@@ -964,35 +1068,35 @@
       },
       "relationships" : [ {
         "description" : "Stores loyalty data",
-        "destinationId" : "30",
-        "id" : "135",
-        "linkedRelationshipId" : "129",
-        "sourceId" : "39"
+        "destinationId" : "31",
+        "id" : "154",
+        "linkedRelationshipId" : "148",
+        "sourceId" : "40"
       }, {
         "description" : "Stores loyalty data",
         "destinationId" : "25",
-        "id" : "136",
-        "linkedRelationshipId" : "129",
-        "sourceId" : "39"
+        "id" : "155",
+        "linkedRelationshipId" : "148",
+        "sourceId" : "40"
       }, {
         "description" : "Stores loyalty data",
         "destinationId" : "6",
-        "id" : "137",
-        "linkedRelationshipId" : "129",
-        "sourceId" : "39"
+        "id" : "156",
+        "linkedRelationshipId" : "148",
+        "sourceId" : "40"
       }, {
         "description" : "Provides available coupons",
         "destinationId" : "13",
-        "id" : "141",
-        "linkedRelationshipId" : "138",
-        "sourceId" : "39",
+        "id" : "160",
+        "linkedRelationshipId" : "157",
+        "sourceId" : "40",
         "technology" : "kafka"
       } ],
       "tags" : "Element,Software System,container"
     }, {
       "description" : "Thailand iCare loyalty program",
       "documentation" : { },
-      "id" : "43",
+      "id" : "44",
       "location" : "Unspecified",
       "name" : "Thailand iCare",
       "properties" : {
@@ -1000,31 +1104,31 @@
       },
       "relationships" : [ {
         "description" : "Gets available coupons",
-        "destinationId" : "42",
-        "id" : "120",
-        "sourceId" : "43",
+        "destinationId" : "43",
+        "id" : "139",
+        "sourceId" : "44",
         "tags" : "Relationship,kafka",
         "technology" : "API"
       }, {
         "description" : "Gets available coupons",
-        "destinationId" : "40",
-        "id" : "121",
-        "linkedRelationshipId" : "120",
-        "sourceId" : "43",
+        "destinationId" : "41",
+        "id" : "140",
+        "linkedRelationshipId" : "139",
+        "sourceId" : "44",
         "technology" : "API"
       }, {
         "description" : "Gets available coupons",
-        "destinationId" : "39",
-        "id" : "122",
-        "linkedRelationshipId" : "120",
-        "sourceId" : "43",
+        "destinationId" : "40",
+        "id" : "141",
+        "linkedRelationshipId" : "139",
+        "sourceId" : "44",
         "technology" : "API"
       } ],
       "tags" : "Element,Software System,Container"
     }, {
       "description" : "Korea loyalty program",
       "documentation" : { },
-      "id" : "44",
+      "id" : "45",
       "location" : "Unspecified",
       "name" : "Korea Loyalty",
       "properties" : {
@@ -1032,31 +1136,31 @@
       },
       "relationships" : [ {
         "description" : "Gets available coupons",
-        "destinationId" : "42",
-        "id" : "123",
-        "sourceId" : "44",
+        "destinationId" : "43",
+        "id" : "142",
+        "sourceId" : "45",
         "tags" : "Relationship,kafka",
         "technology" : "API"
       }, {
         "description" : "Gets available coupons",
-        "destinationId" : "40",
-        "id" : "124",
-        "linkedRelationshipId" : "123",
-        "sourceId" : "44",
+        "destinationId" : "41",
+        "id" : "143",
+        "linkedRelationshipId" : "142",
+        "sourceId" : "45",
         "technology" : "API"
       }, {
         "description" : "Gets available coupons",
-        "destinationId" : "39",
-        "id" : "125",
-        "linkedRelationshipId" : "123",
-        "sourceId" : "44",
+        "destinationId" : "40",
+        "id" : "144",
+        "linkedRelationshipId" : "142",
+        "sourceId" : "45",
         "technology" : "API"
       } ],
       "tags" : "Element,Software System,Container"
     }, {
       "description" : "Other loyalty program",
       "documentation" : { },
-      "id" : "45",
+      "id" : "46",
       "location" : "Unspecified",
       "name" : "Other Loyalty",
       "properties" : {
@@ -1064,24 +1168,24 @@
       },
       "relationships" : [ {
         "description" : "Gets available coupons",
-        "destinationId" : "42",
-        "id" : "126",
-        "sourceId" : "45",
+        "destinationId" : "43",
+        "id" : "145",
+        "sourceId" : "46",
         "tags" : "Relationship,kafka",
         "technology" : "API"
       }, {
         "description" : "Gets available coupons",
-        "destinationId" : "40",
-        "id" : "127",
-        "linkedRelationshipId" : "126",
-        "sourceId" : "45",
+        "destinationId" : "41",
+        "id" : "146",
+        "linkedRelationshipId" : "145",
+        "sourceId" : "46",
         "technology" : "API"
       }, {
         "description" : "Gets available coupons",
-        "destinationId" : "39",
-        "id" : "128",
-        "linkedRelationshipId" : "126",
-        "sourceId" : "45",
+        "destinationId" : "40",
+        "id" : "147",
+        "linkedRelationshipId" : "145",
+        "sourceId" : "46",
         "technology" : "API"
       } ],
       "tags" : "Element,Software System,Container,API"
@@ -1089,7 +1193,7 @@
       "containers" : [ {
         "components" : [ {
           "documentation" : { },
-          "id" : "48",
+          "id" : "49",
           "name" : "Kafka producer for e-ordering system",
           "properties" : {
             "structurizr.dsl.identifier" : "kafka-producer-eordering"
@@ -1097,85 +1201,85 @@
           "relationships" : [ {
             "description" : "Provides available E-orders",
             "destinationId" : "15",
-            "id" : "160",
-            "sourceId" : "48",
+            "id" : "179",
+            "sourceId" : "49",
             "tags" : "Relationship",
             "technology" : "kafka"
           }, {
             "description" : "Provides available E-orders",
             "destinationId" : "6",
-            "id" : "161",
-            "linkedRelationshipId" : "160",
-            "sourceId" : "48",
+            "id" : "180",
+            "linkedRelationshipId" : "179",
+            "sourceId" : "49",
             "technology" : "kafka"
           } ],
           "tags" : "Element,Component"
         }, {
           "documentation" : { },
-          "id" : "49",
+          "id" : "50",
           "name" : "Kafka consumer for e-ordering system",
           "properties" : {
             "structurizr.dsl.identifier" : "kafka-consumer-eordering"
           },
           "relationships" : [ {
             "description" : "Stores eOrdering data",
-            "destinationId" : "27",
-            "id" : "151",
-            "sourceId" : "49",
+            "destinationId" : "28",
+            "id" : "170",
+            "sourceId" : "50",
             "tags" : "Relationship"
           }, {
             "description" : "Stores eOrdering data",
             "destinationId" : "25",
-            "id" : "152",
-            "linkedRelationshipId" : "151",
-            "sourceId" : "49"
+            "id" : "171",
+            "linkedRelationshipId" : "170",
+            "sourceId" : "50"
           }, {
             "description" : "Stores eOrdering data",
             "destinationId" : "6",
-            "id" : "153",
-            "linkedRelationshipId" : "151",
-            "sourceId" : "49"
+            "id" : "172",
+            "linkedRelationshipId" : "170",
+            "sourceId" : "50"
           } ],
           "tags" : "Element,Component"
         } ],
         "description" : "TEDS e-ordering program",
         "documentation" : { },
-        "id" : "47",
+        "id" : "48",
         "name" : "TEDS E-Ordering",
         "properties" : {
           "structurizr.dsl.identifier" : "teds-eordering"
         },
         "relationships" : [ {
           "description" : "Stores eOrdering data",
-          "destinationId" : "27",
-          "id" : "154",
-          "linkedRelationshipId" : "151",
-          "sourceId" : "47"
+          "destinationId" : "28",
+          "id" : "173",
+          "linkedRelationshipId" : "170",
+          "sourceId" : "48"
         }, {
           "description" : "Stores eOrdering data",
           "destinationId" : "25",
-          "id" : "155",
-          "linkedRelationshipId" : "151",
-          "sourceId" : "47"
+          "id" : "174",
+          "linkedRelationshipId" : "170",
+          "sourceId" : "48"
         }, {
           "description" : "Stores eOrdering data",
           "destinationId" : "6",
-          "id" : "156",
-          "linkedRelationshipId" : "151",
-          "sourceId" : "47"
+          "id" : "175",
+          "linkedRelationshipId" : "170",
+          "sourceId" : "48"
         }, {
           "description" : "Provides available E-orders",
           "destinationId" : "15",
-          "id" : "162",
-          "linkedRelationshipId" : "160",
-          "sourceId" : "47",
+          "id" : "181",
+          "linkedRelationshipId" : "179",
+          "sourceId" : "48",
           "technology" : "kafka"
         } ],
         "tags" : "Element,Container"
       } ],
       "description" : "E-ordering adapter",
       "documentation" : { },
-      "id" : "46",
+      "id" : "47",
       "location" : "Unspecified",
       "name" : "E-Ordering",
       "properties" : {
@@ -1183,35 +1287,35 @@
       },
       "relationships" : [ {
         "description" : "Stores eOrdering data",
-        "destinationId" : "27",
-        "id" : "157",
-        "linkedRelationshipId" : "151",
-        "sourceId" : "46"
+        "destinationId" : "28",
+        "id" : "176",
+        "linkedRelationshipId" : "170",
+        "sourceId" : "47"
       }, {
         "description" : "Stores eOrdering data",
         "destinationId" : "25",
-        "id" : "158",
-        "linkedRelationshipId" : "151",
-        "sourceId" : "46"
+        "id" : "177",
+        "linkedRelationshipId" : "170",
+        "sourceId" : "47"
       }, {
         "description" : "Stores eOrdering data",
         "destinationId" : "6",
-        "id" : "159",
-        "linkedRelationshipId" : "151",
-        "sourceId" : "46"
+        "id" : "178",
+        "linkedRelationshipId" : "170",
+        "sourceId" : "47"
       }, {
         "description" : "Provides available E-orders",
         "destinationId" : "15",
-        "id" : "163",
-        "linkedRelationshipId" : "160",
-        "sourceId" : "46",
+        "id" : "182",
+        "linkedRelationshipId" : "179",
+        "sourceId" : "47",
         "technology" : "kafka"
       } ],
       "tags" : "Element,Software System,container"
     }, {
       "description" : "Thailand MDO e-ordering program",
       "documentation" : { },
-      "id" : "50",
+      "id" : "51",
       "location" : "Unspecified",
       "name" : "Thailand MDO",
       "properties" : {
@@ -1219,31 +1323,31 @@
       },
       "relationships" : [ {
         "description" : "Gets available E-orders",
-        "destinationId" : "49",
-        "id" : "142",
-        "sourceId" : "50",
+        "destinationId" : "50",
+        "id" : "161",
+        "sourceId" : "51",
         "tags" : "Relationship,kafka",
         "technology" : "API"
       }, {
         "description" : "Gets available E-orders",
-        "destinationId" : "47",
-        "id" : "143",
-        "linkedRelationshipId" : "142",
-        "sourceId" : "50",
+        "destinationId" : "48",
+        "id" : "162",
+        "linkedRelationshipId" : "161",
+        "sourceId" : "51",
         "technology" : "API"
       }, {
         "description" : "Gets available E-orders",
-        "destinationId" : "46",
-        "id" : "144",
-        "linkedRelationshipId" : "142",
-        "sourceId" : "50",
+        "destinationId" : "47",
+        "id" : "163",
+        "linkedRelationshipId" : "161",
+        "sourceId" : "51",
         "technology" : "API"
       } ],
       "tags" : "Element,Software System,Container"
     }, {
       "description" : "Korea SANA e-ordering program",
       "documentation" : { },
-      "id" : "51",
+      "id" : "52",
       "location" : "Unspecified",
       "name" : "Korea SANA",
       "properties" : {
@@ -1251,31 +1355,31 @@
       },
       "relationships" : [ {
         "description" : "Gets available E-orders",
-        "destinationId" : "49",
-        "id" : "145",
-        "sourceId" : "51",
+        "destinationId" : "50",
+        "id" : "164",
+        "sourceId" : "52",
         "tags" : "Relationship,kafka",
         "technology" : "API"
       }, {
         "description" : "Gets available E-orders",
-        "destinationId" : "47",
-        "id" : "146",
-        "linkedRelationshipId" : "145",
-        "sourceId" : "51",
+        "destinationId" : "48",
+        "id" : "165",
+        "linkedRelationshipId" : "164",
+        "sourceId" : "52",
         "technology" : "API"
       }, {
         "description" : "Gets available E-orders",
-        "destinationId" : "46",
-        "id" : "147",
-        "linkedRelationshipId" : "145",
-        "sourceId" : "51",
+        "destinationId" : "47",
+        "id" : "166",
+        "linkedRelationshipId" : "164",
+        "sourceId" : "52",
         "technology" : "API"
       } ],
       "tags" : "Element,Software System,Container"
     }, {
       "description" : "Other e-ordering program",
       "documentation" : { },
-      "id" : "52",
+      "id" : "53",
       "location" : "Unspecified",
       "name" : "Other E-Ordering",
       "properties" : {
@@ -1283,31 +1387,31 @@
       },
       "relationships" : [ {
         "description" : "Gets available E-orders",
-        "destinationId" : "49",
-        "id" : "148",
-        "sourceId" : "52",
+        "destinationId" : "50",
+        "id" : "167",
+        "sourceId" : "53",
         "tags" : "Relationship,kafka",
         "technology" : "API"
       }, {
         "description" : "Gets available E-orders",
-        "destinationId" : "47",
-        "id" : "149",
-        "linkedRelationshipId" : "148",
-        "sourceId" : "52",
+        "destinationId" : "48",
+        "id" : "168",
+        "linkedRelationshipId" : "167",
+        "sourceId" : "53",
         "technology" : "API"
       }, {
         "description" : "Gets available E-orders",
-        "destinationId" : "46",
-        "id" : "150",
-        "linkedRelationshipId" : "148",
-        "sourceId" : "52",
+        "destinationId" : "47",
+        "id" : "169",
+        "linkedRelationshipId" : "167",
+        "sourceId" : "53",
         "technology" : "API"
       } ],
       "tags" : "Element,Software System,Container,API"
     }, {
       "description" : "Downstream tax processing & government linking",
       "documentation" : { },
-      "id" : "53",
+      "id" : "54",
       "location" : "Unspecified",
       "name" : "Taxation Adapter",
       "properties" : {
@@ -1318,121 +1422,121 @@
       "containers" : [ {
         "components" : [ {
           "documentation" : { },
-          "id" : "56",
+          "id" : "57",
           "name" : "Kafka producer for taxation system",
           "properties" : {
             "structurizr.dsl.identifier" : "kafka-producer-taxation"
           },
           "relationships" : [ {
             "description" : "Sends E-tax data to Govt agency",
-            "destinationId" : "58",
-            "id" : "170",
-            "sourceId" : "56",
+            "destinationId" : "59",
+            "id" : "189",
+            "sourceId" : "57",
             "tags" : "Relationship",
             "technology" : "kafka"
           }, {
             "description" : "Sends E-tax data to Govt agency",
-            "destinationId" : "59",
-            "id" : "173",
-            "sourceId" : "56",
+            "destinationId" : "60",
+            "id" : "192",
+            "sourceId" : "57",
             "tags" : "Relationship",
             "technology" : "kafka"
           }, {
             "description" : "Provides government reference ID",
             "destinationId" : "14",
-            "id" : "191",
-            "sourceId" : "56",
+            "id" : "210",
+            "sourceId" : "57",
             "tags" : "Relationship",
             "technology" : "kafka"
           }, {
             "description" : "Provides government reference ID",
             "destinationId" : "6",
-            "id" : "192",
-            "linkedRelationshipId" : "191",
-            "sourceId" : "56",
+            "id" : "211",
+            "linkedRelationshipId" : "210",
+            "sourceId" : "57",
             "technology" : "kafka"
           } ],
           "tags" : "Element,Component"
         }, {
           "documentation" : { },
-          "id" : "57",
+          "id" : "58",
           "name" : "Kafka consumer for taxation system",
           "properties" : {
             "structurizr.dsl.identifier" : "kafka-consumer-taxation"
           },
           "relationships" : [ {
             "description" : "Stores taxation data",
-            "destinationId" : "29",
-            "id" : "182",
-            "sourceId" : "57",
+            "destinationId" : "30",
+            "id" : "201",
+            "sourceId" : "58",
             "tags" : "Relationship"
           }, {
             "description" : "Stores taxation data",
             "destinationId" : "25",
-            "id" : "183",
-            "linkedRelationshipId" : "182",
-            "sourceId" : "57"
+            "id" : "202",
+            "linkedRelationshipId" : "201",
+            "sourceId" : "58"
           }, {
             "description" : "Stores taxation data",
             "destinationId" : "6",
-            "id" : "184",
-            "linkedRelationshipId" : "182",
-            "sourceId" : "57"
+            "id" : "203",
+            "linkedRelationshipId" : "201",
+            "sourceId" : "58"
           } ],
           "tags" : "Element,Component"
         } ],
         "description" : "TEDS taxation program",
         "documentation" : { },
-        "id" : "55",
+        "id" : "56",
         "name" : "TEDS Taxation",
         "properties" : {
           "structurizr.dsl.identifier" : "teds-taxation"
         },
         "relationships" : [ {
           "description" : "Sends E-tax data to Govt agency",
-          "destinationId" : "58",
-          "id" : "171",
-          "linkedRelationshipId" : "170",
-          "sourceId" : "55",
+          "destinationId" : "59",
+          "id" : "190",
+          "linkedRelationshipId" : "189",
+          "sourceId" : "56",
           "technology" : "kafka"
         }, {
           "description" : "Sends E-tax data to Govt agency",
-          "destinationId" : "59",
-          "id" : "174",
-          "linkedRelationshipId" : "173",
-          "sourceId" : "55",
+          "destinationId" : "60",
+          "id" : "193",
+          "linkedRelationshipId" : "192",
+          "sourceId" : "56",
           "technology" : "kafka"
         }, {
           "description" : "Stores taxation data",
-          "destinationId" : "29",
-          "id" : "185",
-          "linkedRelationshipId" : "182",
-          "sourceId" : "55"
+          "destinationId" : "30",
+          "id" : "204",
+          "linkedRelationshipId" : "201",
+          "sourceId" : "56"
         }, {
           "description" : "Stores taxation data",
           "destinationId" : "25",
-          "id" : "186",
-          "linkedRelationshipId" : "182",
-          "sourceId" : "55"
+          "id" : "205",
+          "linkedRelationshipId" : "201",
+          "sourceId" : "56"
         }, {
           "description" : "Stores taxation data",
           "destinationId" : "6",
-          "id" : "187",
-          "linkedRelationshipId" : "182",
-          "sourceId" : "55"
+          "id" : "206",
+          "linkedRelationshipId" : "201",
+          "sourceId" : "56"
         }, {
           "description" : "Provides government reference ID",
           "destinationId" : "14",
-          "id" : "193",
-          "linkedRelationshipId" : "191",
-          "sourceId" : "55",
+          "id" : "212",
+          "linkedRelationshipId" : "210",
+          "sourceId" : "56",
           "technology" : "kafka"
         } ],
         "tags" : "Element,Container"
       } ],
       "description" : "E-tax adapter",
       "documentation" : { },
-      "id" : "54",
+      "id" : "55",
       "location" : "Unspecified",
       "name" : "E-Tax",
       "properties" : {
@@ -1440,49 +1544,49 @@
       },
       "relationships" : [ {
         "description" : "Sends E-tax data to Govt agency",
-        "destinationId" : "58",
-        "id" : "172",
-        "linkedRelationshipId" : "170",
-        "sourceId" : "54",
+        "destinationId" : "59",
+        "id" : "191",
+        "linkedRelationshipId" : "189",
+        "sourceId" : "55",
         "technology" : "kafka"
       }, {
         "description" : "Sends E-tax data to Govt agency",
-        "destinationId" : "59",
-        "id" : "175",
-        "linkedRelationshipId" : "173",
-        "sourceId" : "54",
+        "destinationId" : "60",
+        "id" : "194",
+        "linkedRelationshipId" : "192",
+        "sourceId" : "55",
         "technology" : "kafka"
       }, {
         "description" : "Stores taxation data",
-        "destinationId" : "29",
-        "id" : "188",
-        "linkedRelationshipId" : "182",
-        "sourceId" : "54"
+        "destinationId" : "30",
+        "id" : "207",
+        "linkedRelationshipId" : "201",
+        "sourceId" : "55"
       }, {
         "description" : "Stores taxation data",
         "destinationId" : "25",
-        "id" : "189",
-        "linkedRelationshipId" : "182",
-        "sourceId" : "54"
+        "id" : "208",
+        "linkedRelationshipId" : "201",
+        "sourceId" : "55"
       }, {
         "description" : "Stores taxation data",
         "destinationId" : "6",
-        "id" : "190",
-        "linkedRelationshipId" : "182",
-        "sourceId" : "54"
+        "id" : "209",
+        "linkedRelationshipId" : "201",
+        "sourceId" : "55"
       }, {
         "description" : "Provides government reference ID",
         "destinationId" : "14",
-        "id" : "194",
-        "linkedRelationshipId" : "191",
-        "sourceId" : "54",
+        "id" : "213",
+        "linkedRelationshipId" : "210",
+        "sourceId" : "55",
         "technology" : "kafka"
       } ],
       "tags" : "Element,Software System,container"
     }, {
       "description" : "Thailand E-Tax program",
       "documentation" : { },
-      "id" : "58",
+      "id" : "59",
       "location" : "Unspecified",
       "name" : "Thailand E-Tax",
       "properties" : {
@@ -1490,31 +1594,31 @@
       },
       "relationships" : [ {
         "description" : "Gets E-tax reference from Govt agency",
-        "destinationId" : "57",
-        "id" : "176",
-        "sourceId" : "58",
+        "destinationId" : "58",
+        "id" : "195",
+        "sourceId" : "59",
         "tags" : "Relationship",
         "technology" : "kafka"
       }, {
         "description" : "Gets E-tax reference from Govt agency",
-        "destinationId" : "55",
-        "id" : "177",
-        "linkedRelationshipId" : "176",
-        "sourceId" : "58",
+        "destinationId" : "56",
+        "id" : "196",
+        "linkedRelationshipId" : "195",
+        "sourceId" : "59",
         "technology" : "kafka"
       }, {
         "description" : "Gets E-tax reference from Govt agency",
-        "destinationId" : "54",
-        "id" : "178",
-        "linkedRelationshipId" : "176",
-        "sourceId" : "58",
+        "destinationId" : "55",
+        "id" : "197",
+        "linkedRelationshipId" : "195",
+        "sourceId" : "59",
         "technology" : "kafka"
       } ],
       "tags" : "Element,Software System,Container"
     }, {
       "description" : "Other e-tax program",
       "documentation" : { },
-      "id" : "59",
+      "id" : "60",
       "location" : "Unspecified",
       "name" : "Other E-Tax",
       "properties" : {
@@ -1522,24 +1626,24 @@
       },
       "relationships" : [ {
         "description" : "Gets E-tax reference from Govt agency",
-        "destinationId" : "57",
-        "id" : "179",
-        "sourceId" : "59",
+        "destinationId" : "58",
+        "id" : "198",
+        "sourceId" : "60",
         "tags" : "Relationship",
         "technology" : "kafka"
       }, {
         "description" : "Gets E-tax reference from Govt agency",
-        "destinationId" : "55",
-        "id" : "180",
-        "linkedRelationshipId" : "179",
-        "sourceId" : "59",
+        "destinationId" : "56",
+        "id" : "199",
+        "linkedRelationshipId" : "198",
+        "sourceId" : "60",
         "technology" : "kafka"
       }, {
         "description" : "Gets E-tax reference from Govt agency",
-        "destinationId" : "54",
-        "id" : "181",
-        "linkedRelationshipId" : "179",
-        "sourceId" : "59",
+        "destinationId" : "55",
+        "id" : "200",
+        "linkedRelationshipId" : "198",
+        "sourceId" : "60",
         "technology" : "kafka"
       } ],
       "tags" : "Element,Software System,Container,API"
@@ -1547,7 +1651,7 @@
       "containers" : [ {
         "components" : [ {
           "documentation" : { },
-          "id" : "62",
+          "id" : "63",
           "name" : "Camera access for plate scanner",
           "properties" : {
             "structurizr.dsl.identifier" : "plate-scanner-camera-access"
@@ -1555,16 +1659,16 @@
           "tags" : "Element,Component"
         }, {
           "documentation" : { },
-          "id" : "63",
+          "id" : "64",
           "name" : "External API to read plate and VIN",
           "properties" : {
             "structurizr.dsl.identifier" : "plate-scanner-external-api-connector"
           },
           "relationships" : [ {
             "description" : "Send images of number plates & VINs",
-            "destinationId" : "64",
-            "id" : "203",
-            "sourceId" : "63",
+            "destinationId" : "65",
+            "id" : "222",
+            "sourceId" : "64",
             "tags" : "Relationship",
             "technology" : "JSON/HTTPS"
           } ],
@@ -1572,24 +1676,24 @@
         } ],
         "description" : "Number plate and VIN scanner",
         "documentation" : { },
-        "id" : "61",
+        "id" : "62",
         "name" : "Plate Scanner",
         "properties" : {
           "structurizr.dsl.identifier" : "teds-dcp-plate-scanner"
         },
         "relationships" : [ {
           "description" : "Send images of number plates & VINs",
-          "destinationId" : "64",
-          "id" : "204",
-          "linkedRelationshipId" : "203",
-          "sourceId" : "61",
+          "destinationId" : "65",
+          "id" : "223",
+          "linkedRelationshipId" : "222",
+          "sourceId" : "62",
           "technology" : "JSON/HTTPS"
         } ],
         "tags" : "Element,Container"
       } ],
       "description" : "Mobile login application",
       "documentation" : { },
-      "id" : "60",
+      "id" : "61",
       "location" : "Unspecified",
       "name" : "DCP Mobile Application",
       "properties" : {
@@ -1598,28 +1702,28 @@
       "relationships" : [ {
         "description" : "Exchanges data",
         "destinationId" : "8",
-        "id" : "195",
-        "sourceId" : "60",
+        "id" : "214",
+        "sourceId" : "61",
         "tags" : "Relationship"
       }, {
         "description" : "Exchanges data",
         "destinationId" : "6",
-        "id" : "196",
-        "linkedRelationshipId" : "195",
-        "sourceId" : "60"
+        "id" : "215",
+        "linkedRelationshipId" : "214",
+        "sourceId" : "61"
       }, {
         "description" : "Send images of number plates & VINs",
-        "destinationId" : "64",
-        "id" : "205",
-        "linkedRelationshipId" : "203",
-        "sourceId" : "60",
+        "destinationId" : "65",
+        "id" : "224",
+        "linkedRelationshipId" : "222",
+        "sourceId" : "61",
         "technology" : "JSON/HTTPS"
       } ],
       "tags" : "Element,Software System,Container"
     }, {
       "description" : "Third-party number plate and VIN scanning API",
       "documentation" : { },
-      "id" : "64",
+      "id" : "65",
       "location" : "Unspecified",
       "name" : "Plate Scanner External API",
       "properties" : {
@@ -1627,31 +1731,31 @@
       },
       "relationships" : [ {
         "description" : "Receives text number plates & VINs",
-        "destinationId" : "63",
-        "id" : "206",
-        "sourceId" : "64",
+        "destinationId" : "64",
+        "id" : "225",
+        "sourceId" : "65",
         "tags" : "Relationship",
         "technology" : "JSON/HTTPS"
       }, {
         "description" : "Receives text number plates & VINs",
-        "destinationId" : "61",
-        "id" : "207",
-        "linkedRelationshipId" : "206",
-        "sourceId" : "64",
+        "destinationId" : "62",
+        "id" : "226",
+        "linkedRelationshipId" : "225",
+        "sourceId" : "65",
         "technology" : "JSON/HTTPS"
       }, {
         "description" : "Receives text number plates & VINs",
-        "destinationId" : "60",
-        "id" : "208",
-        "linkedRelationshipId" : "206",
-        "sourceId" : "64",
+        "destinationId" : "61",
+        "id" : "227",
+        "linkedRelationshipId" : "225",
+        "sourceId" : "65",
         "technology" : "JSON/HTTPS"
       } ],
       "tags" : "Element,Software System,Existing System,API"
     }, {
       "description" : "Reporting data platform & CRM programs",
       "documentation" : { },
-      "id" : "65",
+      "id" : "66",
       "location" : "Unspecified",
       "name" : "T+ Data Platform",
       "properties" : {
@@ -1659,35 +1763,209 @@
       },
       "relationships" : [ {
         "description" : "Provides CRM data",
-        "destinationId" : "66",
-        "id" : "215",
-        "sourceId" : "65",
+        "destinationId" : "70",
+        "id" : "236",
+        "sourceId" : "66",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Provides CRM data",
+        "destinationId" : "69",
+        "id" : "237",
+        "linkedRelationshipId" : "236",
+        "sourceId" : "66"
+      }, {
+        "description" : "Provides CRM data",
+        "destinationId" : "68",
+        "id" : "238",
+        "linkedRelationshipId" : "236",
+        "sourceId" : "66"
+      }, {
+        "description" : "Provides data for reports and dashboards",
+        "destinationId" : "67",
+        "id" : "265",
+        "sourceId" : "66",
         "tags" : "Relationship"
       } ],
       "tags" : "Element,Software System,Existing System,Database"
     }, {
+      "description" : "Reporting and Dashboard platform",
+      "documentation" : { },
+      "id" : "67",
+      "location" : "Unspecified",
+      "name" : "BI Dashboards",
+      "properties" : {
+        "structurizr.dsl.identifier" : "bi-dashboards"
+      },
+      "tags" : "Element,Software System,Existing System,Container"
+    }, {
+      "containers" : [ {
+        "components" : [ {
+          "documentation" : { },
+          "id" : "70",
+          "name" : "Reads TDP to apply marketing rules",
+          "properties" : {
+            "structurizr.dsl.identifier" : "db-reader-hubspot"
+          },
+          "tags" : "Element,Component"
+        }, {
+          "documentation" : { },
+          "id" : "71",
+          "name" : "Connects to Infobip for messaging",
+          "properties" : {
+            "structurizr.dsl.identifier" : "api-endpoint-hubspot"
+          },
+          "relationships" : [ {
+            "description" : "Sends/receives customer messages",
+            "destinationId" : "74",
+            "id" : "239",
+            "sourceId" : "71",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Sends/receives customer messages",
+            "destinationId" : "73",
+            "id" : "240",
+            "linkedRelationshipId" : "239",
+            "sourceId" : "71"
+          }, {
+            "description" : "Sends/receives customer messages",
+            "destinationId" : "72",
+            "id" : "241",
+            "linkedRelationshipId" : "239",
+            "sourceId" : "71"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "hubspot crm program",
+        "documentation" : { },
+        "id" : "69",
+        "name" : "Hubspot-crm",
+        "properties" : {
+          "structurizr.dsl.identifier" : "crm-hubspot"
+        },
+        "relationships" : [ {
+          "description" : "Sends/receives customer messages",
+          "destinationId" : "74",
+          "id" : "242",
+          "linkedRelationshipId" : "239",
+          "sourceId" : "69"
+        }, {
+          "description" : "Sends/receives customer messages",
+          "destinationId" : "73",
+          "id" : "243",
+          "linkedRelationshipId" : "239",
+          "sourceId" : "69"
+        }, {
+          "description" : "Sends/receives customer messages",
+          "destinationId" : "72",
+          "id" : "244",
+          "linkedRelationshipId" : "239",
+          "sourceId" : "69"
+        } ],
+        "tags" : "Element,Container"
+      } ],
       "description" : "CRM & marketing automation",
       "documentation" : { },
       "group" : "CRM Activities",
-      "id" : "66",
+      "id" : "68",
       "location" : "Unspecified",
       "name" : "HubSpot",
       "properties" : {
         "structurizr.dsl.identifier" : "hubspot"
       },
       "relationships" : [ {
-        "description" : "Sends/receives customer messages (HubSpot-driven)",
-        "destinationId" : "67",
-        "id" : "216",
-        "sourceId" : "66",
-        "tags" : "Relationship"
+        "description" : "Sends/receives customer messages",
+        "destinationId" : "74",
+        "id" : "245",
+        "linkedRelationshipId" : "239",
+        "sourceId" : "68"
+      }, {
+        "description" : "Sends/receives customer messages",
+        "destinationId" : "73",
+        "id" : "246",
+        "linkedRelationshipId" : "239",
+        "sourceId" : "68"
+      }, {
+        "description" : "Sends/receives customer messages",
+        "destinationId" : "72",
+        "id" : "247",
+        "linkedRelationshipId" : "239",
+        "sourceId" : "68"
       } ],
-      "tags" : "Element,Software System"
+      "tags" : "Element,Software System,CRM"
     }, {
+      "containers" : [ {
+        "components" : [ {
+          "documentation" : { },
+          "id" : "74",
+          "name" : "Connects to messaging for sending out messages",
+          "properties" : {
+            "structurizr.dsl.identifier" : "api-endpoint-infobip"
+          },
+          "relationships" : [ {
+            "description" : "Sends messages to customers",
+            "destinationId" : "76",
+            "id" : "248",
+            "sourceId" : "74",
+            "tags" : "Relationship"
+          }, {
+            "description" : "SSends customer replies back to Hubspot",
+            "destinationId" : "71",
+            "id" : "256",
+            "sourceId" : "74",
+            "tags" : "Relationship"
+          }, {
+            "description" : "SSends customer replies back to Hubspot",
+            "destinationId" : "69",
+            "id" : "257",
+            "linkedRelationshipId" : "256",
+            "sourceId" : "74"
+          }, {
+            "description" : "SSends customer replies back to Hubspot",
+            "destinationId" : "68",
+            "id" : "258",
+            "linkedRelationshipId" : "256",
+            "sourceId" : "74"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "infobip enabler",
+        "documentation" : { },
+        "id" : "73",
+        "name" : "Infobip-crm",
+        "properties" : {
+          "structurizr.dsl.identifier" : "crm-infobip"
+        },
+        "relationships" : [ {
+          "description" : "Sends messages to customers",
+          "destinationId" : "76",
+          "id" : "249",
+          "linkedRelationshipId" : "248",
+          "sourceId" : "73"
+        }, {
+          "description" : "SSends customer replies back to Hubspot",
+          "destinationId" : "71",
+          "id" : "259",
+          "linkedRelationshipId" : "256",
+          "sourceId" : "73"
+        }, {
+          "description" : "SSends customer replies back to Hubspot",
+          "destinationId" : "69",
+          "id" : "260",
+          "linkedRelationshipId" : "256",
+          "sourceId" : "73"
+        }, {
+          "description" : "SSends customer replies back to Hubspot",
+          "destinationId" : "68",
+          "id" : "261",
+          "linkedRelationshipId" : "256",
+          "sourceId" : "73"
+        } ],
+        "tags" : "Element,Container"
+      } ],
       "description" : "Enabler for messaging platforms",
       "documentation" : { },
       "group" : "CRM Activities",
-      "id" : "67",
+      "id" : "72",
       "location" : "Unspecified",
       "name" : "Infobip",
       "properties" : {
@@ -1695,59 +1973,96 @@
       },
       "relationships" : [ {
         "description" : "Sends messages to customers",
+        "destinationId" : "76",
+        "id" : "250",
+        "linkedRelationshipId" : "248",
+        "sourceId" : "72"
+      }, {
+        "description" : "SSends customer replies back to Hubspot",
+        "destinationId" : "71",
+        "id" : "262",
+        "linkedRelationshipId" : "256",
+        "sourceId" : "72"
+      }, {
+        "description" : "SSends customer replies back to Hubspot",
         "destinationId" : "69",
-        "id" : "217",
-        "sourceId" : "67",
-        "tags" : "Relationship"
+        "id" : "263",
+        "linkedRelationshipId" : "256",
+        "sourceId" : "72"
+      }, {
+        "description" : "SSends customer replies back to Hubspot",
+        "destinationId" : "68",
+        "id" : "264",
+        "linkedRelationshipId" : "256",
+        "sourceId" : "72"
       } ],
-      "tags" : "Element,Software System"
+      "tags" : "Element,Software System,CRM"
     }, {
       "description" : "Net Promoter Score & consent management",
       "documentation" : { },
       "group" : "CRM Activities",
-      "id" : "68",
+      "id" : "75",
       "location" : "Unspecified",
       "name" : "NPS System",
       "properties" : {
         "structurizr.dsl.identifier" : "nps"
       },
-      "relationships" : [ {
-        "description" : "Sends NPS surveys to customers",
-        "destinationId" : "69",
-        "id" : "219",
-        "sourceId" : "68",
-        "tags" : "Relationship"
-      } ],
       "tags" : "Element,Software System"
     }, {
       "description" : "Line, WhatsApp, etc.",
       "documentation" : { },
       "group" : "CRM Activities",
-      "id" : "69",
+      "id" : "76",
       "location" : "Unspecified",
       "name" : "Messaging Platforms",
       "properties" : {
         "structurizr.dsl.identifier" : "messaging"
       },
       "relationships" : [ {
-        "description" : "Sends customer replies back to Infobip",
-        "destinationId" : "67",
-        "id" : "218",
-        "sourceId" : "69",
+        "description" : "Sends NPS to customers",
+        "destinationId" : "4",
+        "id" : "251",
+        "sourceId" : "76",
         "tags" : "Relationship"
+      }, {
+        "description" : "Sends customer replies back to Infobip",
+        "destinationId" : "74",
+        "id" : "253",
+        "sourceId" : "76",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Sends customer replies back to Infobip",
+        "destinationId" : "73",
+        "id" : "254",
+        "linkedRelationshipId" : "253",
+        "sourceId" : "76"
+      }, {
+        "description" : "Sends customer replies back to Infobip",
+        "destinationId" : "72",
+        "id" : "255",
+        "linkedRelationshipId" : "253",
+        "sourceId" : "76"
       } ],
       "tags" : "Element,Software System,CRM"
     } ]
   },
   "name" : "TEDS Ecosystem",
   "properties" : {
-    "structurizr.dsl" : "d29ya3NwYWNlICJURURTIEVjb3N5c3RlbSIgIlN5c3RlbSBDb250ZXh0IERpYWdyYW0gKEM0IExldmVsIDEpIiB7CgogICAgIWltcGxpZWRSZWxhdGlvbnNoaXBzIHRydWUKICAgICFkb2NzIHdvcmtzcGFjZS1kb2NzCgogICAgbW9kZWwgewogICAgICAgIHByb3BlcnRpZXMgewogICAgICAgICAgICAic3RydWN0dXJpenIuZ3JvdXBTZXBhcmF0b3IiICIvIgogICAgICAgIH0KICAgICAgICAvLyBIdW1hbiBhY3RvcnMKICAgICAgICBkZWFsZXIgPSBwZXJzb24gIkRlYWxlciIgIlBlcmZvcm1zIG1hbnVhbCBkYXRhIGVudHJ5LCBtYW5hZ2VzIHRpcmVzICYgc2VydmljZXMsIGNyZWF0ZXMgcXVvdGF0aW9ucyIgewogICAgICAgICAgICB0YWdzICJkZWFsZXIiCiAgICAgICAgfQogICAgICAgIAogICAgICAgIHN0YWZmID0gcGVyc29uICJXb3Jrc2hvcCBTdGFmZiIgIlBlcmZvcm1zIG1hbnVhbCBkYXRhIGVudHJ5LCBtYW5hZ2VzIHRpcmVzICYgc2VydmljZXMsIGNyZWF0ZXMgcXVvdGF0aW9ucyIgewogICAgICAgICAgICB0YWdzICJzdGFmZiIKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgYWRtaW5pc3RyYXRvciA9IHBlcnNvbiAiQWRtaW5pc3RyYXRvciIgIlBlcmZvcm1zIG1hbnVhbCBkYXRhIGVudHJ5LCBtYW5hZ2VzIHRpcmVzICYgc2VydmljZXMsIGNyZWF0ZXMgcXVvdGF0aW9ucyIgewogICAgICAgICAgICB0YWdzICJhZG1pbmlzdHJhdG9yIgogICAgICAgIH0KICAgICAgICAKICAgICAgICBjdXN0b21lciA9IHBlcnNvbiAiQ3VzdG9tZXIiICJSZWNlaXZlcyBOUFMgc3VydmV5cywgbWVzc2FnZXMsIHF1b3RhdGlvbnMiIHsKICAgICAgICB0YWdzICJjdXN0b21lciIKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgY29uc3VsdGFudCA9IHBlcnNvbiAiVCsgQ29uc3VsdGFudCIgIkFjY2Vzc2VzIHJlcG9ydHMgcHJvZHVjZWQgZnJvbSB0aGUgVCsgRGF0YSBQbGF0Zm9ybSIgewogICAgICAgICAgICB0YWdzICJjb25zdWx0YW50IgogICAgICAgIH0KCiAgICAgICAgLy9Db3JlIHN5c3RlbQogICAgICAgIHRlZHMgPSBzb2Z0d2FyZVN5c3RlbSAiVEVEUyBDb3JlIFN5c3RlbSIgIkRPUyBwbGF0Zm9ybSBpbmNsdWRpbmcgbWljcm9zZXJ2aWNlcyBhbmQgY29yZSBidXNpbmVzcyBsb2dpYyIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgIlRFRFMgQ29yZSBTeXN0ZW0iCiAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgLy8gPT09PT09PT09PT09PT09PT09PT0gQ09OVEFJTkVSUz09PT09PT09PT09PT09PT09PT09CiAgICAgICAgICAgICAgICAgICAgLy8gRnJvbnQtZW5kCiAgICAgICAgICAgICAgICAgICAgZ3JvdXAgIkZyb250ZW5kIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIHNlcnZpY2UtcGMgPSBjb250YWluZXIgInRlZHMtc2VydmljZS1wYyIgIlNlcnZlcyBzdGF0aWMgY29udGVudCBhbmQgdGhlIFNQQSIgIkphdmEgKyBTcHJpbmcgQm9vdCIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIiAiV2ViQnJvd3NlciIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBzZXJ2aWNlLW1vYmlsZSA9IGNvbnRhaW5lciAidGVkcy1zZXJ2aWNlLW1vYmlsZSIgIlByb3ZpZGVzIGFsbCBiYW5raW5nIGZ1bmN0aW9uYWxpdHkgaW4gdGhlIGJyb3dzZXIiICJSZWFjdCArIFR5cGVTY3JpcHQiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIgIk1vYmlsZURldmljZVBvcnRyYWl0IgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIC8vIEJhY2stZW5kCiAgICAgICAgICAgICAgICAgICAgZ3JvdXAgIkJhY2tlbmQiIHsKICAgICAgICAgICAgICAgICAgICAgICAgZ3JvdXAgIkdhdGV3YXkiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNlcnZpY2Utd2ViID0gY29udGFpbmVyICJ0ZWRzLXNlcnZpY2Utd2ViIiAiU2VydmVzIHN0YXRpYyBjb250ZW50IGFuZCB0aGUgU1BBIiAiSmF2YSArIFNwcmluZyBCb290IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgc3lzdGVtLWZvdW5kYXRpb24gPSBjb250YWluZXIgInN5c3RlbWZvdW5kYXRpb24iICJQcm92aWRlcyBhbGwgYmFua2luZyBmdW5jdGlvbmFsaXR5IGluIHRoZSBicm93c2VyIiAiUmVhY3QgKyBUeXBlU2NyaXB0IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgb3BlbmFwaSA9IGNvbnRhaW5lciAib3BlbmFwaSIgIlByb3ZpZGVzIGFsbCBiYW5raW5nIGZ1bmN0aW9uYWxpdHkgaW4gdGhlIGJyb3dzZXIiICJSZWFjdCArIFR5cGVTY3JpcHQiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgZ3JvdXAgIkNvcmUtU2VydmljZXMiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFmdGVyc2FsZXMgPSBjb250YWluZXIgInRlZHMtc2VydmljZS1hZnRlcnNhbGVzIiAiU2VydmVzIHN0YXRpYyBjb250ZW50IGFuZCB0aGUgU1BBIiAiSmF2YSArIFNwcmluZyBCb290IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgdGVkcy1jdXN0b21lciA9IGNvbnRhaW5lciAidGVkcy1zZXJ2aWNlLWN1c3RvbWVyIiAiUHJvdmlkZXMgYWxsIGJhbmtpbmcgZnVuY3Rpb25hbGl0eSBpbiB0aGUgYnJvd3NlciIgIlJlYWN0ICsgVHlwZVNjcmlwdCIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZpbmFuY2UgPSBjb250YWluZXIgInRlZHMtc2VydmljZS1maW5hbmNlIiAiUHJvdmlkZXMgYWxsIGJhbmtpbmcgZnVuY3Rpb25hbGl0eSBpbiB0aGUgYnJvd3NlciIgIlJlYWN0ICsgVHlwZVNjcmlwdCIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN1cHBseWNoYWluID0gY29udGFpbmVyICJ0ZWRzLXNlcnZpY2Utc3VwcGx5Y2hhaW4iICJQcm92aWRlcyBhbGwgYmFua2luZyBmdW5jdGlvbmFsaXR5IGluIHRoZSBicm93c2VyIiAiUmVhY3QgKyBUeXBlU2NyaXB0IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2t1ID0gY29udGFpbmVyICJ0ZWRzLXNlcnZpY2Utc2t1IiAiUHJvdmlkZXMgYWxsIGJhbmtpbmcgZnVuY3Rpb25hbGl0eSBpbiB0aGUgYnJvd3NlciIgIlJlYWN0ICsgVHlwZVNjcmlwdCIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBncm91cCAic2VhcmNoLWFjY2VsZXJhdGlvbiIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2VydmljZS1zZWFyY2ggPSBjb250YWluZXIgInRlZHMtc2VydmljZS1zZWFyY2giICJTZXJ2ZXMgc3RhdGljIGNvbnRlbnQgYW5kIHRoZSBTUEEiICJKYXZhICsgU3ByaW5nIEJvb3QiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgZ3JvdXAgIm5vbi1jb3JlLXNlcnZpY2VzIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzZXJ2aWNlLXJlcG9ydCA9IGNvbnRhaW5lciAidGVkcy1zZXJ2aWNlLXJlcG9ydCIgIlNlcnZlcyBzdGF0aWMgY29udGVudCBhbmQgdGhlIFNQQSIgIkphdmEgKyBTcHJpbmcgQm9vdCIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNlcnZpY2Utc2NoZWR1bGVyID0gY29udGFpbmVyICJ0ZWRzLXNlcnZpY2Utc2NoZWR1bGVyIiAiU2VydmVzIHN0YXRpYyBjb250ZW50IGFuZCB0aGUgU1BBIiAiSmF2YSArIFNwcmluZyBCb290IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIENETiA9IGNvbnRhaW5lciAiQ0ROIiAiU2VydmVzIHN0YXRpYyBjb250ZW50IGFuZCB0aGUgU1BBIiAiSmF2YSArIFNwcmluZyBCb290IiB7CiAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgZ3JvdXAgImV4dGVybmFsLWNvbW11bmljYXRpb24iIHsKICAgICAgICAgICAgICAgICAgICAgICAga2Fma2EgPSBjb250YWluZXIgImthZmthIiAiU2VydmVzIHN0YXRpYyBjb250ZW50IGFuZCB0aGUgU1BBIiAiSmF2YSArIFNwcmluZyBCb290IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgQVBJTSA9IGNvbnRhaW5lciAiQVBJTSIgIlNlcnZlcyBzdGF0aWMgY29udGVudCBhbmQgdGhlIFNQQSIgIkphdmEgKyBTcHJpbmcgQm9vdCIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIHNxbHByb3h5ID0gY29udGFpbmVyICJzcWxwcm94eSIgIm1lZGl1bSBwZXJmb3JtYW5jZSBkYXRhYmFzZSIgewogICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiICJEYXRhYmFzZSIKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgcmVwb3J0aW5nLWRhdGFiYXNlID0gY29udGFpbmVyICJyZXBvcnRpbmctZGF0YWJhc2UiICJtZWRpdW0gcGVyZm9ybWFuY2UgZGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIiAiRGF0YWJhc2UiCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIGNvcmUtZGF0YWJhc2UgPSBjb250YWluZXIgImNvcmUtZGF0YWJhc2UiICJoaWdoIHBlcmZvcm1hbmNlIGRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIgIkRhdGFiYXNlIgogICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT01QT05FTlRTIChtdXN0IGJlIGluc2lkZSB0aGVpciBjb250YWluZXIpID09PT09PT09PT09PT09PT09PT09CiAgICAgICAgICAgICAgICAgICAgICAgIERDUC1kYXRhYmFzZSA9IGNvbXBvbmVudCAiRENQIE1vYmlsZSBEYXRhYmFzZSIgIlN0b3JlcyBjcmVkZW50aWFscyBmb3IgbG9nIGluIiAicG9zdGdyZXMiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBlT3JkZXJpbmctZGF0YWJhc2UgPSBjb21wb25lbnQgIkUtT3JkZXJpbmcgRGF0YWJhc2UiICJTdG9yZXMgRS1PcmRlcmluZyBkYXRhIiAicG9zdGdyZXMiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICByZWZlcmVudGlhbC1kYXRhYmFzZSA9IGNvbXBvbmVudCAiUmVmZXJlbnRpYWwgRGF0YWJhc2UiICJTdG9yZXMgcmVmZXJlbnRpYWwgZGF0YSIgInBvc3RncmVzIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgdGF4YXRpb24tZGF0YWJhc2UgPSBjb21wb25lbnQgIlRheGF0aW9uIERhdGFiYXNlIiAiU3RvcmVzIHRheGF0aW9uIGRhdGEiICJwb3N0Z3JlcyIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29tcG9uZW50IgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIGxveWFsdHktZGF0YWJhc2UgPSBjb21wb25lbnQgIkxveWFsdHkgRGF0YWJhc2UiICJTdG9yZXMgbG95YWx0eSBkYXRhIiAicG9zdGdyZXMiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0KICAgICAgICAKICAgICAgICAvL1JlZmVyZW50aWFsIHN5c3RlbQogICAgICAgIFBTOSA9IHNvZnR3YXJlU3lzdGVtICJQUzkgQXBwbGljYXRpb24iICJNb2JpbGUgbG9naW4gYXBwbGljYXRpb24iIHsKICAgICAgICAgICAgdGFncyAiRXhpc3RpbmcgU3lzdGVtIiAiS2Fma2EiCiAgICAgICAgfQogICAgICAgIAogICAgICAgIFNweWRlciA9IHNvZnR3YXJlU3lzdGVtICJTcHlkZXIgQXBwbGljYXRpb24iICJNb2JpbGUgbG9naW4gYXBwbGljYXRpb24iIHsKICAgICAgICAgICAgdGFncyAiRXhpc3RpbmcgU3lzdGVtIiAiS2Fma2EiCiAgICAgICAgfQogICAgICAgIAogICAgICAgIFd5ekF1dG8gPSBzb2Z0d2FyZVN5c3RlbSAiV3l6QXV0byBBcHBsaWNhdGlvbiIgIk1vYmlsZSBsb2dpbiBhcHBsaWNhdGlvbiIgewogICAgICAgICAgICB0YWdzICJFeGlzdGluZyBTeXN0ZW0iICJLYWZrYSIKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgTUFSUyA9IHNvZnR3YXJlU3lzdGVtICJNQVJTIEFwcGxpY2F0aW9uIiAiTW9iaWxlIGxvZ2luIGFwcGxpY2F0aW9uIiB7CiAgICAgICAgICAgIHRhZ3MgIkV4aXN0aW5nIFN5c3RlbSIgIkthZmthIgogICAgICAgIH0KICAgICAgICAKICAgICAgICByZWZlcmVudGlhbC1zeXN0ZW0gPSBzb2Z0d2FyZVN5c3RlbSAiUmVmZXJlbnRpYWwgU3lzdGVtIiAiV2VjYXJlLWxpa2UgcmVmZXJlbnRpYWwgcHJvdmlkZXIiIHsKICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgIAogICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT05UQUlORVJTPT09PT09PT09PT09PT09PT09PT0KICAgICAgICAgICAgdGVkcy1yZWZlcmVudGlhbCA9IGNvbnRhaW5lciAiVEVEUyBUeXJlIHJlZmVyZW50aWFsIiAiVEVEUyBwcm9kdWN0IGFuZCBzZXJ2aWNlcyByZWZlcmVudGlhbCIgewogICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgLy8gPT09PT09PT09PT09PT09PT09PT0gQ09NUE9ORU5UUyAobXVzdCBiZSBpbnNpZGUgdGhlaXIgY29udGFpbmVyKSA9PT09PT09PT09PT09PT09PT09PQogICAgICAgICAgICAgICAgS2Fma2EtcHJvZHVjZXItcmVmZXJlbnRpYWwgPSBjb21wb25lbnQgIkthZmthIHByb2R1Y2VyIGZvciByZWZlcmVudGlhbC1zeXN0ZW0iIHsKICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBLYWZrYS1jb25zdW1lci1yZWZlcmVudGlhbCA9IGNvbXBvbmVudCAiS2Fma2EgY29uc3VtZXIgZm9yIHJlZmVyZW50aWFsLXN5c3RlbSIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgICAgICAKICAgICAgICAvL0xveWFsdHkgc3lzdGVtCiAgICAgICAgbG95YWx0eS1hZGFwdGVyID0gc29mdHdhcmVTeXN0ZW0gIkxveWFsdHkgUHJvZ3JhbXMiICJMb3lhbHR5IHByb2dyYW0gYWRhcHRlciIgewogICAgICAgICAgICB0YWdzICJjb250YWluZXIiCiAgICAgICAgCiAgICAgICAgICAgIC8vID09PT09PT09PT09PT09PT09PT09IENPTlRBSU5FUlM9PT09PT09PT09PT09PT09PT09PQogICAgICAgICAgICB0ZWRzLWxveWFsdHkgPSBjb250YWluZXIgIlRFRFMgTG95YWx0eSIgIlRFRFMgbG95YWx0eSBwcm9ncmFtIiB7CiAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT01QT05FTlRTIChtdXN0IGJlIGluc2lkZSB0aGVpciBjb250YWluZXIpID09PT09PT09PT09PT09PT09PT09CiAgICAgICAgICAgICAgICBLYWZrYS1wcm9kdWNlci1sb3lhbHR5ID0gY29tcG9uZW50ICJLYWZrYSBwcm9kdWNlciBmb3IgbG95YWx0eS1zeXN0ZW0iIHsKICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBLYWZrYS1jb25zdW1lci1sb3lhbHR5ID0gY29tcG9uZW50ICJLYWZrYSBjb25zdW1lciBmb3IgbG95YWx0eS1zeXN0ZW0iIHsKICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAgICAgCiAgICAgICAgVGhhaWxhbmQtaUNhcmUgPSBzb2Z0d2FyZVN5c3RlbSAiVGhhaWxhbmQgaUNhcmUiICJUaGFpbGFuZCBpQ2FyZSBsb3lhbHR5IHByb2dyYW0iIHsKICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgIH0KICAgICAgICAKICAgICAgICBLb3JlYS1sb3lhbHR5ID0gc29mdHdhcmVTeXN0ZW0gIktvcmVhIExveWFsdHkiICJLb3JlYSBsb3lhbHR5IHByb2dyYW0iIHsKICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgIH0KICAgICAgICAKICAgICAgICBPdGhlci1Mb3lhbHR5ID0gc29mdHdhcmVTeXN0ZW0gIk90aGVyIExveWFsdHkiICJPdGhlciBsb3lhbHR5IHByb2dyYW0iIHsKICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIiAiQVBJIgogICAgICAgIH0KCiAgICAgICAgLy8gRS1PcmRlcmluZwogICAgICAgIGVvcmRlcmluZy1hZGFwdGVyID0gc29mdHdhcmVTeXN0ZW0gIkUtT3JkZXJpbmciICJFLW9yZGVyaW5nIGFkYXB0ZXIiIHsKICAgICAgICAgICAgdGFncyAiY29udGFpbmVyIgogICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT05UQUlORVJTPT09PT09PT09PT09PT09PT09PT0KICAgICAgICAgICAgdGVkcy1lT3JkZXJpbmcgPSBjb250YWluZXIgIlRFRFMgRS1PcmRlcmluZyIgIlRFRFMgZS1vcmRlcmluZyBwcm9ncmFtIiB7CiAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT01QT05FTlRTIChtdXN0IGJlIGluc2lkZSB0aGVpciBjb250YWluZXIpID09PT09PT09PT09PT09PT09PT09CiAgICAgICAgICAgICAgICBLYWZrYS1wcm9kdWNlci1lT3JkZXJpbmcgPSBjb21wb25lbnQgIkthZmthIHByb2R1Y2VyIGZvciBlLW9yZGVyaW5nIHN5c3RlbSIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIEthZmthLWNvbnN1bWVyLWVPcmRlcmluZyA9IGNvbXBvbmVudCAiS2Fma2EgY29uc3VtZXIgZm9yIGUtb3JkZXJpbmcgc3lzdGVtIiB7CiAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29tcG9uZW50IgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgICAgIAogICAgICAgIFRoYWlsYW5kLU1ETyA9IHNvZnR3YXJlU3lzdGVtICJUaGFpbGFuZCBNRE8iICJUaGFpbGFuZCBNRE8gZS1vcmRlcmluZyBwcm9ncmFtIiB7CiAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgS29yZWEtU0FOQSA9IHNvZnR3YXJlU3lzdGVtICJLb3JlYSBTQU5BIiAiS29yZWEgU0FOQSBlLW9yZGVyaW5nIHByb2dyYW0iIHsKICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgIH0KICAgICAgICAKICAgICAgICBPdGhlci1lT3JkZXJpbmcgPSBzb2Z0d2FyZVN5c3RlbSAiT3RoZXIgRS1PcmRlcmluZyIgIk90aGVyIGUtb3JkZXJpbmcgcHJvZ3JhbSIgewogICAgICAgICAgICB0YWdzICJDb250YWluZXIiICJBUEkiCiAgICAgICAgfQoKICAgICAgICAvLyBUYXhhdGlvbgogICAgICAgIHRheGF0aW9uID0gc29mdHdhcmVTeXN0ZW0gIlRheGF0aW9uIEFkYXB0ZXIiICJEb3duc3RyZWFtIHRheCBwcm9jZXNzaW5nICYgZ292ZXJubWVudCBsaW5raW5nIiB7CiAgICAgICAgICAgIHRhZ3MgIkV4aXN0aW5nIFN5c3RlbSIKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgdGF4YXRpb24tYWRhcHRlciA9IHNvZnR3YXJlU3lzdGVtICJFLVRheCIgIkUtdGF4IGFkYXB0ZXIiIHsKICAgICAgICAgICAgdGFncyAiY29udGFpbmVyIgogICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT05UQUlORVJTPT09PT09PT09PT09PT09PT09PT0KICAgICAgICAgICAgdGVkcy10YXhhdGlvbiA9IGNvbnRhaW5lciAiVEVEUyBUYXhhdGlvbiIgIlRFRFMgdGF4YXRpb24gcHJvZ3JhbSIgewogICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgLy8gPT09PT09PT09PT09PT09PT09PT0gQ09NUE9ORU5UUyAobXVzdCBiZSBpbnNpZGUgdGhlaXIgY29udGFpbmVyKSA9PT09PT09PT09PT09PT09PT09PQogICAgICAgICAgICAgICAgS2Fma2EtcHJvZHVjZXItdGF4YXRpb24gPSBjb21wb25lbnQgIkthZmthIHByb2R1Y2VyIGZvciB0YXhhdGlvbiBzeXN0ZW0iIHsKICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBLYWZrYS1jb25zdW1lci10YXhhdGlvbiA9IGNvbXBvbmVudCAiS2Fma2EgY29uc3VtZXIgZm9yIHRheGF0aW9uIHN5c3RlbSIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgICAgICAKICAgICAgICBUaGFpbGFuZC1lVGF4ID0gc29mdHdhcmVTeXN0ZW0gIlRoYWlsYW5kIEUtVGF4IiAiVGhhaWxhbmQgRS1UYXggcHJvZ3JhbSIgewogICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgfQogICAgICAgIAogICAgICAgIE90aGVyLWVUYXggPSBzb2Z0d2FyZVN5c3RlbSAiT3RoZXIgRS1UYXgiICJPdGhlciBlLXRheCBwcm9ncmFtIiB7CiAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIgIkFQSSIKICAgICAgICB9CgogICAgICAgIC8vRENQIE1vYmlsZSBBcHBsaWNhdGlvbgogICAgICAgIGRjcE1vYmlsZSA9IHNvZnR3YXJlU3lzdGVtICJEQ1AgTW9iaWxlIEFwcGxpY2F0aW9uIiAiTW9iaWxlIGxvZ2luIGFwcGxpY2F0aW9uIiB7CiAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAKICAgICAgICAgICAgLy8gPT09PT09PT09PT09PT09PT09PT0gQ09OVEFJTkVSUz09PT09PT09PT09PT09PT09PT09CiAgICAgICAgICAgIHRlZHMtZGNwLXBsYXRlLXNjYW5uZXIgPSBjb250YWluZXIgIlBsYXRlIFNjYW5uZXIiICJOdW1iZXIgcGxhdGUgYW5kIFZJTiBzY2FubmVyIiB7CiAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT01QT05FTlRTIChtdXN0IGJlIGluc2lkZSB0aGVpciBjb250YWluZXIpID09PT09PT09PT09PT09PT09PT09CiAgICAgICAgICAgICAgICBwbGF0ZS1zY2FubmVyLWNhbWVyYS1hY2Nlc3MgPSBjb21wb25lbnQgIkNhbWVyYSBhY2Nlc3MgZm9yIHBsYXRlIHNjYW5uZXIiIHsKICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBwbGF0ZS1zY2FubmVyLWV4dGVybmFsLWFwaS1jb25uZWN0b3IgPSBjb21wb25lbnQgIkV4dGVybmFsIEFQSSB0byByZWFkIHBsYXRlIGFuZCBWSU4iIHsKICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiICJBUEkiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CgogICAgICAgIC8vIEV4dGVybmFsIEFQSQogICAgICAgIHBsYXRlLXNjYW5uZXItZXh0ZXJuYWwtYXBpID0gc29mdHdhcmVTeXN0ZW0gIlBsYXRlIFNjYW5uZXIgRXh0ZXJuYWwgQVBJIiAiVGhpcmQtcGFydHkgbnVtYmVyIHBsYXRlIGFuZCBWSU4gc2Nhbm5pbmcgQVBJIiB7CiAgICAgICAgICAgIHRhZ3MgIkV4aXN0aW5nIFN5c3RlbSIgIkFQSSIKICAgICAgICB9CgogICAgICAgIFREUCA9IHNvZnR3YXJlU3lzdGVtICJUKyBEYXRhIFBsYXRmb3JtIiAiUmVwb3J0aW5nIGRhdGEgcGxhdGZvcm0gJiBDUk0gcHJvZ3JhbXMiIHsKICAgICAgICAgICAgdGFncyAiRXhpc3RpbmcgU3lzdGVtIiAiRGF0YWJhc2UiCiAgICAgICAgfQoKICAgICAgICAvLyBDUk0gQWN0aXZpdGllcwogICAgICAgIGdyb3VwICJDUk0gQWN0aXZpdGllcyIgewogICAgICAgICAgICBodWJzcG90ICAgICAgID0gc29mdHdhcmVTeXN0ZW0gIkh1YlNwb3QiICAgICAgICAgICAgICAgICAgICJDUk0gJiBtYXJrZXRpbmcgYXV0b21hdGlvbiIKICAgICAgICAgICAgaW5mb2JpcCAgICAgICA9IHNvZnR3YXJlU3lzdGVtICJJbmZvYmlwIiAgICAgICAgICAgICAgICAgICAiRW5hYmxlciBmb3IgbWVzc2FnaW5nIHBsYXRmb3JtcyIKICAgICAgICAgICAgbnBzICAgICAgICAgICA9IHNvZnR3YXJlU3lzdGVtICJOUFMgU3lzdGVtIiAgICAgICAgICAgICAgICAiTmV0IFByb21vdGVyIFNjb3JlICYgY29uc2VudCBtYW5hZ2VtZW50IgogICAgICAgICAgICBtZXNzYWdpbmcgICAgID0gc29mdHdhcmVTeXN0ZW0gIk1lc3NhZ2luZyBQbGF0Zm9ybXMiICAgICAgICJMaW5lLCBXaGF0c0FwcCwgZXRjLiIgewogICAgICAgICAgICAgICAgdGFncyAiQ1JNIgogICAgICAgICAgICB9CiAgICAgICAgfQoKICAgICAgICAvLyBSZWxhdGlvbnNoaXBzCiAgICAgICAgQ0ROIC0+IGRlYWxlciAiR2V0cyBmcm9udGVuZCBhc3NldHMiICIiCiAgICAgICAgQ0ROIC0+IHN0YWZmICJHZXRzIGZyb250ZW5kIGFzc2V0cyIgIiIKICAgICAgICBDRE4gLT4gYWRtaW5pc3RyYXRvciAiR2V0cyBmcm9udGVuZCBhc3NldHMiICIiCiAgICAgICAgQ0ROIC0+IHNlcnZpY2UtcGMgIkdpdmVzIGZyb250ZW5kIGFzc2V0cyIgIiIKICAgICAgICBDRE4gLT4gc2VydmljZS1tb2JpbGUgIkdpdmVzIGZyb250ZW5kIGFzc2V0cyIgIiIKICAgICAgICBzZXJ2aWNlLXBjICAtPiBzZXJ2aWNlLXdlYiAiRXhjaGFuZ2VzIGRhdGEiICIiCiAgICAgICAgc2VydmljZS1tb2JpbGUgLT4gc2VydmljZS13ZWIgIkV4Y2hhbmdlcyBkYXRhIiAiIgogICAgICAgIGthZmthIC0+IG9wZW5hcGkgIlVzZXMiICIiCiAgICAgICAgQVBJTSAtPiBvcGVuYXBpICJVc2VzIiAiIgogICAgICAgIG9wZW5hcGkgLT4gYWZ0ZXJzYWxlcyAiQ29ubmVjdHMgbWljcm9zZXJ2aWNlcyIgIiIKICAgICAgICBvcGVuYXBpIC0+IHRlZHMtY3VzdG9tZXIgIkNvbm5lY3RzIG1pY3Jvc2VydmljZXMiICIiCiAgICAgICAgb3BlbmFwaSAtPiBmaW5hbmNlICJDb25uZWN0cyBtaWNyb3NlcnZpY2VzIiAiIgogICAgICAgIG9wZW5hcGkgLT4gc3VwcGx5Y2hhaW4gIkNvbm5lY3RzIG1pY3Jvc2VydmljZXMiICIiCiAgICAgICAgb3BlbmFwaSAtPiBza3UgIkNvbm5lY3RzIG1pY3Jvc2VydmljZXMiICIiCiAgICAgICAgb3BlbmFwaSAtPiBzZXJ2aWNlLXNlYXJjaCAiQ29ubmVjdHMgbWljcm9zZXJ2aWNlcyIgIiIKICAgICAgICBvcGVuYXBpIC0+IHNlcnZpY2UtcmVwb3J0ICJDb25uZWN0cyBtaWNyb3NlcnZpY2VzIiAiIgogICAgICAgIG9wZW5hcGkgLT4gc2VydmljZS1zY2hlZHVsZXIgIlVzZXMiICIiCiAgICAgICAgZGVhbGVyIC0+IGRjcE1vYmlsZSAiTWFuYWdlcyBzdG9yZXMsIGNyZWF0ZXMgcXVvdGF0aW9ucyIKICAgICAgICBhZG1pbmlzdHJhdG9yIC0+IGRjcE1vYmlsZSAiTWFuYWdlcyBzeXN0ZW0gY29uZmlndXJhdGlvbiwgY3JlYXRlIHN0YWZmIHVzZXJzIgogICAgICAgIHN0YWZmIC0+IGRjcE1vYmlsZSAiUGVyZm9ybXMgZGF0YSBlbnRyeSwgcGVyZm9ybXMgc2VydmljZXMsIGNyZWF0ZXMgcXVvdGF0aW9ucyIKICAgICAgICAKICAgICAgICAvLyBSZWZlcmVudGlhbHMKICAgICAgICBQUzkgLT4ga2Fma2EtY29uc3VtZXItcmVmZXJlbnRpYWwgIkdldHMgTWljaGVsaW4gdHlyZSByZWZlcmVudGlhbCBkYXRhIiAia2Fma2EiCiAgICAgICAgU3B5ZGVyIC0+IGthZmthLWNvbnN1bWVyLXJlZmVyZW50aWFsICJHZXRzIG5vbi10eXJlIHJlZmVyZW50aWFsIGRhdGEiICJrYWZrYSIKICAgICAgICBXeXpBdXRvIC0+IGthZmthLWNvbnN1bWVyLXJlZmVyZW50aWFsICJHZXRzIG5vbi10eXJlIHJlZmVyZW50aWFsIGRhdGEiICJBUEkiICJrYWZrYSIKICAgICAgICBNQVJTIC0+IGthZmthLWNvbnN1bWVyLXJlZmVyZW50aWFsICJHZXRzIG5vbi10eXJlIHJlZmVyZW50aWFsIGRhdGEiICJNYW51YWwgZHVtcCIKICAgICAgICBrYWZrYS1jb25zdW1lci1yZWZlcmVudGlhbCAtPiByZWZlcmVudGlhbC1kYXRhYmFzZSAiU3RvcmVzIHJlZmVyZW50aWFsIgogICAgICAgIGthZmthLXByb2R1Y2VyLXJlZmVyZW50aWFsIC0+IHNrdSAiUHJvdmlkZXMgcmVmZXJlbnRpYWwgZGF0YSIgImthZmthIgogICAgICAgIAogICAgICAgIC8vIExveWFsdHkgUHJvZ3JhbXMKICAgICAgICB0ZWRzLWN1c3RvbWVyIC0+IGxveWFsdHktYWRhcHRlciAiUmVxdWVzdHMgYXZhaWxhYmxlIGNvdXBvbnMiICJrYWZrYSIKICAgICAgICBUaGFpbGFuZC1pQ2FyZSAtPiBLYWZrYS1jb25zdW1lci1sb3lhbHR5ICJHZXRzIGF2YWlsYWJsZSBjb3Vwb25zIiAiQVBJIiAia2Fma2EiCiAgICAgICAgS29yZWEtbG95YWx0eSAtPiBLYWZrYS1jb25zdW1lci1sb3lhbHR5ICJHZXRzIGF2YWlsYWJsZSBjb3Vwb25zIiAiQVBJIiAia2Fma2EiCiAgICAgICAgT3RoZXItTG95YWx0eSAtPiBLYWZrYS1jb25zdW1lci1sb3lhbHR5ICJHZXRzIGF2YWlsYWJsZSBjb3Vwb25zIiAiQVBJIiAia2Fma2EiCiAgICAgICAga2Fma2EtY29uc3VtZXItbG95YWx0eSAtPiBsb3lhbHR5LWRhdGFiYXNlICJTdG9yZXMgbG95YWx0eSBkYXRhIgogICAgICAgIGthZmthLXByb2R1Y2VyLWxveWFsdHkgLT4gdGVkcy1jdXN0b21lciAiUHJvdmlkZXMgYXZhaWxhYmxlIGNvdXBvbnMiICJrYWZrYSIKICAgICAgICAKICAgICAgICAvLyBlT3JkZXJpbmcKICAgICAgICBUaGFpbGFuZC1NRE8gLT4gS2Fma2EtY29uc3VtZXItZU9yZGVyaW5nICJHZXRzIGF2YWlsYWJsZSBFLW9yZGVycyIgIkFQSSIgImthZmthIgogICAgICAgIEtvcmVhLVNBTkEgLT4gS2Fma2EtY29uc3VtZXItZU9yZGVyaW5nICJHZXRzIGF2YWlsYWJsZSBFLW9yZGVycyIgIkFQSSIgImthZmthIgogICAgICAgIE90aGVyLWVPcmRlcmluZyAtPiBLYWZrYS1jb25zdW1lci1lT3JkZXJpbmcgIkdldHMgYXZhaWxhYmxlIEUtb3JkZXJzIiAiQVBJIiAia2Fma2EiCiAgICAgICAga2Fma2EtY29uc3VtZXItZU9yZGVyaW5nIC0+IGVPcmRlcmluZy1kYXRhYmFzZSAiU3RvcmVzIGVPcmRlcmluZyBkYXRhIgogICAgICAgIGthZmthLXByb2R1Y2VyLWVPcmRlcmluZyAtPiBzdXBwbHljaGFpbiAiUHJvdmlkZXMgYXZhaWxhYmxlIEUtb3JkZXJzIiAia2Fma2EiCiAgICAgICAgCiAgICAgICAgLy8gVGF4YXRpb24KICAgICAgICBmaW5hbmNlIC0+IEthZmthLWNvbnN1bWVyLXRheGF0aW9uICJTZW5kcyB0YXggZGF0YSIgImthZmthIgogICAgICAgIGthZmthLXByb2R1Y2VyLXRheGF0aW9uIC0+IFRoYWlsYW5kLWVUYXggIlNlbmRzIEUtdGF4IGRhdGEgdG8gR292dCBhZ2VuY3kiICJrYWZrYSIKICAgICAgICBrYWZrYS1wcm9kdWNlci10YXhhdGlvbiAtPiBPdGhlci1lVGF4ICJTZW5kcyBFLXRheCBkYXRhIHRvIEdvdnQgYWdlbmN5IiAia2Fma2EiCiAgICAgICAgVGhhaWxhbmQtZVRheCAtPiBLYWZrYS1jb25zdW1lci10YXhhdGlvbiAiR2V0cyBFLXRheCByZWZlcmVuY2UgZnJvbSBHb3Z0IGFnZW5jeSIgImthZmthIgogICAgICAgIG90aGVyLWVUYXggLT4gS2Fma2EtY29uc3VtZXItdGF4YXRpb24gIkdldHMgRS10YXggcmVmZXJlbmNlIGZyb20gR292dCBhZ2VuY3kiICJrYWZrYSIKICAgICAgICBrYWZrYS1jb25zdW1lci10YXhhdGlvbiAtPiB0YXhhdGlvbi1kYXRhYmFzZSAiU3RvcmVzIHRheGF0aW9uIGRhdGEiCiAgICAgICAga2Fma2EtcHJvZHVjZXItdGF4YXRpb24gLT4gZmluYW5jZSAiUHJvdmlkZXMgZ292ZXJubWVudCByZWZlcmVuY2UgSUQiICJrYWZrYSIKICAgICAgICAKICAgICAgICAvLyBEQ1AgTW9iaWxlIEFwcGxpY2F0aW9uCiAgICAgICAgZGNwTW9iaWxlIC0+IHNlcnZpY2UtbW9iaWxlICJFeGNoYW5nZXMgZGF0YSIKICAgICAgICBzZXJ2aWNlLW1vYmlsZSAtPiBkY3BNb2JpbGUgIkV4Y2hhbmdlcyBkYXRhIgogICAgICAgIHNlcnZpY2UtcGMgLT4gRENQLWRhdGFiYXNlICJTdG9yZXMgY3JlZGVudGlhbHMiICIiCiAgICAgICAgRENQLWRhdGFiYXNlIC0+IGRjcE1vYmlsZSAiQXV0aGVudGljYXRlcyB1c2VycyIgIiIKICAgICAgICBwbGF0ZS1zY2FubmVyLWV4dGVybmFsLWFwaS1jb25uZWN0b3IgLT4gcGxhdGUtc2Nhbm5lci1leHRlcm5hbC1hcGkgIlNlbmQgaW1hZ2VzIG9mIG51bWJlciBwbGF0ZXMgJiBWSU5zIiAiSlNPTi9IVFRQUyIKICAgICAgICBwbGF0ZS1zY2FubmVyLWV4dGVybmFsLWFwaSAtPiBwbGF0ZS1zY2FubmVyLWV4dGVybmFsLWFwaS1jb25uZWN0b3IgIlJlY2VpdmVzIHRleHQgbnVtYmVyIHBsYXRlcyAmIFZJTnMiICJKU09OL0hUVFBTIgogICAgICAgIHNlcnZpY2UtbW9iaWxlIC0+IHBsYXRlLXNjYW5uZXItY2FtZXJhLWFjY2VzcyAiQWNjZXNzZXMgY2FtZXJhIHRvIHRha2UgcGljdHVyZXMgb2YgbnVtYmVyIHBsYXRlcyAmIFZJTnMiCiAgICAgICAgCiAgICAgICAgLy8gCiAgICAgICAgc2VydmljZS1yZXBvcnQgLT4gVERQICJTZW5kcyByZXBvcnRpbmcgZGF0YSIgImthZmthIgogICAgICAgIFREUCAtPiBodWJzcG90ICJQcm92aWRlcyBDUk0gZGF0YSIgIiIKICAgICAgICBodWJzcG90IC0+IGluZm9iaXAgIlNlbmRzL3JlY2VpdmVzIGN1c3RvbWVyIG1lc3NhZ2VzIChIdWJTcG90LWRyaXZlbikiCiAgICAgICAgaW5mb2JpcCAtPiBtZXNzYWdpbmcgIlNlbmRzIG1lc3NhZ2VzIHRvIGN1c3RvbWVycyIgIiIKICAgICAgICBtZXNzYWdpbmcgLT4gaW5mb2JpcCAiU2VuZHMgY3VzdG9tZXIgcmVwbGllcyBiYWNrIHRvIEluZm9iaXAiICIiCiAgICAgICAgbnBzIC0+IG1lc3NhZ2luZyAiU2VuZHMgTlBTIHN1cnZleXMgdG8gY3VzdG9tZXJzIiAiIgogICAgICAgIGN1c3RvbWVyIC0+IG5wcyAiUmVzcG9uZHMgdG8gTlBTIHN1cnZleXMiICIiCiAgICB9CgogICAgLy8gVmlld3MKICAgIHZpZXdzIHsKICAgICAgICAgICAgc3lzdGVtQ29udGV4dCB0ZWRzICJMZXZlbDFfU3lzdGVtQ29udGV4dCIgewogICAgICAgICAgICAgICAgdGl0bGUgIlN5c3RlbSBDb250ZXh0IgogICAgICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgICAgICAjIGF1dG9MYXlvdXQgbHIKICAgICAgICAgICAgfQogICAgCiAgICAgICAgICAgIGNvbnRhaW5lciB0ZWRzICJMZXZlbDJfdGVkc19Db250YWluZXJzIiB7CiAgICAgICAgICAgICAgICB0aXRsZSAiQ29udGFpbmVycyIKICAgICAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICAgICAgIyBhdXRvTGF5b3V0IGxyCiAgICAgICAgICAgIH0KICAgIAogICAgICAgICAgICBjb21wb25lbnQgY29yZS1kYXRhYmFzZSAiTGV2ZWwzX2NvcmVfZGF0YWJhc2VfQ29tcG9uZW50cyIgewogICAgICAgICAgICAgICAgdGl0bGUgIkNvcmUgRGF0YWJhc2Ug4oCTIENvbXBvbmVudHMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29udGFpbmVyIGRjcE1vYmlsZSAiTGV2ZWwyX2RjcG1vYmlsZV9Db250YWluZXJzIiB7CiAgICAgICAgICAgICAgICB0aXRsZSAiQ29udGFpbmVycyIKICAgICAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICAgICAgIyBhdXRvTGF5b3V0IGxyCiAgICAgICAgICAgIH0KICAgIAogICAgICAgICAgICBjb21wb25lbnQgdGVkcy1kY3AtcGxhdGUtc2Nhbm5lciAiTGV2ZWwyX2RjcG1vYmlsZV9wbGF0ZV9zY2FubmVyX0NvbXBvbmVudHMiIHsKICAgICAgICAgICAgICAgIHRpdGxlICJDb250YWluZXJzIgogICAgICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgICAgICAjIGF1dG9MYXlvdXQgbHIKICAgICAgICAgICAgfQogICAgCiAgICAgICAgICAgIGNvbnRhaW5lciByZWZlcmVudGlhbC1zeXN0ZW0gIkxldmVsMl9yZWZlcmVudGlhbF9Db250YWluZXJzIiB7CiAgICAgICAgICAgICAgICB0aXRsZSAiQ29udGFpbmVycyIKICAgICAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICAgICAgIyBhdXRvTGF5b3V0IGxyCiAgICAgICAgICAgIH0KICAgIAogICAgICAgICAgICBjb21wb25lbnQgdGVkcy1yZWZlcmVudGlhbCAiTGV2ZWwzX3JlZmVyZW50aWFsX0NvbXBvbmVudHMiIHsKICAgICAgICAgICAgICAgIHRpdGxlICJSZWZlcmVudGlhbCBTeXN0ZW0g4oCTIENvbXBvbmVudHMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29udGFpbmVyIGxveWFsdHktYWRhcHRlciAiTGV2ZWwyX2xveWFsdHktYWRhcHRlcl9Db250YWluZXJzIiB7CiAgICAgICAgICAgICAgICB0aXRsZSAiQ29udGFpbmVycyIKICAgICAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICAgICAgIyBhdXRvTGF5b3V0IGxyCiAgICAgICAgICAgIH0KICAgIAogICAgICAgICAgICBjb21wb25lbnQgdGVkcy1sb3lhbHR5ICJMZXZlbDNfbG95YWx0eV9Db21wb25lbnRzIiB7CiAgICAgICAgICAgICAgICB0aXRsZSAiTG95YWx0eSBTeXN0ZW0g4oCTIENvbXBvbmVudHMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29udGFpbmVyIGVPcmRlcmluZy1hZGFwdGVyICJMZXZlbDJfZU9yZGVyaW5nLWFkYXB0ZXJfQ29udGFpbmVycyIgewogICAgICAgICAgICAgICAgdGl0bGUgIkNvbnRhaW5lcnMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29tcG9uZW50IHRlZHMtZU9yZGVyaW5nICJMZXZlbDNfZU9yZGVyaW5nX0NvbXBvbmVudHMiIHsKICAgICAgICAgICAgICAgIHRpdGxlICJFLU9yZGVyaW5nIFN5c3RlbSDigJMgQ29tcG9uZW50cyIKICAgICAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICAgICAgIyBhdXRvTGF5b3V0IGxyCiAgICAgICAgICAgIH0KICAgIAogICAgICAgICAgICBjb250YWluZXIgdGF4YXRpb24tYWRhcHRlciAiTGV2ZWwyX3RheGF0aW9uLWFkYXB0ZXJfQ29udGFpbmVycyIgewogICAgICAgICAgICAgICAgdGl0bGUgIkNvbnRhaW5lcnMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29tcG9uZW50IHRlZHMtdGF4YXRpb24gIkxldmVsM190YXhhdGlvbl9Db21wb25lbnRzIiB7CiAgICAgICAgICAgICAgICB0aXRsZSAiVGF4YXRpb24gU3lzdGVtIOKAkyBDb21wb25lbnRzIgogICAgICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgICAgICAjIGF1dG9MYXlvdXQgbHIKICAgICAgICAgICAgfQogICAgCiAgICAgICAgICAgIHN0eWxlcyB7CiAgICAgICAgICAgICAgICAgICAgICAgIGVsZW1lbnQgIlBlcnNvbiIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2hhcGUgUGVyc29uCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICMxMTY4YmQKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBlbGVtZW50ICJFeGlzdGluZyBTeXN0ZW0iIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzk5OTk5OQogICAgICAgICAgICAgICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIGVsZW1lbnQgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzaGFwZSBDeWxpbmRlcgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIGVsZW1lbnQgIkNvbnRhaW5lciIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjNDM4ZGQ2CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgZWxlbWVudCAiQ29tcG9uZW50IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM4NWJiZjAKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbG9yICMwMDAwMDAKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBlbGVtZW50ICJXZWJCcm93c2VyIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzaGFwZSBXZWJCcm93c2VyCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kIHdoaXRlCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb2xvciAjMDAwMDAwCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgZWxlbWVudCAiTW9iaWxlRGV2aWNlUG9ydHJhaXQiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNoYXBlIE1vYmlsZURldmljZVBvcnRyYWl0CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kIHdoaXRlCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb2xvciAjMDAwMDAwCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgdGhlbWUgZGVmYXVsdAogICAgICAgIH0KCn0="
+    "structurizr.dsl" : "d29ya3NwYWNlICJURURTIEVjb3N5c3RlbSIgIlN5c3RlbSBDb250ZXh0IERpYWdyYW0gKEM0IExldmVsIDEpIiB7CiAgICAhZG9jcyB3b3Jrc3BhY2UtZG9jcwogICAgIWltcGxpZWRSZWxhdGlvbnNoaXBzIHRydWUKCiAgICBtb2RlbCB7CiAgICAgICAgcHJvcGVydGllcyB7CiAgICAgICAgICAgICJzdHJ1Y3R1cml6ci5ncm91cFNlcGFyYXRvciIgIi8iCiAgICAgICAgfQogICAgICAgIC8vIEh1bWFuIGFjdG9ycwogICAgICAgIGRlYWxlciA9IHBlcnNvbiAiRGVhbGVyIiAiUGVyZm9ybXMgbWFudWFsIGRhdGEgZW50cnksIG1hbmFnZXMgdGlyZXMgJiBzZXJ2aWNlcywgY3JlYXRlcyBxdW90YXRpb25zIiB7CiAgICAgICAgICAgIHRhZ3MgImRlYWxlciIKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgc3RhZmYgPSBwZXJzb24gIldvcmtzaG9wIFN0YWZmIiAiUGVyZm9ybXMgbWFudWFsIGRhdGEgZW50cnksIG1hbmFnZXMgdGlyZXMgJiBzZXJ2aWNlcywgY3JlYXRlcyBxdW90YXRpb25zIiB7CiAgICAgICAgICAgIHRhZ3MgInN0YWZmIgogICAgICAgIH0KICAgICAgICAKICAgICAgICBhZG1pbmlzdHJhdG9yID0gcGVyc29uICJBZG1pbmlzdHJhdG9yIiAiUGVyZm9ybXMgbWFudWFsIGRhdGEgZW50cnksIG1hbmFnZXMgdGlyZXMgJiBzZXJ2aWNlcywgY3JlYXRlcyBxdW90YXRpb25zIiB7CiAgICAgICAgICAgIHRhZ3MgImFkbWluaXN0cmF0b3IiCiAgICAgICAgfQogICAgICAgIAogICAgICAgIGN1c3RvbWVyID0gcGVyc29uICJDdXN0b21lciIgIlJlY2VpdmVzIE5QUyBzdXJ2ZXlzLCBtZXNzYWdlcywgcXVvdGF0aW9ucyIgewogICAgICAgIHRhZ3MgImN1c3RvbWVyIgogICAgICAgIH0KICAgICAgICAKICAgICAgICBjb25zdWx0YW50ID0gcGVyc29uICJUKyBDb25zdWx0YW50IiAiQWNjZXNzZXMgcmVwb3J0cyBwcm9kdWNlZCBmcm9tIHRoZSBUKyBEYXRhIFBsYXRmb3JtIiB7CiAgICAgICAgICAgIHRhZ3MgImNvbnN1bHRhbnQiCiAgICAgICAgfQoKICAgICAgICAvL0NvcmUgc3lzdGVtCiAgICAgICAgdGVkcyA9IHNvZnR3YXJlU3lzdGVtICJURURTIENvcmUgU3lzdGVtIiAiRE9TIHBsYXRmb3JtIGluY2x1ZGluZyBtaWNyb3NlcnZpY2VzIGFuZCBjb3JlIGJ1c2luZXNzIGxvZ2ljIiB7CiAgICAgICAgICAgICAgICAgICAgdGFncyAiVEVEUyBDb3JlIFN5c3RlbSIKICAgICAgICAKICAgICAgICAgICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT05UQUlORVJTPT09PT09PT09PT09PT09PT09PT0KICAgICAgICAgICAgICAgICAgICAvLyBGcm9udC1lbmQKICAgICAgICAgICAgICAgICAgICBncm91cCAiRnJvbnRlbmQiIHsKICAgICAgICAgICAgICAgICAgICAgICAgc2VydmljZS1wYyA9IGNvbnRhaW5lciAidGVkcy1zZXJ2aWNlLXBjIiAiU2VydmVzIHN0YXRpYyBjb250ZW50IGFuZCB0aGUgU1BBIiAiSmF2YSArIFNwcmluZyBCb290IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiICJXZWJCcm93c2VyIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIHNlcnZpY2UtbW9iaWxlID0gY29udGFpbmVyICJ0ZWRzLXNlcnZpY2UtbW9iaWxlIiAiUHJvdmlkZXMgYWxsIGJhbmtpbmcgZnVuY3Rpb25hbGl0eSBpbiB0aGUgYnJvd3NlciIgIlJlYWN0ICsgVHlwZVNjcmlwdCIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIiAiTW9iaWxlRGV2aWNlUG9ydHJhaXQiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgLy8gQmFjay1lbmQKICAgICAgICAgICAgICAgICAgICBncm91cCAiQmFja2VuZCIgewogICAgICAgICAgICAgICAgICAgICAgICBncm91cCAiR2F0ZXdheSIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2VydmljZS13ZWIgPSBjb250YWluZXIgInRlZHMtc2VydmljZS13ZWIiICJTZXJ2ZXMgc3RhdGljIGNvbnRlbnQgYW5kIHRoZSBTUEEiICJKYXZhICsgU3ByaW5nIEJvb3QiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzeXN0ZW0tZm91bmRhdGlvbiA9IGNvbnRhaW5lciAic3lzdGVtZm91bmRhdGlvbiIgIlByb3ZpZGVzIGFsbCBiYW5raW5nIGZ1bmN0aW9uYWxpdHkgaW4gdGhlIGJyb3dzZXIiICJSZWFjdCArIFR5cGVTY3JpcHQiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBvcGVuYXBpID0gY29udGFpbmVyICJvcGVuYXBpIiAiUHJvdmlkZXMgYWxsIGJhbmtpbmcgZnVuY3Rpb25hbGl0eSBpbiB0aGUgYnJvd3NlciIgIlJlYWN0ICsgVHlwZVNjcmlwdCIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBncm91cCAiQ29yZS1TZXJ2aWNlcyIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgYWZ0ZXJzYWxlcyA9IGNvbnRhaW5lciAidGVkcy1zZXJ2aWNlLWFmdGVyc2FsZXMiICJTZXJ2ZXMgc3RhdGljIGNvbnRlbnQgYW5kIHRoZSBTUEEiICJKYXZhICsgU3ByaW5nIEJvb3QiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0ZWRzLWN1c3RvbWVyID0gY29udGFpbmVyICJ0ZWRzLXNlcnZpY2UtY3VzdG9tZXIiICJQcm92aWRlcyBhbGwgYmFua2luZyBmdW5jdGlvbmFsaXR5IGluIHRoZSBicm93c2VyIiAiUmVhY3QgKyBUeXBlU2NyaXB0IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgZmluYW5jZSA9IGNvbnRhaW5lciAidGVkcy1zZXJ2aWNlLWZpbmFuY2UiICJQcm92aWRlcyBhbGwgYmFua2luZyBmdW5jdGlvbmFsaXR5IGluIHRoZSBicm93c2VyIiAiUmVhY3QgKyBUeXBlU2NyaXB0IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgc3VwcGx5Y2hhaW4gPSBjb250YWluZXIgInRlZHMtc2VydmljZS1zdXBwbHljaGFpbiIgIlByb3ZpZGVzIGFsbCBiYW5raW5nIGZ1bmN0aW9uYWxpdHkgaW4gdGhlIGJyb3dzZXIiICJSZWFjdCArIFR5cGVTY3JpcHQiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBza3UgPSBjb250YWluZXIgInRlZHMtc2VydmljZS1za3UiICJQcm92aWRlcyBhbGwgYmFua2luZyBmdW5jdGlvbmFsaXR5IGluIHRoZSBicm93c2VyIiAiUmVhY3QgKyBUeXBlU2NyaXB0IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIGdyb3VwICJzZWFyY2gtYWNjZWxlcmF0aW9uIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzZXJ2aWNlLXNlYXJjaCA9IGNvbnRhaW5lciAidGVkcy1zZXJ2aWNlLXNlYXJjaCIgIlNlcnZlcyBzdGF0aWMgY29udGVudCBhbmQgdGhlIFNQQSIgIkphdmEgKyBTcHJpbmcgQm9vdCIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBncm91cCAibm9uLWNvcmUtc2VydmljZXMiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNlcnZpY2UtcmVwb3J0ID0gY29udGFpbmVyICJ0ZWRzLXNlcnZpY2UtcmVwb3J0IiAiU2VydmVzIHN0YXRpYyBjb250ZW50IGFuZCB0aGUgU1BBIiAiSmF2YSArIFNwcmluZyBCb290IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2VydmljZS1zY2hlZHVsZXIgPSBjb250YWluZXIgInRlZHMtc2VydmljZS1zY2hlZHVsZXIiICJTZXJ2ZXMgc3RhdGljIGNvbnRlbnQgYW5kIHRoZSBTUEEiICJKYXZhICsgU3ByaW5nIEJvb3QiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgQ0ROID0gY29udGFpbmVyICJDRE4iICJTZXJ2ZXMgc3RhdGljIGNvbnRlbnQgYW5kIHRoZSBTUEEiIHsKICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICBncm91cCAiZXh0ZXJuYWwtY29tbXVuaWNhdGlvbiIgewogICAgICAgICAgICAgICAgICAgICAgICBrYWZrYSA9IGNvbnRhaW5lciAia2Fma2EiICJTZXJ2ZXMgc3RhdGljIGNvbnRlbnQgYW5kIHRoZSBTUEEiICJKYXZhICsgU3ByaW5nIEJvb3QiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBBUElNID0gY29udGFpbmVyICJBUElNIiAiU2VydmVzIHN0YXRpYyBjb250ZW50IGFuZCB0aGUgU1BBIiAiSmF2YSArIFNwcmluZyBCb290IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgc3FscHJveHkgPSBjb250YWluZXIgInNxbHByb3h5IiAibWVkaXVtIHBlcmZvcm1hbmNlIGRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIgIkRhdGFiYXNlIgogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICByZXBvcnRpbmctZGF0YWJhc2UgPSBjb250YWluZXIgInJlcG9ydGluZy1kYXRhYmFzZSIgIm1lZGl1bSBwZXJmb3JtYW5jZSBkYXRhYmFzZSIgewogICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiICJEYXRhYmFzZSIKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgY29yZS1kYXRhYmFzZSA9IGNvbnRhaW5lciAiY29yZS1kYXRhYmFzZSIgImhpZ2ggcGVyZm9ybWFuY2UgZGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIiAiRGF0YWJhc2UiCiAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgIC8vID09PT09PT09PT09PT09PT09PT09IENPTVBPTkVOVFMgKG11c3QgYmUgaW5zaWRlIHRoZWlyIGNvbnRhaW5lcikgPT09PT09PT09PT09PT09PT09PT0KICAgICAgICAgICAgICAgICAgICAgICAgdGVkcy10cmFuc2FjdGlvbi1kYXRhYmFzZSA9IGNvbXBvbmVudCAiVEVEUyB0cmFuc2FjdGlvbmFsIERhdGFiYXNlIiAiU3RvcmVzIHRyYW5zYWN0aW9uYWwgZGF0YSIgInBvc3RncmVzIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgRENQLWRhdGFiYXNlID0gY29tcG9uZW50ICJEQ1AgTW9iaWxlIERhdGFiYXNlIiAiU3RvcmVzIGNyZWRlbnRpYWxzIGZvciBsb2cgaW4iICJwb3N0Z3JlcyIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29tcG9uZW50IgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIGVPcmRlcmluZy1kYXRhYmFzZSA9IGNvbXBvbmVudCAiRS1PcmRlcmluZyBEYXRhYmFzZSIgIlN0b3JlcyBFLU9yZGVyaW5nIGRhdGEiICJwb3N0Z3JlcyIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29tcG9uZW50IgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIHJlZmVyZW50aWFsLWRhdGFiYXNlID0gY29tcG9uZW50ICJSZWZlcmVudGlhbCBEYXRhYmFzZSIgIlN0b3JlcyByZWZlcmVudGlhbCBkYXRhIiAicG9zdGdyZXMiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICB0YXhhdGlvbi1kYXRhYmFzZSA9IGNvbXBvbmVudCAiVGF4YXRpb24gRGF0YWJhc2UiICJTdG9yZXMgdGF4YXRpb24gZGF0YSIgInBvc3RncmVzIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgbG95YWx0eS1kYXRhYmFzZSA9IGNvbXBvbmVudCAiTG95YWx0eSBEYXRhYmFzZSIgIlN0b3JlcyBsb3lhbHR5IGRhdGEiICJwb3N0Z3JlcyIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29tcG9uZW50IgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgIAogICAgICAgIC8vUmVmZXJlbnRpYWwgc3lzdGVtCiAgICAgICAgUFM5ID0gc29mdHdhcmVTeXN0ZW0gIlBTOSBBcHBsaWNhdGlvbiIgIk1vYmlsZSBsb2dpbiBhcHBsaWNhdGlvbiIgewogICAgICAgICAgICB0YWdzICJFeGlzdGluZyBTeXN0ZW0iICJLYWZrYSIKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgU3B5ZGVyID0gc29mdHdhcmVTeXN0ZW0gIlNweWRlciBBcHBsaWNhdGlvbiIgIk1vYmlsZSBsb2dpbiBhcHBsaWNhdGlvbiIgewogICAgICAgICAgICB0YWdzICJFeGlzdGluZyBTeXN0ZW0iICJLYWZrYSIKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgV3l6QXV0byA9IHNvZnR3YXJlU3lzdGVtICJXeXpBdXRvIEFwcGxpY2F0aW9uIiAiTW9iaWxlIGxvZ2luIGFwcGxpY2F0aW9uIiB7CiAgICAgICAgICAgIHRhZ3MgIkV4aXN0aW5nIFN5c3RlbSIgIkthZmthIgogICAgICAgIH0KICAgICAgICAKICAgICAgICBNQVJTID0gc29mdHdhcmVTeXN0ZW0gIk1BUlMgQXBwbGljYXRpb24iICJNb2JpbGUgbG9naW4gYXBwbGljYXRpb24iIHsKICAgICAgICAgICAgdGFncyAiRXhpc3RpbmcgU3lzdGVtIiAiS2Fma2EiCiAgICAgICAgfQogICAgICAgIAogICAgICAgIHJlZmVyZW50aWFsLXN5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICJSZWZlcmVudGlhbCBTeXN0ZW0iICJXZWNhcmUtbGlrZSByZWZlcmVudGlhbCBwcm92aWRlciIgewogICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgCiAgICAgICAgICAgIC8vID09PT09PT09PT09PT09PT09PT09IENPTlRBSU5FUlM9PT09PT09PT09PT09PT09PT09PQogICAgICAgICAgICB0ZWRzLXJlZmVyZW50aWFsID0gY29udGFpbmVyICJURURTIFR5cmUgcmVmZXJlbnRpYWwiICJURURTIHByb2R1Y3QgYW5kIHNlcnZpY2VzIHJlZmVyZW50aWFsIiB7CiAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT01QT05FTlRTIChtdXN0IGJlIGluc2lkZSB0aGVpciBjb250YWluZXIpID09PT09PT09PT09PT09PT09PT09CiAgICAgICAgICAgICAgICBLYWZrYS1wcm9kdWNlci1yZWZlcmVudGlhbCA9IGNvbXBvbmVudCAiS2Fma2EgcHJvZHVjZXIgZm9yIHJlZmVyZW50aWFsLXN5c3RlbSIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIEthZmthLWNvbnN1bWVyLXJlZmVyZW50aWFsID0gY29tcG9uZW50ICJLYWZrYSBjb25zdW1lciBmb3IgcmVmZXJlbnRpYWwtc3lzdGVtIiB7CiAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29tcG9uZW50IgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgICAgIAogICAgICAgIC8vTG95YWx0eSBzeXN0ZW0KICAgICAgICBsb3lhbHR5LWFkYXB0ZXIgPSBzb2Z0d2FyZVN5c3RlbSAiTG95YWx0eSBQcm9ncmFtcyIgIkxveWFsdHkgcHJvZ3JhbSBhZGFwdGVyIiB7CiAgICAgICAgICAgIHRhZ3MgImNvbnRhaW5lciIKICAgICAgICAKICAgICAgICAgICAgLy8gPT09PT09PT09PT09PT09PT09PT0gQ09OVEFJTkVSUz09PT09PT09PT09PT09PT09PT09CiAgICAgICAgICAgIHRlZHMtbG95YWx0eSA9IGNvbnRhaW5lciAiVEVEUyBMb3lhbHR5IiAiVEVEUyBsb3lhbHR5IHByb2dyYW0iIHsKICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAgICAgICAgIC8vID09PT09PT09PT09PT09PT09PT09IENPTVBPTkVOVFMgKG11c3QgYmUgaW5zaWRlIHRoZWlyIGNvbnRhaW5lcikgPT09PT09PT09PT09PT09PT09PT0KICAgICAgICAgICAgICAgIEthZmthLXByb2R1Y2VyLWxveWFsdHkgPSBjb21wb25lbnQgIkthZmthIHByb2R1Y2VyIGZvciBsb3lhbHR5LXN5c3RlbSIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIEthZmthLWNvbnN1bWVyLWxveWFsdHkgPSBjb21wb25lbnQgIkthZmthIGNvbnN1bWVyIGZvciBsb3lhbHR5LXN5c3RlbSIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgICAgICAKICAgICAgICBUaGFpbGFuZC1pQ2FyZSA9IHNvZnR3YXJlU3lzdGVtICJUaGFpbGFuZCBpQ2FyZSIgIlRoYWlsYW5kIGlDYXJlIGxveWFsdHkgcHJvZ3JhbSIgewogICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgfQogICAgICAgIAogICAgICAgIEtvcmVhLWxveWFsdHkgPSBzb2Z0d2FyZVN5c3RlbSAiS29yZWEgTG95YWx0eSIgIktvcmVhIGxveWFsdHkgcHJvZ3JhbSIgewogICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgfQogICAgICAgIAogICAgICAgIE90aGVyLUxveWFsdHkgPSBzb2Z0d2FyZVN5c3RlbSAiT3RoZXIgTG95YWx0eSIgIk90aGVyIGxveWFsdHkgcHJvZ3JhbSIgewogICAgICAgICAgICB0YWdzICJDb250YWluZXIiICJBUEkiCiAgICAgICAgfQoKICAgICAgICAvLyBFLU9yZGVyaW5nCiAgICAgICAgZW9yZGVyaW5nLWFkYXB0ZXIgPSBzb2Z0d2FyZVN5c3RlbSAiRS1PcmRlcmluZyIgIkUtb3JkZXJpbmcgYWRhcHRlciIgewogICAgICAgICAgICB0YWdzICJjb250YWluZXIiCiAgICAgICAgICAgIC8vID09PT09PT09PT09PT09PT09PT09IENPTlRBSU5FUlM9PT09PT09PT09PT09PT09PT09PQogICAgICAgICAgICB0ZWRzLWVPcmRlcmluZyA9IGNvbnRhaW5lciAiVEVEUyBFLU9yZGVyaW5nIiAiVEVEUyBlLW9yZGVyaW5nIHByb2dyYW0iIHsKICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAgICAgICAgIC8vID09PT09PT09PT09PT09PT09PT09IENPTVBPTkVOVFMgKG11c3QgYmUgaW5zaWRlIHRoZWlyIGNvbnRhaW5lcikgPT09PT09PT09PT09PT09PT09PT0KICAgICAgICAgICAgICAgIEthZmthLXByb2R1Y2VyLWVPcmRlcmluZyA9IGNvbXBvbmVudCAiS2Fma2EgcHJvZHVjZXIgZm9yIGUtb3JkZXJpbmcgc3lzdGVtIiB7CiAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29tcG9uZW50IgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgS2Fma2EtY29uc3VtZXItZU9yZGVyaW5nID0gY29tcG9uZW50ICJLYWZrYSBjb25zdW1lciBmb3IgZS1vcmRlcmluZyBzeXN0ZW0iIHsKICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAgICAgCiAgICAgICAgVGhhaWxhbmQtTURPID0gc29mdHdhcmVTeXN0ZW0gIlRoYWlsYW5kIE1ETyIgIlRoYWlsYW5kIE1ETyBlLW9yZGVyaW5nIHByb2dyYW0iIHsKICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgIH0KICAgICAgICAKICAgICAgICBLb3JlYS1TQU5BID0gc29mdHdhcmVTeXN0ZW0gIktvcmVhIFNBTkEiICJLb3JlYSBTQU5BIGUtb3JkZXJpbmcgcHJvZ3JhbSIgewogICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgfQogICAgICAgIAogICAgICAgIE90aGVyLWVPcmRlcmluZyA9IHNvZnR3YXJlU3lzdGVtICJPdGhlciBFLU9yZGVyaW5nIiAiT3RoZXIgZS1vcmRlcmluZyBwcm9ncmFtIiB7CiAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIgIkFQSSIKICAgICAgICB9CgogICAgICAgIC8vIFRheGF0aW9uCiAgICAgICAgdGF4YXRpb24gPSBzb2Z0d2FyZVN5c3RlbSAiVGF4YXRpb24gQWRhcHRlciIgIkRvd25zdHJlYW0gdGF4IHByb2Nlc3NpbmcgJiBnb3Zlcm5tZW50IGxpbmtpbmciIHsKICAgICAgICAgICAgdGFncyAiRXhpc3RpbmcgU3lzdGVtIgogICAgICAgIH0KICAgICAgICAKICAgICAgICB0YXhhdGlvbi1hZGFwdGVyID0gc29mdHdhcmVTeXN0ZW0gIkUtVGF4IiAiRS10YXggYWRhcHRlciIgewogICAgICAgICAgICB0YWdzICJjb250YWluZXIiCiAgICAgICAgICAgIC8vID09PT09PT09PT09PT09PT09PT09IENPTlRBSU5FUlM9PT09PT09PT09PT09PT09PT09PQogICAgICAgICAgICB0ZWRzLXRheGF0aW9uID0gY29udGFpbmVyICJURURTIFRheGF0aW9uIiAiVEVEUyB0YXhhdGlvbiBwcm9ncmFtIiB7CiAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT01QT05FTlRTIChtdXN0IGJlIGluc2lkZSB0aGVpciBjb250YWluZXIpID09PT09PT09PT09PT09PT09PT09CiAgICAgICAgICAgICAgICBLYWZrYS1wcm9kdWNlci10YXhhdGlvbiA9IGNvbXBvbmVudCAiS2Fma2EgcHJvZHVjZXIgZm9yIHRheGF0aW9uIHN5c3RlbSIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIEthZmthLWNvbnN1bWVyLXRheGF0aW9uID0gY29tcG9uZW50ICJLYWZrYSBjb25zdW1lciBmb3IgdGF4YXRpb24gc3lzdGVtIiB7CiAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29tcG9uZW50IgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgICAgIAogICAgICAgIFRoYWlsYW5kLWVUYXggPSBzb2Z0d2FyZVN5c3RlbSAiVGhhaWxhbmQgRS1UYXgiICJUaGFpbGFuZCBFLVRheCBwcm9ncmFtIiB7CiAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgT3RoZXItZVRheCA9IHNvZnR3YXJlU3lzdGVtICJPdGhlciBFLVRheCIgIk90aGVyIGUtdGF4IHByb2dyYW0iIHsKICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIiAiQVBJIgogICAgICAgIH0KCiAgICAgICAgLy9EQ1AgTW9iaWxlIEFwcGxpY2F0aW9uCiAgICAgICAgZGNwTW9iaWxlID0gc29mdHdhcmVTeXN0ZW0gIkRDUCBNb2JpbGUgQXBwbGljYXRpb24iICJNb2JpbGUgbG9naW4gYXBwbGljYXRpb24iIHsKICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgIAogICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT05UQUlORVJTPT09PT09PT09PT09PT09PT09PT0KICAgICAgICAgICAgdGVkcy1kY3AtcGxhdGUtc2Nhbm5lciA9IGNvbnRhaW5lciAiUGxhdGUgU2Nhbm5lciIgIk51bWJlciBwbGF0ZSBhbmQgVklOIHNjYW5uZXIiIHsKICAgICAgICAgICAgICAgIHRhZ3MgIkNvbnRhaW5lciIKICAgICAgICAgICAgICAgIC8vID09PT09PT09PT09PT09PT09PT09IENPTVBPTkVOVFMgKG11c3QgYmUgaW5zaWRlIHRoZWlyIGNvbnRhaW5lcikgPT09PT09PT09PT09PT09PT09PT0KICAgICAgICAgICAgICAgIHBsYXRlLXNjYW5uZXItY2FtZXJhLWFjY2VzcyA9IGNvbXBvbmVudCAiQ2FtZXJhIGFjY2VzcyBmb3IgcGxhdGUgc2Nhbm5lciIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIHBsYXRlLXNjYW5uZXItZXh0ZXJuYWwtYXBpLWNvbm5lY3RvciA9IGNvbXBvbmVudCAiRXh0ZXJuYWwgQVBJIHRvIHJlYWQgcGxhdGUgYW5kIFZJTiIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIgIkFQSSIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0KCiAgICAgICAgLy8gRXh0ZXJuYWwgQVBJCiAgICAgICAgcGxhdGUtc2Nhbm5lci1leHRlcm5hbC1hcGkgPSBzb2Z0d2FyZVN5c3RlbSAiUGxhdGUgU2Nhbm5lciBFeHRlcm5hbCBBUEkiICJUaGlyZC1wYXJ0eSBudW1iZXIgcGxhdGUgYW5kIFZJTiBzY2FubmluZyBBUEkiIHsKICAgICAgICAgICAgdGFncyAiRXhpc3RpbmcgU3lzdGVtIiAiQVBJIgogICAgICAgIH0KCiAgICAgICAgVERQID0gc29mdHdhcmVTeXN0ZW0gIlQrIERhdGEgUGxhdGZvcm0iICJSZXBvcnRpbmcgZGF0YSBwbGF0Zm9ybSAmIENSTSBwcm9ncmFtcyIgewogICAgICAgICAgICB0YWdzICJFeGlzdGluZyBTeXN0ZW0iICJEYXRhYmFzZSIKICAgICAgICB9CgogICAgICAgIEJJLWRhc2hib2FyZHMgPSBzb2Z0d2FyZVN5c3RlbSAiQkkgRGFzaGJvYXJkcyIgIlJlcG9ydGluZyBhbmQgRGFzaGJvYXJkIHBsYXRmb3JtIiB7CiAgICAgICAgICAgIHRhZ3MgIkV4aXN0aW5nIFN5c3RlbSIgIkNvbnRhaW5lciIKICAgICAgICB9CgogICAgICAgIC8vIENSTSBBY3Rpdml0aWVzCiAgICAgICAgZ3JvdXAgIkNSTSBBY3Rpdml0aWVzIiB7CiAgICAgICAgICAgIGh1YnNwb3QgPSBzb2Z0d2FyZVN5c3RlbSAiSHViU3BvdCIgIkNSTSAmIG1hcmtldGluZyBhdXRvbWF0aW9uIiB7CiAgICAgICAgICAgICAgICB0YWdzICJDUk0iCiAgICAgICAgICAgICAgICAvLyA9PT09PT09PT09PT09PT09PT09PSBDT05UQUlORVJTPT09PT09PT09PT09PT09PT09PT0KICAgICAgICAgICAgICAgIGNybS1odWJzcG90ID0gY29udGFpbmVyICJIdWJzcG90LWNybSIgImh1YnNwb3QgY3JtIHByb2dyYW0iIHsKICAgICAgICAgICAgICAgICAgICB0YWdzICJDb250YWluZXIiCiAgICAgICAgICAgICAgICAgICAgLy8gPT09PT09PT09PT09PT09PT09PT0gQ09NUE9ORU5UUyAobXVzdCBiZSBpbnNpZGUgdGhlaXIgY29udGFpbmVyKSA9PT09PT09PT09PT09PT09PT09PQogICAgICAgICAgICAgICAgICAgIGRiLXJlYWRlci1odWJzcG90ID0gY29tcG9uZW50ICJSZWFkcyBURFAgdG8gYXBwbHkgbWFya2V0aW5nIHJ1bGVzIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkNvbXBvbmVudCIKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgYXBpLWVuZHBvaW50LWh1YnNwb3QgPSBjb21wb25lbnQgIkNvbm5lY3RzIHRvIEluZm9iaXAgZm9yIG1lc3NhZ2luZyIgewogICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgICAgIGluZm9iaXAgPSBzb2Z0d2FyZVN5c3RlbSAiSW5mb2JpcCIgIkVuYWJsZXIgZm9yIG1lc3NhZ2luZyBwbGF0Zm9ybXMiIHsKICAgICAgICAgICAgICAgIHRhZ3MgIkNSTSIKICAgICAgICAgICAgICAgIC8vID09PT09PT09PT09PT09PT09PT09IENPTlRBSU5FUlM9PT09PT09PT09PT09PT09PT09PQogICAgICAgICAgICAgICAgY3JtLWluZm9iaXAgPSBjb250YWluZXIgIkluZm9iaXAtY3JtIiAiaW5mb2JpcCBlbmFibGVyIiB7CiAgICAgICAgICAgICAgICAgICAgdGFncyAiQ29udGFpbmVyIgogICAgICAgICAgICAgICAgICAgIC8vID09PT09PT09PT09PT09PT09PT09IENPTVBPTkVOVFMgKG11c3QgYmUgaW5zaWRlIHRoZWlyIGNvbnRhaW5lcikgPT09PT09PT09PT09PT09PT09PT0KICAgICAgICAgICAgICAgICAgICBhcGktZW5kcG9pbnQtaW5mb2JpcCA9IGNvbXBvbmVudCAiQ29ubmVjdHMgdG8gbWVzc2FnaW5nIGZvciBzZW5kaW5nIG91dCBtZXNzYWdlcyIgewogICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJDb21wb25lbnQiCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgICAgIG5wcyAgICAgICAgICAgPSBzb2Z0d2FyZVN5c3RlbSAiTlBTIFN5c3RlbSIgICAgICAgICAgICAgICAgIk5ldCBQcm9tb3RlciBTY29yZSAmIGNvbnNlbnQgbWFuYWdlbWVudCIKICAgICAgICAgICAgbWVzc2FnaW5nICAgICA9IHNvZnR3YXJlU3lzdGVtICJNZXNzYWdpbmcgUGxhdGZvcm1zIiAgICAgICAiTGluZSwgV2hhdHNBcHAsIGV0Yy4iIHsKICAgICAgICAgICAgICAgIHRhZ3MgIkNSTSIKICAgICAgICAgICAgfQogICAgICAgIH0KCiAgICAgICAgLy8gUmVsYXRpb25zaGlwcwogICAgICAgIENETiAtPiBkZWFsZXIgIkdldHMgZnJvbnRlbmQgYXNzZXRzIiAiIgogICAgICAgIENETiAtPiBzdGFmZiAiR2V0cyBmcm9udGVuZCBhc3NldHMiICIiCiAgICAgICAgQ0ROIC0+IGFkbWluaXN0cmF0b3IgIkdldHMgZnJvbnRlbmQgYXNzZXRzIiAiIgogICAgICAgIENETiAtPiBzZXJ2aWNlLXBjICJHaXZlcyBmcm9udGVuZCBhc3NldHMiICIiCiAgICAgICAgQ0ROIC0+IHNlcnZpY2UtbW9iaWxlICJHaXZlcyBmcm9udGVuZCBhc3NldHMiICIiCiAgICAgICAgc2VydmljZS1wYyAgLT4gc2VydmljZS13ZWIgIkV4Y2hhbmdlcyBkYXRhIiAiIgogICAgICAgIHNlcnZpY2UtbW9iaWxlIC0+IHNlcnZpY2Utd2ViICJFeGNoYW5nZXMgZGF0YSIgIiIKICAgICAgICBrYWZrYSAtPiBvcGVuYXBpICJVc2VzIiAiIgogICAgICAgIEFQSU0gLT4gb3BlbmFwaSAiVXNlcyIgIiIKICAgICAgICBvcGVuYXBpIC0+IGFmdGVyc2FsZXMgIkNvbm5lY3RzIG1pY3Jvc2VydmljZXMiICIiCiAgICAgICAgb3BlbmFwaSAtPiB0ZWRzLWN1c3RvbWVyICJDb25uZWN0cyBtaWNyb3NlcnZpY2VzIiAiIgogICAgICAgIG9wZW5hcGkgLT4gZmluYW5jZSAiQ29ubmVjdHMgbWljcm9zZXJ2aWNlcyIgIiIKICAgICAgICBvcGVuYXBpIC0+IHN1cHBseWNoYWluICJDb25uZWN0cyBtaWNyb3NlcnZpY2VzIiAiIgogICAgICAgIG9wZW5hcGkgLT4gc2t1ICJDb25uZWN0cyBtaWNyb3NlcnZpY2VzIiAiIgogICAgICAgIG9wZW5hcGkgLT4gc2VydmljZS1zZWFyY2ggIkNvbm5lY3RzIG1pY3Jvc2VydmljZXMiICIiCiAgICAgICAgb3BlbmFwaSAtPiBzZXJ2aWNlLXJlcG9ydCAiQ29ubmVjdHMgbWljcm9zZXJ2aWNlcyIgIiIKICAgICAgICBvcGVuYXBpIC0+IHNlcnZpY2Utc2NoZWR1bGVyICJVc2VzIiAiIgogICAgICAgIGRlYWxlciAtPiBkY3BNb2JpbGUgIk1hbmFnZXMgc3RvcmVzLCBjcmVhdGVzIHF1b3RhdGlvbnMiCiAgICAgICAgYWRtaW5pc3RyYXRvciAtPiBkY3BNb2JpbGUgIk1hbmFnZXMgc3lzdGVtIGNvbmZpZ3VyYXRpb24sIGNyZWF0ZSBzdGFmZiB1c2VycyIKICAgICAgICBzdGFmZiAtPiBkY3BNb2JpbGUgIlBlcmZvcm1zIGRhdGEgZW50cnksIHBlcmZvcm1zIHNlcnZpY2VzLCBjcmVhdGVzIHF1b3RhdGlvbnMiCiAgICAgICAgc2VydmljZS1wYyAtPiBzcWxwcm94eSAic3RvcmVzIHRyYW5zYWN0aW9uIGRhdGEgdG8gY29yZSBkYXRhYmFzZSIgIiIKICAgICAgICBzZXJ2aWNlLW1vYmlsZSAtPiBzcWxwcm94eSAic3RvcmVzIHRyYW5zYWN0aW9uIGRhdGEgdG8gY29yZSBkYXRhYmFzZSIgIiIKICAgICAgICBzZXJ2aWNlLXdlYiAtPiBzcWxwcm94eSAic3RvcmVzIHRyYW5zYWN0aW9uIGRhdGEgdG8gY29yZSBkYXRhYmFzZSIgIiIKICAgICAgICBzeXN0ZW0tZm91bmRhdGlvbiAtPiBzcWxwcm94eSAic3RvcmVzIHRyYW5zYWN0aW9uIGRhdGEgdG8gY29yZSBkYXRhYmFzZSIgIiIKICAgICAgICBhZnRlcnNhbGVzIC0+IHNxbHByb3h5ICJzdG9yZXMgdHJhbnNhY3Rpb24gZGF0YSB0byBjb3JlIGRhdGFiYXNlIiAiIgogICAgICAgIHRlZHMtY3VzdG9tZXIgLT4gc3FscHJveHkgInN0b3JlcyB0cmFuc2FjdGlvbiBkYXRhIHRvIGNvcmUgZGF0YWJhc2UiICIiCiAgICAgICAgZmluYW5jZSAtPiBzcWxwcm94eSAic3RvcmVzIHRyYW5zYWN0aW9uIGRhdGEgdG8gY29yZSBkYXRhYmFzZSIgIiIKICAgICAgICBzdXBwbHljaGFpbiAtPiBzcWxwcm94eSAic3RvcmVzIHRyYW5zYWN0aW9uIGRhdGEgdG8gY29yZSBkYXRhYmFzZSIgIiIKICAgICAgICBza3UgLT4gc3FscHJveHkgInN0b3JlcyB0cmFuc2FjdGlvbiBkYXRhIHRvIGNvcmUgZGF0YWJhc2UiICIiCiAgICAgICAgc3FscHJveHkgLT4gc2VydmljZS1zZWFyY2ggIkVuYWJsZXMgc2VhcmNoaW5nIHRyYW5zYWN0aW9uIGRhdGEiICIiCiAgICAgICAgc3FscHJveHkgLT4gdGVkcy10cmFuc2FjdGlvbi1kYXRhYmFzZSAiU3RvcmVzIHRyYW5zYWN0aW9uYWwgZGF0YSIgIiIKICAgICAgICAKICAgICAgICAKICAgICAgICAvLyBSZWZlcmVudGlhbHMKICAgICAgICBQUzkgLT4ga2Fma2EtY29uc3VtZXItcmVmZXJlbnRpYWwgIkdldHMgTWljaGVsaW4gdHlyZSByZWZlcmVudGlhbCBkYXRhIiAia2Fma2EiCiAgICAgICAgU3B5ZGVyIC0+IGthZmthLWNvbnN1bWVyLXJlZmVyZW50aWFsICJHZXRzIG5vbi10eXJlIHJlZmVyZW50aWFsIGRhdGEiICJrYWZrYSIKICAgICAgICBXeXpBdXRvIC0+IGthZmthLWNvbnN1bWVyLXJlZmVyZW50aWFsICJHZXRzIG5vbi10eXJlIHJlZmVyZW50aWFsIGRhdGEiICJBUEkiICJrYWZrYSIKICAgICAgICBNQVJTIC0+IGthZmthLWNvbnN1bWVyLXJlZmVyZW50aWFsICJHZXRzIG5vbi10eXJlIHJlZmVyZW50aWFsIGRhdGEiICJNYW51YWwgZHVtcCIKICAgICAgICBrYWZrYS1jb25zdW1lci1yZWZlcmVudGlhbCAtPiByZWZlcmVudGlhbC1kYXRhYmFzZSAiU3RvcmVzIHJlZmVyZW50aWFsIgogICAgICAgIGthZmthLXByb2R1Y2VyLXJlZmVyZW50aWFsIC0+IHNrdSAiUHJvdmlkZXMgcmVmZXJlbnRpYWwgZGF0YSIgImthZmthIgogICAgICAgIAogICAgICAgIC8vIExveWFsdHkgUHJvZ3JhbXMKICAgICAgICB0ZWRzLWN1c3RvbWVyIC0+IGxveWFsdHktYWRhcHRlciAiUmVxdWVzdHMgYXZhaWxhYmxlIGNvdXBvbnMiICJrYWZrYSIKICAgICAgICBUaGFpbGFuZC1pQ2FyZSAtPiBLYWZrYS1jb25zdW1lci1sb3lhbHR5ICJHZXRzIGF2YWlsYWJsZSBjb3Vwb25zIiAiQVBJIiAia2Fma2EiCiAgICAgICAgS29yZWEtbG95YWx0eSAtPiBLYWZrYS1jb25zdW1lci1sb3lhbHR5ICJHZXRzIGF2YWlsYWJsZSBjb3Vwb25zIiAiQVBJIiAia2Fma2EiCiAgICAgICAgT3RoZXItTG95YWx0eSAtPiBLYWZrYS1jb25zdW1lci1sb3lhbHR5ICJHZXRzIGF2YWlsYWJsZSBjb3Vwb25zIiAiQVBJIiAia2Fma2EiCiAgICAgICAga2Fma2EtY29uc3VtZXItbG95YWx0eSAtPiBsb3lhbHR5LWRhdGFiYXNlICJTdG9yZXMgbG95YWx0eSBkYXRhIgogICAgICAgIGthZmthLXByb2R1Y2VyLWxveWFsdHkgLT4gdGVkcy1jdXN0b21lciAiUHJvdmlkZXMgYXZhaWxhYmxlIGNvdXBvbnMiICJrYWZrYSIKICAgICAgICAKICAgICAgICAvLyBlT3JkZXJpbmcKICAgICAgICBUaGFpbGFuZC1NRE8gLT4gS2Fma2EtY29uc3VtZXItZU9yZGVyaW5nICJHZXRzIGF2YWlsYWJsZSBFLW9yZGVycyIgIkFQSSIgImthZmthIgogICAgICAgIEtvcmVhLVNBTkEgLT4gS2Fma2EtY29uc3VtZXItZU9yZGVyaW5nICJHZXRzIGF2YWlsYWJsZSBFLW9yZGVycyIgIkFQSSIgImthZmthIgogICAgICAgIE90aGVyLWVPcmRlcmluZyAtPiBLYWZrYS1jb25zdW1lci1lT3JkZXJpbmcgIkdldHMgYXZhaWxhYmxlIEUtb3JkZXJzIiAiQVBJIiAia2Fma2EiCiAgICAgICAga2Fma2EtY29uc3VtZXItZU9yZGVyaW5nIC0+IGVPcmRlcmluZy1kYXRhYmFzZSAiU3RvcmVzIGVPcmRlcmluZyBkYXRhIgogICAgICAgIGthZmthLXByb2R1Y2VyLWVPcmRlcmluZyAtPiBzdXBwbHljaGFpbiAiUHJvdmlkZXMgYXZhaWxhYmxlIEUtb3JkZXJzIiAia2Fma2EiCiAgICAgICAgCiAgICAgICAgLy8gVGF4YXRpb24KICAgICAgICBmaW5hbmNlIC0+IEthZmthLWNvbnN1bWVyLXRheGF0aW9uICJTZW5kcyB0YXggZGF0YSIgImthZmthIgogICAgICAgIGthZmthLXByb2R1Y2VyLXRheGF0aW9uIC0+IFRoYWlsYW5kLWVUYXggIlNlbmRzIEUtdGF4IGRhdGEgdG8gR292dCBhZ2VuY3kiICJrYWZrYSIKICAgICAgICBrYWZrYS1wcm9kdWNlci10YXhhdGlvbiAtPiBPdGhlci1lVGF4ICJTZW5kcyBFLXRheCBkYXRhIHRvIEdvdnQgYWdlbmN5IiAia2Fma2EiCiAgICAgICAgVGhhaWxhbmQtZVRheCAtPiBLYWZrYS1jb25zdW1lci10YXhhdGlvbiAiR2V0cyBFLXRheCByZWZlcmVuY2UgZnJvbSBHb3Z0IGFnZW5jeSIgImthZmthIgogICAgICAgIG90aGVyLWVUYXggLT4gS2Fma2EtY29uc3VtZXItdGF4YXRpb24gIkdldHMgRS10YXggcmVmZXJlbmNlIGZyb20gR292dCBhZ2VuY3kiICJrYWZrYSIKICAgICAgICBrYWZrYS1jb25zdW1lci10YXhhdGlvbiAtPiB0YXhhdGlvbi1kYXRhYmFzZSAiU3RvcmVzIHRheGF0aW9uIGRhdGEiCiAgICAgICAga2Fma2EtcHJvZHVjZXItdGF4YXRpb24gLT4gZmluYW5jZSAiUHJvdmlkZXMgZ292ZXJubWVudCByZWZlcmVuY2UgSUQiICJrYWZrYSIKICAgICAgICAKICAgICAgICAvLyBEQ1AgTW9iaWxlIEFwcGxpY2F0aW9uCiAgICAgICAgZGNwTW9iaWxlIC0+IHNlcnZpY2UtbW9iaWxlICJFeGNoYW5nZXMgZGF0YSIKICAgICAgICBzZXJ2aWNlLW1vYmlsZSAtPiBkY3BNb2JpbGUgIkV4Y2hhbmdlcyBkYXRhIgogICAgICAgIHNlcnZpY2UtcGMgLT4gRENQLWRhdGFiYXNlICJTdG9yZXMgY3JlZGVudGlhbHMiICIiCiAgICAgICAgRENQLWRhdGFiYXNlIC0+IGRjcE1vYmlsZSAiQXV0aGVudGljYXRlcyB1c2VycyIgIiIKICAgICAgICBwbGF0ZS1zY2FubmVyLWV4dGVybmFsLWFwaS1jb25uZWN0b3IgLT4gcGxhdGUtc2Nhbm5lci1leHRlcm5hbC1hcGkgIlNlbmQgaW1hZ2VzIG9mIG51bWJlciBwbGF0ZXMgJiBWSU5zIiAiSlNPTi9IVFRQUyIKICAgICAgICBwbGF0ZS1zY2FubmVyLWV4dGVybmFsLWFwaSAtPiBwbGF0ZS1zY2FubmVyLWV4dGVybmFsLWFwaS1jb25uZWN0b3IgIlJlY2VpdmVzIHRleHQgbnVtYmVyIHBsYXRlcyAmIFZJTnMiICJKU09OL0hUVFBTIgogICAgICAgIHNlcnZpY2UtbW9iaWxlIC0+IHBsYXRlLXNjYW5uZXItY2FtZXJhLWFjY2VzcyAiQWNjZXNzZXMgY2FtZXJhIHRvIHRha2UgcGljdHVyZXMgb2YgbnVtYmVyIHBsYXRlcyAmIFZJTnMiCiAgICAgICAgCiAgICAgICAgLy8gQ1JNIEFjdGl2aXRpZXMKICAgICAgICB0ZWRzLXRyYW5zYWN0aW9uLWRhdGFiYXNlIC0+IHNlcnZpY2Utc2NoZWR1bGVyICJTY2hlZHVsZXMgY29weSBvZiB0cmFuc2FjdGlvbiBkYXRhIiAiIgogICAgICAgIHNlcnZpY2Utc2NoZWR1bGVyIC0+IFREUCAiU3RvcmVzIHJlcG9ydGluZyBkYXRhIiAiIgogICAgICAgIFREUCAtPiBkYi1yZWFkZXItaHVic3BvdCAiUHJvdmlkZXMgQ1JNIGRhdGEiICIiCiAgICAgICAgYXBpLWVuZHBvaW50LWh1YnNwb3QgLT4gYXBpLWVuZHBvaW50LWluZm9iaXAgIlNlbmRzL3JlY2VpdmVzIGN1c3RvbWVyIG1lc3NhZ2VzIiAiIgogICAgICAgIGFwaS1lbmRwb2ludC1pbmZvYmlwIC0+IG1lc3NhZ2luZyAiU2VuZHMgbWVzc2FnZXMgdG8gY3VzdG9tZXJzIiAiIgogICAgICAgIG1lc3NhZ2luZyAtPiBjdXN0b21lciAiU2VuZHMgTlBTIHRvIGN1c3RvbWVycyIgIiIKICAgICAgICBjdXN0b21lciAtPiBtZXNzYWdpbmcgIlJlc3BvbmRzIHRvIE5QUyBzdXJ2ZXlzIiAiIgogICAgICAgIG1lc3NhZ2luZyAtPiBhcGktZW5kcG9pbnQtaW5mb2JpcCAiU2VuZHMgY3VzdG9tZXIgcmVwbGllcyBiYWNrIHRvIEluZm9iaXAiICIiCiAgICAgICAgYXBpLWVuZHBvaW50LWluZm9iaXAgLT4gYXBpLWVuZHBvaW50LWh1YnNwb3QgIlNTZW5kcyBjdXN0b21lciByZXBsaWVzIGJhY2sgdG8gSHVic3BvdCIgIiIKICAgICAgICAKICAgICAgICAvL1JlcG9ydGluZwogICAgICAgIFREUCAtPiBCSS1kYXNoYm9hcmRzICJQcm92aWRlcyBkYXRhIGZvciByZXBvcnRzIGFuZCBkYXNoYm9hcmRzIiAiIgogICAgfQoKICAgIC8vIFZpZXdzCiAgICB2aWV3cyB7CiAgICAgICAgICAgIHN5c3RlbUNvbnRleHQgdGVkcyAiTGV2ZWwxX1N5c3RlbUNvbnRleHQiIHsKICAgICAgICAgICAgICAgIHRpdGxlICJTeXN0ZW0gQ29udGV4dCIKICAgICAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICAgICAgIyBhdXRvTGF5b3V0CiAgICAgICAgICAgIH0KICAgIAogICAgICAgICAgICBjb250YWluZXIgdGVkcyAiTGV2ZWwyX3RlZHNfQ29udGFpbmVycyIgewogICAgICAgICAgICAgICAgdGl0bGUgIkNvbnRhaW5lcnMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29tcG9uZW50IGNvcmUtZGF0YWJhc2UgIkxldmVsM19jb3JlX2RhdGFiYXNlX0NvbXBvbmVudHMiIHsKICAgICAgICAgICAgICAgIHRpdGxlICJDb3JlIERhdGFiYXNlIOKAkyBDb21wb25lbnRzIgogICAgICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgICAgICAjIGF1dG9MYXlvdXQgbHIKICAgICAgICAgICAgfQogICAgCiAgICAgICAgICAgIGNvbnRhaW5lciBkY3BNb2JpbGUgIkxldmVsMl9kY3Btb2JpbGVfQ29udGFpbmVycyIgewogICAgICAgICAgICAgICAgdGl0bGUgIkNvbnRhaW5lcnMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29tcG9uZW50IHRlZHMtZGNwLXBsYXRlLXNjYW5uZXIgIkxldmVsMl9kY3Btb2JpbGVfcGxhdGVfc2Nhbm5lcl9Db21wb25lbnRzIiB7CiAgICAgICAgICAgICAgICB0aXRsZSAiQ29udGFpbmVycyIKICAgICAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICAgICAgIyBhdXRvTGF5b3V0IGxyCiAgICAgICAgICAgIH0KICAgIAogICAgICAgICAgICBjb250YWluZXIgcmVmZXJlbnRpYWwtc3lzdGVtICJMZXZlbDJfcmVmZXJlbnRpYWxfQ29udGFpbmVycyIgewogICAgICAgICAgICAgICAgdGl0bGUgIkNvbnRhaW5lcnMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29tcG9uZW50IHRlZHMtcmVmZXJlbnRpYWwgIkxldmVsM19yZWZlcmVudGlhbF9Db21wb25lbnRzIiB7CiAgICAgICAgICAgICAgICB0aXRsZSAiUmVmZXJlbnRpYWwgU3lzdGVtIOKAkyBDb21wb25lbnRzIgogICAgICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgICAgICAjIGF1dG9MYXlvdXQgbHIKICAgICAgICAgICAgfQogICAgCiAgICAgICAgICAgIGNvbnRhaW5lciBsb3lhbHR5LWFkYXB0ZXIgIkxldmVsMl9sb3lhbHR5LWFkYXB0ZXJfQ29udGFpbmVycyIgewogICAgICAgICAgICAgICAgdGl0bGUgIkNvbnRhaW5lcnMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29tcG9uZW50IHRlZHMtbG95YWx0eSAiTGV2ZWwzX2xveWFsdHlfQ29tcG9uZW50cyIgewogICAgICAgICAgICAgICAgdGl0bGUgIkxveWFsdHkgU3lzdGVtIOKAkyBDb21wb25lbnRzIgogICAgICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgICAgICAjIGF1dG9MYXlvdXQgbHIKICAgICAgICAgICAgfQogICAgCiAgICAgICAgICAgIGNvbnRhaW5lciBlT3JkZXJpbmctYWRhcHRlciAiTGV2ZWwyX2VPcmRlcmluZy1hZGFwdGVyX0NvbnRhaW5lcnMiIHsKICAgICAgICAgICAgICAgIHRpdGxlICJDb250YWluZXJzIgogICAgICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgICAgICAjIGF1dG9MYXlvdXQgbHIKICAgICAgICAgICAgfQogICAgCiAgICAgICAgICAgIGNvbXBvbmVudCB0ZWRzLWVPcmRlcmluZyAiTGV2ZWwzX2VPcmRlcmluZ19Db21wb25lbnRzIiB7CiAgICAgICAgICAgICAgICB0aXRsZSAiRS1PcmRlcmluZyBTeXN0ZW0g4oCTIENvbXBvbmVudHMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29udGFpbmVyIHRheGF0aW9uLWFkYXB0ZXIgIkxldmVsMl90YXhhdGlvbi1hZGFwdGVyX0NvbnRhaW5lcnMiIHsKICAgICAgICAgICAgICAgIHRpdGxlICJDb250YWluZXJzIgogICAgICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgICAgICAjIGF1dG9MYXlvdXQgbHIKICAgICAgICAgICAgfQogICAgCiAgICAgICAgICAgIGNvbXBvbmVudCB0ZWRzLXRheGF0aW9uICJMZXZlbDNfdGF4YXRpb25fQ29tcG9uZW50cyIgewogICAgICAgICAgICAgICAgdGl0bGUgIlRheGF0aW9uIFN5c3RlbSDigJMgQ29tcG9uZW50cyIKICAgICAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICAgICAgIyBhdXRvTGF5b3V0IGxyCiAgICAgICAgICAgIH0KICAgIAogICAgICAgICAgICBjb250YWluZXIgaHVic3BvdCAiTGV2ZWwyX2h1YnNwb3RfQ29udGFpbmVycyIgewogICAgICAgICAgICAgICAgdGl0bGUgIkNvbnRhaW5lcnMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29tcG9uZW50IGNybS1odWJzcG90ICJMZXZlbDNfaHVic3BvdF9Db21wb25lbnRzIiB7CiAgICAgICAgICAgICAgICB0aXRsZSAiSHViU3BvdCBDUk0g4oCTIENvbXBvbmVudHMiCiAgICAgICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgICAgICMgYXV0b0xheW91dCBscgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgY29udGFpbmVyIGluZm9iaXAgIkxldmVsMl9pbmZvYmlwX0NvbnRhaW5lcnMiIHsKICAgICAgICAgICAgICAgIHRpdGxlICJDb250YWluZXJzIgogICAgICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgICAgICAjIGF1dG9MYXlvdXQgbHIKICAgICAgICAgICAgfQogICAgCiAgICAgICAgICAgIGNvbXBvbmVudCBjcm0taW5mb2JpcCAiTGV2ZWwzX2luZm9iaXBfQ29tcG9uZW50cyIgewogICAgICAgICAgICAgICAgdGl0bGUgIkluZm9iaXAgQ1JNIOKAkyBDb21wb25lbnRzIgogICAgICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgICAgICAjIGF1dG9MYXlvdXQgbHIKICAgICAgICAgICAgfQogICAgCiAgICAgICAgICAgIHN0eWxlcyB7CiAgICAgICAgICAgICAgICAgICAgICAgIGVsZW1lbnQgIlBlcnNvbiIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2hhcGUgUGVyc29uCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICMxMTY4YmQKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBlbGVtZW50ICJFeGlzdGluZyBTeXN0ZW0iIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzk5OTk5OQogICAgICAgICAgICAgICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIGVsZW1lbnQgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzaGFwZSBDeWxpbmRlcgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIGVsZW1lbnQgIkNvbnRhaW5lciIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjNDM4ZGQ2CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgZWxlbWVudCAiQ29tcG9uZW50IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM4NWJiZjAKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbG9yICMwMDAwMDAKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBlbGVtZW50ICJXZWJCcm93c2VyIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzaGFwZSBXZWJCcm93c2VyCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kIHdoaXRlCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb2xvciAjMDAwMDAwCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgZWxlbWVudCAiTW9iaWxlRGV2aWNlUG9ydHJhaXQiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNoYXBlIE1vYmlsZURldmljZVBvcnRyYWl0CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kIHdoaXRlCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb2xvciAjMDAwMDAwCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgdGhlbWUgZGVmYXVsdAogICAgICAgIH0KCn0="
   },
   "views" : {
     "componentViews" : [ {
       "containerId" : "25",
       "elements" : [ {
         "id" : "7",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "19",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "23",
         "x" : 0,
         "y" : 0
       }, {
@@ -1771,23 +2086,27 @@
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "35",
+        "id" : "31",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "39",
+        "id" : "36",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "46",
+        "id" : "40",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "54",
+        "id" : "47",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "60",
+        "id" : "55",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "61",
         "x" : 0,
         "y" : 0
       } ],
@@ -1795,27 +2114,29 @@
       "key" : "Level3_core_database_Components",
       "order" : 3,
       "relationships" : [ {
-        "id" : "111"
+        "id" : "100"
       }, {
-        "id" : "135"
+        "id" : "110"
       }, {
-        "id" : "157"
+        "id" : "130"
       }, {
-        "id" : "188"
+        "id" : "154"
       }, {
-        "id" : "199"
+        "id" : "176"
       }, {
-        "id" : "201"
+        "id" : "207"
+      }, {
+        "id" : "218"
+      }, {
+        "id" : "220"
+      }, {
+        "id" : "232"
       } ],
       "title" : "Core Database – Components"
     }, {
-      "containerId" : "61",
+      "containerId" : "62",
       "elements" : [ {
         "id" : "6",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "62",
         "x" : 0,
         "y" : 0
       }, {
@@ -1826,26 +2147,26 @@
         "id" : "64",
         "x" : 0,
         "y" : 0
+      }, {
+        "id" : "65",
+        "x" : 0,
+        "y" : 0
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "Level2_dcpmobile_plate_scanner_Components",
       "order" : 5,
       "relationships" : [ {
-        "id" : "203"
+        "id" : "222"
       }, {
-        "id" : "206"
+        "id" : "225"
       }, {
-        "id" : "211"
+        "id" : "230"
       } ],
       "title" : "Containers"
     }, {
-      "containerId" : "36",
+      "containerId" : "37",
       "elements" : [ {
         "id" : "6",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "31",
         "x" : 0,
         "y" : 0
       }, {
@@ -1861,11 +2182,15 @@
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "37",
+        "id" : "35",
         "x" : 0,
         "y" : 0
       }, {
         "id" : "38",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "39",
         "x" : 0,
         "y" : 0
       } ],
@@ -1873,27 +2198,23 @@
       "key" : "Level3_referential_Components",
       "order" : 7,
       "relationships" : [ {
-        "id" : "102"
-      }, {
-        "id" : "107"
+        "id" : "112"
       }, {
         "id" : "115"
       }, {
-        "id" : "93"
+        "id" : "118"
       }, {
-        "id" : "96"
+        "id" : "121"
       }, {
-        "id" : "99"
+        "id" : "126"
+      }, {
+        "id" : "134"
       } ],
       "title" : "Referential System – Components"
     }, {
-      "containerId" : "40",
+      "containerId" : "41",
       "elements" : [ {
         "id" : "6",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "41",
         "x" : 0,
         "y" : 0
       }, {
@@ -1912,30 +2233,30 @@
         "id" : "45",
         "x" : 0,
         "y" : 0
+      }, {
+        "id" : "46",
+        "x" : 0,
+        "y" : 0
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "Level3_loyalty_Components",
       "order" : 9,
       "relationships" : [ {
-        "id" : "120"
-      }, {
-        "id" : "123"
-      }, {
-        "id" : "126"
-      }, {
-        "id" : "131"
-      }, {
         "id" : "139"
+      }, {
+        "id" : "142"
+      }, {
+        "id" : "145"
+      }, {
+        "id" : "150"
+      }, {
+        "id" : "158"
       } ],
       "title" : "Loyalty System – Components"
     }, {
-      "containerId" : "47",
+      "containerId" : "48",
       "elements" : [ {
         "id" : "6",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "48",
         "x" : 0,
         "y" : 0
       }, {
@@ -1954,30 +2275,30 @@
         "id" : "52",
         "x" : 0,
         "y" : 0
+      }, {
+        "id" : "53",
+        "x" : 0,
+        "y" : 0
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "Level3_eOrdering_Components",
       "order" : 11,
       "relationships" : [ {
-        "id" : "142"
-      }, {
-        "id" : "145"
-      }, {
-        "id" : "148"
-      }, {
-        "id" : "153"
-      }, {
         "id" : "161"
+      }, {
+        "id" : "164"
+      }, {
+        "id" : "167"
+      }, {
+        "id" : "172"
+      }, {
+        "id" : "180"
       } ],
       "title" : "E-Ordering System – Components"
     }, {
-      "containerId" : "55",
+      "containerId" : "56",
       "elements" : [ {
         "id" : "6",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "56",
         "x" : 0,
         "y" : 0
       }, {
@@ -1992,26 +2313,88 @@
         "id" : "59",
         "x" : 0,
         "y" : 0
+      }, {
+        "id" : "60",
+        "x" : 0,
+        "y" : 0
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "Level3_taxation_Components",
       "order" : 13,
       "relationships" : [ {
-        "id" : "167"
+        "id" : "186"
       }, {
-        "id" : "170"
-      }, {
-        "id" : "173"
-      }, {
-        "id" : "176"
-      }, {
-        "id" : "179"
-      }, {
-        "id" : "184"
+        "id" : "189"
       }, {
         "id" : "192"
+      }, {
+        "id" : "195"
+      }, {
+        "id" : "198"
+      }, {
+        "id" : "203"
+      }, {
+        "id" : "211"
       } ],
       "title" : "Taxation System – Components"
+    }, {
+      "containerId" : "69",
+      "elements" : [ {
+        "id" : "66",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "70",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "71",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "72",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalContainerBoundariesVisible" : false,
+      "key" : "Level3_hubspot_Components",
+      "order" : 15,
+      "relationships" : [ {
+        "id" : "236"
+      }, {
+        "id" : "241"
+      }, {
+        "id" : "262"
+      } ],
+      "title" : "HubSpot CRM – Components"
+    }, {
+      "containerId" : "73",
+      "elements" : [ {
+        "id" : "68",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "74",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "76",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalContainerBoundariesVisible" : false,
+      "key" : "Level3_infobip_Components",
+      "order" : 17,
+      "relationships" : [ {
+        "id" : "245"
+      }, {
+        "id" : "248"
+      }, {
+        "id" : "253"
+      }, {
+        "id" : "258"
+      } ],
+      "title" : "Infobip CRM – Components"
     } ],
     "configuration" : {
       "branding" : { },
@@ -2141,27 +2524,27 @@
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "35",
+        "id" : "36",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "39",
+        "id" : "40",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "46",
+        "id" : "47",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "54",
+        "id" : "55",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "60",
+        "id" : "61",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "65",
+        "id" : "66",
         "x" : 0,
         "y" : 0
       } ],
@@ -2169,55 +2552,65 @@
       "key" : "Level2_teds_Containers",
       "order" : 2,
       "relationships" : [ {
-        "id" : "112"
+        "id" : "100"
       }, {
-        "id" : "117"
+        "id" : "101"
       }, {
-        "id" : "118"
+        "id" : "102"
+      }, {
+        "id" : "103"
+      }, {
+        "id" : "104"
+      }, {
+        "id" : "105"
+      }, {
+        "id" : "106"
+      }, {
+        "id" : "107"
+      }, {
+        "id" : "108"
+      }, {
+        "id" : "109"
+      }, {
+        "id" : "111"
+      }, {
+        "id" : "131"
       }, {
         "id" : "136"
       }, {
-        "id" : "141"
+        "id" : "137"
       }, {
-        "id" : "158"
+        "id" : "155"
       }, {
-        "id" : "163"
+        "id" : "160"
       }, {
-        "id" : "166"
+        "id" : "177"
       }, {
-        "id" : "189"
+        "id" : "182"
       }, {
-        "id" : "194"
+        "id" : "185"
       }, {
-        "id" : "195"
-      }, {
-        "id" : "197"
-      }, {
-        "id" : "200"
-      }, {
-        "id" : "202"
+        "id" : "208"
       }, {
         "id" : "213"
       }, {
-        "id" : "70"
+        "id" : "214"
       }, {
-        "id" : "72"
+        "id" : "216"
       }, {
-        "id" : "74"
+        "id" : "219"
       }, {
-        "id" : "76"
+        "id" : "221"
+      }, {
+        "id" : "233"
+      }, {
+        "id" : "234"
       }, {
         "id" : "77"
       }, {
-        "id" : "78"
-      }, {
         "id" : "79"
       }, {
-        "id" : "80"
-      }, {
         "id" : "81"
-      }, {
-        "id" : "82"
       }, {
         "id" : "83"
       }, {
@@ -2238,6 +2631,20 @@
         "id" : "91"
       }, {
         "id" : "92"
+      }, {
+        "id" : "93"
+      }, {
+        "id" : "94"
+      }, {
+        "id" : "95"
+      }, {
+        "id" : "96"
+      }, {
+        "id" : "97"
+      }, {
+        "id" : "98"
+      }, {
+        "id" : "99"
       } ],
       "softwareSystemId" : "6",
       "title" : "Containers"
@@ -2247,11 +2654,11 @@
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "61",
+        "id" : "62",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "64",
+        "id" : "65",
         "x" : 0,
         "y" : 0
       } ],
@@ -2259,21 +2666,17 @@
       "key" : "Level2_dcpmobile_Containers",
       "order" : 4,
       "relationships" : [ {
-        "id" : "204"
+        "id" : "223"
       }, {
-        "id" : "207"
+        "id" : "226"
       }, {
-        "id" : "212"
+        "id" : "231"
       } ],
-      "softwareSystemId" : "60",
+      "softwareSystemId" : "61",
       "title" : "Containers"
     }, {
       "elements" : [ {
         "id" : "6",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "31",
         "x" : 0,
         "y" : 0
       }, {
@@ -2289,7 +2692,11 @@
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "36",
+        "id" : "35",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "37",
         "x" : 0,
         "y" : 0
       } ],
@@ -2297,17 +2704,17 @@
       "key" : "Level2_referential_Containers",
       "order" : 6,
       "relationships" : [ {
-        "id" : "100"
+        "id" : "113"
       }, {
-        "id" : "103"
+        "id" : "116"
       }, {
-        "id" : "110"
+        "id" : "119"
       }, {
-        "id" : "94"
+        "id" : "122"
       }, {
-        "id" : "97"
+        "id" : "129"
       } ],
-      "softwareSystemId" : "35",
+      "softwareSystemId" : "36",
       "title" : "Containers"
     }, {
       "elements" : [ {
@@ -2315,11 +2722,7 @@
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "40",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "43",
+        "id" : "41",
         "x" : 0,
         "y" : 0
       }, {
@@ -2330,20 +2733,24 @@
         "id" : "45",
         "x" : 0,
         "y" : 0
+      }, {
+        "id" : "46",
+        "x" : 0,
+        "y" : 0
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
       "key" : "Level2_loyalty-adapter_Containers",
       "order" : 8,
       "relationships" : [ {
-        "id" : "121"
+        "id" : "140"
       }, {
-        "id" : "124"
+        "id" : "143"
       }, {
-        "id" : "127"
+        "id" : "146"
       }, {
-        "id" : "134"
+        "id" : "153"
       } ],
-      "softwareSystemId" : "39",
+      "softwareSystemId" : "40",
       "title" : "Containers"
     }, {
       "elements" : [ {
@@ -2351,11 +2758,7 @@
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "47",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "50",
+        "id" : "48",
         "x" : 0,
         "y" : 0
       }, {
@@ -2366,20 +2769,24 @@
         "id" : "52",
         "x" : 0,
         "y" : 0
+      }, {
+        "id" : "53",
+        "x" : 0,
+        "y" : 0
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
       "key" : "Level2_eOrdering-adapter_Containers",
       "order" : 10,
       "relationships" : [ {
-        "id" : "143"
+        "id" : "162"
       }, {
-        "id" : "146"
+        "id" : "165"
       }, {
-        "id" : "149"
+        "id" : "168"
       }, {
-        "id" : "156"
+        "id" : "175"
       } ],
-      "softwareSystemId" : "46",
+      "softwareSystemId" : "47",
       "title" : "Containers"
     }, {
       "elements" : [ {
@@ -2387,15 +2794,15 @@
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "55",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "58",
+        "id" : "56",
         "x" : 0,
         "y" : 0
       }, {
         "id" : "59",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "60",
         "x" : 0,
         "y" : 0
       } ],
@@ -2403,19 +2810,73 @@
       "key" : "Level2_taxation-adapter_Containers",
       "order" : 12,
       "relationships" : [ {
-        "id" : "168"
-      }, {
-        "id" : "171"
-      }, {
-        "id" : "174"
-      }, {
-        "id" : "177"
-      }, {
-        "id" : "180"
-      }, {
         "id" : "187"
+      }, {
+        "id" : "190"
+      }, {
+        "id" : "193"
+      }, {
+        "id" : "196"
+      }, {
+        "id" : "199"
+      }, {
+        "id" : "206"
       } ],
-      "softwareSystemId" : "54",
+      "softwareSystemId" : "55",
+      "title" : "Containers"
+    }, {
+      "elements" : [ {
+        "id" : "66",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "69",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "72",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Level2_hubspot_Containers",
+      "order" : 14,
+      "relationships" : [ {
+        "id" : "237"
+      }, {
+        "id" : "244"
+      }, {
+        "id" : "263"
+      } ],
+      "softwareSystemId" : "68",
+      "title" : "Containers"
+    }, {
+      "elements" : [ {
+        "id" : "68",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "73",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "76",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Level2_infobip_Containers",
+      "order" : 16,
+      "relationships" : [ {
+        "id" : "246"
+      }, {
+        "id" : "249"
+      }, {
+        "id" : "254"
+      }, {
+        "id" : "261"
+      } ],
+      "softwareSystemId" : "72",
       "title" : "Containers"
     } ],
     "systemContextViews" : [ {
@@ -2436,27 +2897,27 @@
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "35",
+        "id" : "36",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "39",
+        "id" : "40",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "46",
+        "id" : "47",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "54",
+        "id" : "55",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "60",
+        "id" : "61",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "65",
+        "id" : "66",
         "x" : 0,
         "y" : 0
       } ],
@@ -2464,35 +2925,35 @@
       "key" : "Level1_SystemContext",
       "order" : 1,
       "relationships" : [ {
-        "id" : "113"
+        "id" : "132"
       }, {
-        "id" : "119"
+        "id" : "138"
       }, {
-        "id" : "137"
+        "id" : "156"
       }, {
-        "id" : "159"
+        "id" : "178"
       }, {
-        "id" : "169"
+        "id" : "188"
       }, {
-        "id" : "190"
+        "id" : "209"
       }, {
-        "id" : "196"
+        "id" : "215"
       }, {
-        "id" : "198"
+        "id" : "217"
       }, {
-        "id" : "214"
+        "id" : "235"
       }, {
-        "id" : "71"
+        "id" : "78"
       }, {
-        "id" : "73"
+        "id" : "80"
       }, {
-        "id" : "75"
+        "id" : "82"
       }, {
-        "id" : "90"
+        "id" : "97"
       }, {
-        "id" : "91"
+        "id" : "98"
       }, {
-        "id" : "92"
+        "id" : "99"
       } ],
       "softwareSystemId" : "6",
       "title" : "System Context"
