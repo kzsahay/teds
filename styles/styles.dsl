@@ -1,11 +1,15 @@
 styles {
             element "Person" {
                 shape Person
-                background #1168bd
+                background #11bd72
                 color #ffffff
             }
             element "Existing System" {
                 background #999999
+                color #ffffff
+            }
+            element "New System" {
+                background #2ae116
                 color #ffffff
             }
             element "Database" {

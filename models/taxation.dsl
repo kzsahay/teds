@@ -1,5 +1,5 @@
 taxation = softwareSystem "Taxation Adapter" "Downstream tax processing & government linking" {
-    tags "Existing System"
+    tags "Existing System" "new system"
 }
 
 taxation-adapter = softwareSystem "E-Tax" "E-tax adapter" {

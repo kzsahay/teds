@@ -1,5 +1,5 @@
 eordering-adapter = softwareSystem "E-Ordering" "E-ordering adapter" {
-    tags "container"
+    tags "container" "new system"
     // ==================== CONTAINERS====================
     teds-eOrdering = container "TEDS E-Ordering" "TEDS e-ordering program" {
         tags "Container"

@@ -19,7 +19,7 @@ referential-system = softwareSystem "Referential System" "Wecare-like referentia
 
     // ==================== CONTAINERS====================
     teds-referential = container "TEDS Tyre referential" "TEDS product and services referential" {
-        tags "Container"
+        tags "Container" "new system"
         // ==================== COMPONENTS (must be inside their container) ====================
         Kafka-producer-referential = component "Kafka producer for referential-system" {
             tags "Component"

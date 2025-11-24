@@ -1,5 +1,5 @@
 loyalty-adapter = softwareSystem "Loyalty Programs" "Loyalty program adapter" {
-    tags "container"
+    tags "container" "new system"
 
     // ==================== CONTAINERS====================
     teds-loyalty = container "TEDS Loyalty" "TEDS loyalty program" {
