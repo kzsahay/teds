@@ -1,0 +1,19 @@
+@startuml
+set separator none
+title Containers
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+
+System_Boundary("LoyaltyPrograms_boundary", "Loyalty Programs", $tags="") {
+  Container(LoyaltyPrograms.ThailandiCare, "Thailand iCare", $techn="", $descr="Thailand iCare loyalty program", $tags="", $link="")
+  Container(LoyaltyPrograms.KoreaLoyalty, "Korea Loyalty", $techn="", $descr="Korea loyalty program", $tags="", $link="")
+  Container(LoyaltyPrograms.OtherLoyalty, "Other Loyalty", $techn="", $descr="Other loyalty program", $tags="", $link="")
+}
+
+
+SHOW_LEGEND(true)
+@enduml
